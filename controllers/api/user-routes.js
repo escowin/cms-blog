@@ -87,7 +87,7 @@ router.delete("/:id", (req, res) => {
         res.status(404).json({ message: "user does not exist" });
         return;
       }
-      res.json(dbUserData);
+      // res.json(dbUserData);
     })
     .catch((err) => {
       console.log(err);
@@ -96,7 +96,35 @@ router.delete("/:id", (req, res) => {
 });
 
 // logging in & out | create & destroy sessions
-router.post("/login", (req, res) => {});
+router.post("/login", (req, res) => {
+  // finds user via email query. if found, that query is passed as dbUserData. 
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  }).then(dbUserData => {
+    if (!dbUserData) {
+      res.status(400).json({ message: 'user not found with this email'});
+      return;
+    }
+
+    // verifies dbUserData's password by comparing the plain text with the object's stored hashed password. val
+    const validPassword = dbUserData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res.status(400).json({ message: 'incorrect password' });
+      return;
+    }
+
+    // req.session.save(() => {
+    //   // declared session variables
+    //   req.session.user_id = dbUserData.id;
+    //   req.session.username = dbUserData.username;
+    //   req.session.loggedIn = true;
+
+      res.json({ user: dbUserData, message: 'you are now logged in' });
+    // });
+  });
+});
 router.delete("/logout", (req, res) => {});
 
 module.exports = router;
