@@ -108,7 +108,7 @@ router.post("/login", (req, res) => {
       return;
     }
 
-    // verifies dbUserData's password by comparing the plain text with the object's stored hashed password. val
+    // verifies dbUserData's password by comparing the plain text with the object's stored hashed password.
     const validPassword = dbUserData.checkPassword(req.body.password);
     if (!validPassword) {
       res.status(400).json({ message: 'incorrect password' });
