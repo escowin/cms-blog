@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 // turn on database and server connection
-// - force true | DROP DATABASE IF EXISTS tech_blog_db;
+// - force: true | DROP DATABASE IF EXISTS tech_blog_db;
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });
