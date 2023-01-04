@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Post, Comment } = require("../../models");
+const { User } = require("../../models");
 
 // get | users | /api/users
 router.get("/", (req, res) => {
@@ -20,80 +20,80 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   // SELECT * FROM users WHERE id = ?;
   User.findOne({
-      where: { id: req.params.id }
+    where: { id: req.params.id },
   })
-  .then(dbUserData => {
+    .then((dbUserData) => {
       if (!dbUserData) {
-          res.status(404).json({ message: 'user does not exist' });
-          return;
+        res.status(404).json({ message: "user does not exist" });
+        return;
       }
       res.json(dbUserData);
-  })
-  .catch(err => {
+    })
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
-  });
+    });
 });
 
 // - create
 router.post("/", (req, res) => {
-    // INSERT INTO users (username, email, password)
-    // VALUES ('?', '?', '?');
-    User.create({
-        username: req.body.usernme,
-        email: req.body.email,
-        password: req.body.password
-    })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+  // INSERT INTO users (username, email, password)
+  // VALUES ('?', '?', '?');
+  User.create({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+  })
+    .then((dbUserData) => res.json(dbUserData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
 });
 
 // - update
 router.put("/:id", (req, res) => {
-    // UPDATE users
-    // SET username = '?', email='?', password='?'
-    // WHERE id = ?;
-    User.update(req.body, {
-        individualHooks: true,
-        where: {
-          id: req.params.id,
-        },
-      })
-        .then((dbUserData) => {
-          if (!dbUserData) {
-            res.status(404).json({ message: "user does not exist" });
-            return;
-          }
-          res.json(dbUserData);
-        })
-        .catch((err) => {
-          console.log(err);
-          res.status(500).json(err);
-        });
+  // UPDATE users
+  // SET username = '?', email='?', password='?'
+  // WHERE id = ?;
+  User.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "user does not exist" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
-    
+});
+
 // - delete
 router.delete("/:id", (req, res) => {
-    User.destroy({
-        where: {
-          id: req.params.id
-        }
-      })
-        .then((dbUserData) => {
-          if (!dbUserData) {
-            res.status(404).json({ message: "user does not exist" });
-            return;
-          }
-          res.json(dbUserData);
-        })
-        .catch((err) => {
-          console.log(err);
-          res.status(500).json(err);
-        });
+  User.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "user does not exist" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
+});
 
 // logging in & out | create & destroy sessions
 router.post("/login", (req, res) => {});
