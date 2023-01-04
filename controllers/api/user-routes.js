@@ -16,8 +16,27 @@ router.get("/", (req, res) => {
 });
 
 // restful api | specific user | /api/users/:id
+// - read
+router.get("/:id", (req, res) => {
+  // SELECT * FROM users WHERE id = ?;
+  User.findOne({
+      where: { id: req.params.id }
+  })
+  .then(dbUserData => {
+      if (!dbUserData) {
+          res.status(404).json({ message: 'user does not exist' });
+          return;
+      }
+      res.json(dbUserData);
+  })
+  .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  });
+});
+
 // - create
-router.post("/:id", (req, res) => {
+router.post("/", (req, res) => {
     // INSERT INTO users (username, email, password)
     // VALUES ('?', '?', '?');
     User.create({
@@ -31,24 +50,7 @@ router.post("/:id", (req, res) => {
         res.status(500).json(err);
     });
 });
-// - read
-router.get("/:id", (req, res) => {
-    // SELECT * FROM users WHERE id = ?;
-    User.findOne({
-        where: { id: req.params.id }
-    })
-    .then(dbUserData => {
-        if (!dbUserData) {
-            res.status(404).json({ message: 'user does not exist' });
-            return;
-        }
-        res.json(dbUserData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
+
 // - update
 router.put("/:id", (req, res) => {
     // UPDATE users
@@ -72,6 +74,7 @@ router.put("/:id", (req, res) => {
           res.status(500).json(err);
         });
     });
+    
 // - delete
 router.delete("/:id", (req, res) => {
     User.destroy({

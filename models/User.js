@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt'); // hashes passwords
+const bcrypt = require('bcrypt')
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -9,9 +9,9 @@ class User extends Model {
     }
 };
 
+// defines table columns & configuration
 User.init(
     {
-        // defined User table columns
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -34,7 +34,7 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [3]
+                len: [4]
             }
         }
     },
@@ -53,12 +53,12 @@ User.init(
             }
         },
         // table configuration
-        sequelize, // passes the imported orm connection
-        timestamps: false, // prevents auto createdAt/updatedAt timestamp fields
-        freezeTableName: true, // table name remains singular
-        underscored: true, // snake_case
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
         modelName: 'user'
     }
-)
+);
 
 module.exports = User;
