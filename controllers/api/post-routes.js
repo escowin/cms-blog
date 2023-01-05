@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, User } = require("../../models");
+const { Post, User, Comment } = require("../../models");
 
 // get | posts | /api/posts
 router.get("/", (req, res) => {
@@ -8,6 +8,15 @@ router.get("/", (req, res) => {
     attributes: ["id", "content", "title", "created_at"],
     order: [["created_at", "DESC"]],
     include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        // including the user model here allows the username to be attached to the comment
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
       {
         model: User,
         attributes: ["username"],
@@ -42,6 +51,15 @@ router.get("/:id", (req, res) => {
     where: { id: req.params.id },
     attributes: ["id", "title", "content", "created_at"],
     include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        // including the user model here allows the username to be attached to the comment
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
       {
         model: User,
         attributes: ["username"],
