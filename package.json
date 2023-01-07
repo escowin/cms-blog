@@ -1,7 +1,7 @@
 {
   "name": "tech-blog",
   "version": "1.0.0",
-  "description": "tech blog built on mvc principles",
+  "description": "cms blog built with mvc & orm principles",
   "main": "server.js",
   "scripts": {
     "test": "jest",
