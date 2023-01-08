@@ -1,0 +1,32 @@
+<script defer src="/javascript/add-post.js"></script>
+
+<section>
+    <h2>Create new post</h2>
+    <form id="new-post-form">
+        <div>
+            <label for="post-title">title</label>
+            <input type="text" id="post-title" name="post-title"/>
+        </div>
+        <div>
+            <label for="post-content">text</label>
+            <textarea id="post-content" name="post-content"></textarea>
+        </div>
+        <button type="submit">submit</button>
+    </form>
+</section>
+
+{{!-- controllers | dashboard | get route --}}
+{{!-- populates the dashboard view with user-created posts --}}
+{{#if posts.length}}
+<section>
+    <h2>Your posts</h2>
+    <ol>
+        {{#each posts as |post|}}
+        <li>
+            {{> post-info post}}
+            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+        </li>
+        {{/each}}
+    </ol>
+</section>
+{{/if}}

@@ -12,9 +12,9 @@ async function loginFormHandler(e) {
       headers: { "Content-Type": "application/json" },
     });
 
-    // succesful logins redirect session users to the homepage
+    // succesful logins redirect session users to dashboard
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
     }
