@@ -1,38 +1,38 @@
-<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVC | CMS Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script defer src="/javascript/copyright.js"></script>
+    {{#if loggedIn}}
+      <script defer src="/javascript/logout.js"></script>
+    {{/if}}
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Tech Blog</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-
-<body>
-  <div class="container">
+  <body>
     <header>
       <h1>
-        <a href="/">The Tech Blog</a>
+        <a href="/">CMS Blog</a>
       </h1>
       <nav>
-          <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Dashboard</a></li>
-              <li><a href="#">Logout</a></li>
-          </ul>
+        {{#if loggedIn}}
+          <a href="/dashboard">dashboard</a>
+          <button id="logout">log out</button>
+        {{else}}
+          <a href="/login">log in</a>
+        {{/if}}
       </nav>
     </header>
+
     <main>
-      {{{ body }}}
+      {{{body}}}
     </main>
+
     <footer>
-      <h2>
-        <a href="https://github.com/escowin/tech-blog">14 | Model-View-Controller (MVC) Challenge</a>
-      </h2>
-      <p>&copy; 2022 Edwin Escobar</p>
+      &copy;<span id="year"></span>
+      by
+      <a href="https://github.com/escowin/cms-blog" target="_blank">Edwin m. escobar</a>
     </footer>
-  </div>
-
-</body>
-
+  </body>
 </html>

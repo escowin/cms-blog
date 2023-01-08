@@ -1,38 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<script defer src="/javascript/add-post.js"></script>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Tech Blog</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+<section>
+    <h2>Create new post</h2>
+    <form id="new-post-form">
+        <div class="wrapper">
+            <label for="post-title">title</label>
+            <input type="text" id="post-title" name="post-title"/>
+        </div>
+        <div>
+            <label for="post-content">text</label>
+            <textarea id="post-content" name="post-content"></textarea>
+        </div>
+        <button type="submit" class="btn add-btn">Submit post</button>
+    </form>
+</section>
 
-<body>
-  <div class="wrapper">
-    <header>
-      <h1>
-        <a href="/">The Dashboard</a>
-      </h1>
-      <nav>
-          <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Dashboard</a></li>
-              <li><a href="#">Logout</a></li>
-          </ul>
-      </nav>
-    </header>
-    <main>
-      {{{ body }}}
-    </main>
-    <footer>
-      <h2>
-        <a href="https://github.com/escowin/tech-blog">14 | Model-View-Controller (MVC) Challenge</a>
-      </h2>
-      <p>&copy; 2022 Edwin Escobar</p>
-    </footer>
-  </div>
-
-</body>
-
-</html>
+{{!-- controllers | dashboard | get route --}}
+{{!-- populates the dashboard view with user-created posts --}}
+{{#if posts.length}}
+<section>
+    <h2>Your posts</h2>
+    <ol>
+        {{#each posts as |post|}}
+        <li>
+            {{> post-info post}}
+            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+        </li>
+        {{/each}}
+    </ol>
+</section>
+{{/if}}

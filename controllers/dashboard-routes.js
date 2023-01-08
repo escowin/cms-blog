@@ -1,14 +1,11 @@
-// mvc | view routes
 const router = require("express").Router();
-const sequelize = require("../config/connection");
 const { Post, User, Comment } = require("../models");
+const withAuth = require("../utils/auth");
 
-// rendering views
-// - homepage template
-router.get("/", (req, res) => {
-  console.log(req.session);
-
+// get | dashboard | /dashboard/ | accessible only to session user
+router.get("/", withAuth, (req, res) => {
   Post.findAll({
+    where: { user_id: req.session.user_id },
     attributes: ["id", "content", "title", "created_at"],
     include: [
       {
@@ -26,11 +23,11 @@ router.get("/", (req, res) => {
     ],
   })
     .then((dbPostData) => {
-      // to display every post without issue
+      // serializes data before passing to template
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render("homepage", {
+      res.render("dashboard", {
         posts,
-        loggedIn: req.session.loggedIn
+        loggedIn: true,
       });
     })
     .catch((err) => {
@@ -39,18 +36,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// - login template
-router.get("/login", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
-  }
-
-  res.render("login");
-});
-
-// - single post template
-router.get("/post/:id", (req, res) => {
+router.get("/edit/:id", withAuth, (req, res) => {
   Post.findOne({
     where: { id: req.params.id },
     attributes: ["id", "content", "title", "created_at"],
@@ -74,14 +60,12 @@ router.get("/post/:id", (req, res) => {
         res.status(404).json({ message: "post not found" });
         return;
       }
-
       // serializes data
       const post = dbPostData.get({ plain: true });
 
-      // passes data to template, loggedIn allows for conditional rendering within the template
-      res.render("single-post", { 
-        post, 
-        loggedIn: req.session.loggedIn 
+      res.render("edit-post", {
+        post,
+        loggedIn: true,
       });
     })
     .catch((err) => {
