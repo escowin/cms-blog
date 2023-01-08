@@ -3,6 +3,7 @@ const routes = require('./controllers');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const helpers = require('./utils/helpers');
 
 // server | runs the server & listens through the port
 const app = express();
@@ -24,8 +25,8 @@ const sess = {
 // middle ware | expression session
 app.use(session(sess));
 
-// tells the server to use the handlebars template engine
-const hbs = exphbs.create({});
+// server uses the handlebars template engine with custom formatting helpers
+const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
