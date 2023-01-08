@@ -6,7 +6,7 @@
     <a href="/dashboard"> &larr; Dashboard</a>
     <h2>Edit post</h2>
     <form id="edit-post-form">
-        <div>
+        <div class="wrapper">
             <label for="post-title">title</label>
             <input name="post-title" type="text" value="{{post.title}}"/>
         </div>
@@ -19,8 +19,10 @@
             |
             <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
         </div>
-        <button type="submit">Save</button>
-        <button type="button" id="delete-btn">Delete</button>
+        <div class="buttons-wrapper">
+            <button type="submit" class="btn add-btn" id="save-btn">Save post</button>
+            <button type="button" class="btn" id="delete-btn">Delete post</button>
+        </div>
     </form>
 </article>
 
@@ -29,7 +31,7 @@
         <textarea name="comment-body"></textarea>
     </div>
     <div>
-        <button type="submit">Add comment</button>
+        <button type="submit" class="btn add-btn">Add comment</button>
     </div>
 </form>
 

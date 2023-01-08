@@ -1,37 +1,38 @@
-<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MVC | CMS Blog</title>
-        <link rel="stylesheet" href="/css/style.css">
-        <script defer src="/javascript/copyright.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVC | CMS Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script defer src="/javascript/copyright.js"></script>
+    {{#if loggedIn}}
+      <script defer src="/javascript/logout.js"></script>
+    {{/if}}
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <a href="/">CMS Blog</a>
+      </h1>
+      <nav>
         {{#if loggedIn}}
-        <script defer src="/javascript/logout.js"></script>
+          <a href="/dashboard">dashboard</a>
+          <button id="logout">log out</button>
+        {{else}}
+          <a href="/login">log in</a>
         {{/if}}
-    </head>
+      </nav>
+    </header>
 
-    <body>
-        <header>
-            <h1>
-                <a href="/">CMS Blog</a>
-            </h1>
-            <nav>
-                {{#if loggedIn}}
-                <a href="/dashboard">dashboard</a>
-                <button id="logout">log out</button>
-                {{else}}
-                <a href="/login">log in</a>
-                {{/if}}
-            </nav>
-        </header>
+    <main>
+      {{{body}}}
+    </main>
 
-        <main>
-            {{{ body }}}
-        </main>
-
-        <footer>
-            &copy;<span id="year"></span> by <a href="/" target="_blank">Edwin M. Escobar</a>
-        </footer>
-    </body>
+    <footer>
+      &copy;<span id="year"></span>
+      by
+      <a href="https://github.com/escowin/cms-blog" target="_blank">Edwin m. escobar</a>
+    </footer>
+  </body>
 </html>
