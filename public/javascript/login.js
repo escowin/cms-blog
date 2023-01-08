@@ -12,9 +12,9 @@ async function loginFormHandler(e) {
       headers: { "Content-Type": "application/json" },
     });
 
-    // checks the response status
+    // succesful logins redirect session users to the homepage
     if (response.ok) {
-      console.log("success");
+      document.location.replace('/');
     } else {
       alert(response.statusText);
     }

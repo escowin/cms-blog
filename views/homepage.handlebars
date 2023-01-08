@@ -1,17 +1,20 @@
 <ul>
-    {{#each posts as |post|}}
+  {{#each posts as |post|}}
     <li>
-        <article>
-            <div>
-                <h2>{{post.title}}</h2>
-                <p>{{post.content}}</p>
-            </div>
-            <div>
-                by {{post.user.username}} on {{post.created_at}}
-                |
-                <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
-            </div>
-        </article>
+      <article>
+        <div>
+          <h2><a href="/post/{{post.id}}">{{post.title}}</a></h2>
+          <p>{{post.content}}</p>
+        </div>
+        <div>
+          by
+          {{post.user.username}}
+          on
+          {{post.created_at}}
+          |
+          <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
+        </div>
+      </article>
     </li>
-    {{/each}}
+  {{/each}}
 </ul>

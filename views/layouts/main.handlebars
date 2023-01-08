@@ -6,7 +6,9 @@
         <title>MVC | CMS Blog</title>
         <link rel="stylesheet" href="/css/style.css">
         <script defer src="/javascript/copyright.js"></script>
+        {{#if loggedIn}}
         <script defer src="/javascript/logout.js"></script>
+        {{/if}}
     </head>
 
     <body>
@@ -15,8 +17,11 @@
                 <a href="/">CMS Blog</a>
             </h1>
             <nav>
+                {{#if loggedIn}}
                 <button id="logout">log out</button>
+                {{else}}
                 <a href="/login">log in</a>
+                {{/if}}
             </nav>
         </header>
 

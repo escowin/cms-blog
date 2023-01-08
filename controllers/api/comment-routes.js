@@ -14,21 +14,20 @@ router.get("/", (req, res) => {
 
 // - create
 router.post("/", (req, res) => {
-  // when logged in
-  //   if (req.session) {
-  Comment.create({
-    comment_text: req.body.comment_text,
-    post_id: req.body.post_id,
-    // session id
-    user_id: req.body.user_id,
-    //   user_id: req.session.user_id,
-  })
-    .then((dbCommentData) => res.json(dbCommentData))
-    .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
-    });
-  //   }
+  // only logged in users can comment on posts as the user id is tied to the corresponding session user id
+  if (req.session) {
+    Comment.create({
+      comment_text: req.body.comment_text,
+      post_id: req.body.post_id,
+      // use the id from the session
+      user_id: req.session.user_id
+    })
+      .then((dbCommentData) => res.json(dbCommentData))
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  }
 });
 
 // - update
