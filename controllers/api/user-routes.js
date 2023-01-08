@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 // get | users | /api/users
 router.get("/", (req, res) => {
@@ -67,8 +68,8 @@ router.post("/", (req, res) => {
     });
 });
 
-// - update
-router.put("/:id", (req, res) => {
+// - update | accessible only to session user
+router.put("/:id", withAuth, (req, res) => {
   // UPDATE users
   // SET username = '?', email='?', password='?'
   // WHERE id = ?;
@@ -91,8 +92,8 @@ router.put("/:id", (req, res) => {
     });
 });
 
-// - delete
-router.delete("/:id", (req, res) => {
+// - delete | accessible only to session user
+router.delete("/:id", withAuth, (req, res) => {
   User.destroy({
     where: {
       id: req.params.id,

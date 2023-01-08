@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Comment, Post } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 // restful api | comments | /api/comments/
 // - read
@@ -12,8 +13,8 @@ router.get("/", (req, res) => {
     });
 });
 
-// - create
-router.post("/", (req, res) => {
+// - create | accessible only to session user
+router.post("/", withAuth, (req, res) => {
   // only logged in users can comment on posts as the user id is tied to the corresponding session user id
   if (req.session) {
     Comment.create({
@@ -31,7 +32,7 @@ router.post("/", (req, res) => {
 });
 
 // - update
-router.put("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
   Comment.update(
     {
       comment_text: req.body.comment_text,
@@ -54,7 +55,7 @@ router.put("/:id", (req, res) => {
 });
 
 // - delete
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Post.destroy({
     where: { id: req.params.id },
   })

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 // get | posts | /api/posts
 router.get("/", (req, res) => {
@@ -31,8 +32,8 @@ router.get("/", (req, res) => {
 });
 
 // restful api | specific post | /api/posts/:id
-// - create
-router.post("/", (req, res) => {
+// - create | accessible only to session user
+router.post("/", withAuth, (req, res) => {
   Post.create({
     title: req.body.title,
     content: req.body.content,
@@ -79,8 +80,8 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// - update
-router.put("/:id", (req, res) => {
+// - update | accessible only to session user
+router.put("/:id", withAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title,
@@ -103,8 +104,8 @@ router.put("/:id", (req, res) => {
     });
 });
 
-// - delete
-router.delete("/:id", (req, res) => {
+// - delete | accessible only to session user
+router.delete("/:id", withAuth, (req, res) => {
   Post.destroy({
     where: { id: req.params.id },
   })
