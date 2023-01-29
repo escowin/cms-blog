@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Comment, Post } = require("../../models");
+const { Comment } = require("../../models");
 const withAuth = require('../../utils/auth');
 
 // restful api | comments | /api/comments/
@@ -56,7 +56,7 @@ router.put("/:id", withAuth, (req, res) => {
 
 // - delete
 router.delete("/:id", withAuth, (req, res) => {
-  Post.destroy({
+  Comment.destroy({
     where: { id: req.params.id },
   })
     .then((dbCommentData) => {

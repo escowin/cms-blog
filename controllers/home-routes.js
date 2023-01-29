@@ -10,6 +10,7 @@ router.get("/", (req, res) => {
 
   Post.findAll({
     attributes: ["id", "content", "title", "created_at"],
+    order: [["created_at", "DESC"]],
     include: [
       {
         model: Comment,
@@ -30,7 +31,8 @@ router.get("/", (req, res) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
       res.render("homepage", {
         posts,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        customstyle: '<link rel="stylesheet" href="/css/homepage.css">',
       });
     })
     .catch((err) => {
@@ -46,7 +48,9 @@ router.get("/login", (req, res) => {
     return;
   }
 
-  res.render("login");
+  res.render("login", {
+    customstyle: '<link rel="stylesheet" href="/css/login.css">',
+  });
 });
 
 // - single post template
@@ -79,9 +83,10 @@ router.get("/post/:id", (req, res) => {
       const post = dbPostData.get({ plain: true });
 
       // passes data to template, loggedIn allows for conditional rendering within the template
-      res.render("single-post", { 
-        post, 
-        loggedIn: req.session.loggedIn 
+      res.render("single-post", {
+        post,
+        loggedIn: req.session.loggedIn,
+        customstyle: '<link rel="stylesheet" href="/css/single-post.css">',
       });
     })
     .catch((err) => {

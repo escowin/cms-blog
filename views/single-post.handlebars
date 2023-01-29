@@ -1,3 +1,6 @@
+{{! custom stylesheet }}
+<link rel="stylesheet" href="/css/single-post.css" />
+
 {{#if loggedIn}}
 <script defer src="/javascript/comment.js"></script>
 {{/if}}
@@ -8,6 +11,7 @@
 {{!-- only renders for logged in users due to the conditions set in the res.render('single-post) within home-routes --}}
 {{#if loggedIn}}
 <form id="comment-form">
+  <h3>Reply</h3>
   <div>
     <textarea name="comment-body"></textarea>
   </div>

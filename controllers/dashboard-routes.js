@@ -6,6 +6,7 @@ const withAuth = require("../utils/auth");
 router.get("/", withAuth, (req, res) => {
   Post.findAll({
     where: { user_id: req.session.user_id },
+    order: [["created_at", "DESC"]],
     attributes: ["id", "content", "title", "created_at"],
     include: [
       {
@@ -28,6 +29,7 @@ router.get("/", withAuth, (req, res) => {
       res.render("dashboard", {
         posts,
         loggedIn: true,
+        customstyle: '<link rel="stylesheet" href="/css/dashboard.css">'
       });
     })
     .catch((err) => {
