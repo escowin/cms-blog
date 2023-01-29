@@ -1,14 +1,10 @@
 main {
-    padding: .5rem 0;
+    padding: var(--indent);
+    gap: 1rem;
 }
 
-.homepage-header {
+.form-h2 {
     background: var(--secondary);
     /* math maintains 1:2 ratio */
-    margin: 0 var(--indent);
     padding-left: calc(var(--indent)*2);
-}
-
-.posts-list {
-    margin: var(--indent) 0;
 }

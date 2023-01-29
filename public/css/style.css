@@ -9,6 +9,8 @@
     --add: rgb(101, 164, 209);
     --delete: rgb(122, 39, 39); 
     --header-font: 'Raleway', sans-serif;
+    --text-font: 'Alegreya Sans', sans-serif;
+    --indent: .5rem;
 }
 
 * {
@@ -19,6 +21,10 @@
 
 h1, h2, h3 {
     font-family: var(--header-font);
+}
+
+p, .details a, nav a {
+    font-family: var(--text-font);
 }
 
 /* flow */
@@ -73,26 +79,17 @@ main {
     margin-bottom: .5rem;
 }
 
-/* login.handlebars */
-.form {
-    padding: 5vw;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--tertiary);
-    margin-bottom: 1rem;
-}
+/* form styles */
 
-.login {
-    margin-top: .5rem;
-}
 
 /* partials, post-info.handlebars */
 .post {
-    border: 1px solid var(--tertiary);
+    /* border: 1px solid var(--tertiary); */
     border-radius: var(--border-radius);
 }
 
 .title {
-    border-radius: .25rem .25rem 0 0;
+    border-radius: 0 .25rem 0 0;
     background-color: var(--tertiary);
     color: var(--dark);
     padding: .125rem .25rem;
@@ -140,6 +137,7 @@ textarea {
 input:focus, textarea:focus {
     background-color: var(--secondary);
 }
+
 
 /* buttons */
 button {

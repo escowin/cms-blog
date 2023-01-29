@@ -1,0 +1,17 @@
+main {
+    gap: 2rem;
+}
+
+#comment-form {
+    margin: 0 .75rem;
+}
+
+#comments h3 {
+    margin: var(--indent);
+    padding: var(--indent) calc(var(--indent)*2);
+    background-color: var(--secondary);
+}
+
+* {
+    /* outline: 1px dotted blue; */
+}
