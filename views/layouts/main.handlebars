@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MVC | CMS Blog</title>
     <link rel="stylesheet" href="/css/style.css" />
+    {{!-- modularization | rendering view-specific stylesheets --}}
+    {{{customstyle}}}
     <script defer src="/javascript/copyright.js"></script>
     {{#if loggedIn}}
       <script defer src="/javascript/logout.js"></script>

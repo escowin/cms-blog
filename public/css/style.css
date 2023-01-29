@@ -61,6 +61,7 @@ nav * {
 
 main {
     padding: .25rem;
+    flex-grow: 1;
 }
 
 /* homepage.handlebars */
