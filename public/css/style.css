@@ -19,7 +19,12 @@
     padding: 0;
 }
 
-h1, h2, h3 {
+/* screen toggles */
+.display-md {
+    display: none;
+}
+
+h1, h2, h3, footer {
     font-family: var(--header-font);
 }
 
@@ -85,7 +90,6 @@ main {
 
 /* partials, post-info.handlebars */
 .post {
-    /* border: 1px solid var(--tertiary); */
     border-radius: var(--border-radius);
 }
 
@@ -195,4 +199,17 @@ a:hover {
 .edit-link {
     margin-left: 1rem;
     color: var(--secondary);
+}
+
+
+@media screen and (min-width: 1024px) {
+    .display-md {
+        display: initial;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #dashboard {
+        font-size: 1.25rem;
+    }
 }

@@ -13,6 +13,7 @@ main {
     #new-post-form {
         padding: 0 0 0 .5rem;
     }
+    
     ol {
         display: grid;
         /* flex-direction: auto auto;  */
