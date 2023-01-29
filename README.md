@@ -28,6 +28,8 @@
 
   * [Test](#test)
 
+  * [Screenshots](#screenshots)
+
   * [Author](#author)
 
 ## Installation
@@ -53,6 +55,12 @@
   ```
   npm test
   ```
+
+## Screenshots
+
+![mobile](./images/small/cms-blog.jpg)
+![tablet](./images/medium/cms-blog.jpg)
+![desktop](./images/large/cms-blog.jpg)
 
 ## Author
 
