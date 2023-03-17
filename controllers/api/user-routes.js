@@ -23,20 +23,20 @@ router.get("/:id", (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: { id: req.params.id },
-    include: [
-      {
-        model: Post,
-        attributes: ['id', 'title', 'content', 'created_at']
-      },
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'created_at'],
-        include: {
-          model: Post,
-          attributes: ['title']
-        }
-      },
-    ]
+    // include: [
+    //   {
+    //     model: Post,
+    //     attributes: ['id', 'title', 'content', 'created_at']
+    //   },
+    //   {
+    //     model: Comment,
+    //     attributes: ['id', 'comment_text', 'created_at'],
+    //     include: {
+    //       model: Post,
+    //       attributes: ['title']
+    //     }
+    //   },
+    // ]
 
   })
     .then((dbUserData) => {
@@ -54,11 +54,11 @@ router.get("/:id", (req, res) => {
 
 // - create
 router.post("/", (req, res) => {
-  // INSERT INTO users (username, email, password)
+  // INSERT INTO users (username, password)
   // VALUES ('?', '?', '?');
   User.create({
     username: req.body.username,
-    email: req.body.email,
+    // email: req.body.email,
     password: req.body.password,
   })
     .then((dbUserData) => res.json(dbUserData))
@@ -70,9 +70,6 @@ router.post("/", (req, res) => {
 
 // - update | accessible only to session user
 router.put("/:id", withAuth, (req, res) => {
-  // UPDATE users
-  // SET username = '?', email='?', password='?'
-  // WHERE id = ?;
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -117,11 +114,11 @@ router.post("/login", (req, res) => {
   // finds user via email query. if found, that query is passed as dbUserData. 
   User.findOne({
     where: {
-      email: req.body.email
+      username: req.body.username
     }
   }).then(dbUserData => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'user not found with this email'});
+      res.status(400).json({ message: 'user not found'});
       return;
     }
 

@@ -41,6 +41,6 @@ app.use(routes);
 
 // turn on database and server connection
 // - force: true | DROP DATABASE IF EXISTS;
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening http://localhost:${PORT}`));
 });
