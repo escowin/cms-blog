@@ -1,26 +1,17 @@
 
-# cms-blog
+# fitness-logbook
 
-  * [Repo](https://github.com/escowin/cms-blog)
+  * [Repo](https://github.com/escowin/fitness-logbook)
+  
   
 ## Description
 
-  CMS blog built using MVC & ORM principles.
-
-  I've used bcrypt and dotenv to protect sensitive database & user information. Login sessions are handled with connect-sessions.
-  
-  Restful API practices allows users to create, read, update, and delete posts & comments. Through insomnia, it is possible to also do the same to user data. However, the app is authguarded to prevent non-users from accessing non-GET routes.
-  
-  Implemented handlebars.js to render views.
-
-## Languages
-
-  CSS, JavaScript, MySQL
-
-## Frameworks
-  handlebars, jest, sequelize
+  Logs fitness-related observations & data using the MVC architectural pattern.
 
 ## Table of Contents
+  * [Languages](#languages)
+
+  * [Libraries](#libraries)
 
   * [Installation](#installation)
 
@@ -32,18 +23,38 @@
 
   * [Author](#author)
 
+## Languages
+
+  CSS, JavaScript, SQL
+
+## Libraries
+  Handlebars, jest, Sequelize, sessions, bcrypt
+
+## Requirements
+  Node.js, mySQL
+
 ## Installation
+Terminal instructions
 
-  Run the following command to install necessary dependencies:
+  1. Navigate to desired download directory
+  2. Run the following commands:
 
-  ```
-  npm i
-  ```
-
-  Run the following command to start up app:
-  ```
-  npm start
-  ```
+      ```
+      $ git clone git@github.com:escowin/fitness-logbook.git; 
+      ```
+      ```
+      $ cd fintess-logbook;
+      ```
+      ```
+      $ npm i; 
+      ```
+      ```
+      $ npm run seed;
+      ```
+      ```
+      $ npm start;
+      ```
+  3. Open http://localhost:3001 in browser.
 
 ## Usage
 

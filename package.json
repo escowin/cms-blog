@@ -1,26 +1,28 @@
 {
-  "name": "cms-blog",
-  "version": "2.0.0",
-  "description": "cms blog built with mvc & orm principles",
+  "name": "fitness-logbook",
+  "version": "3.0.0",
+  "description": "logging progress through mvc architecture",
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seeds/seed.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/escowin/cms-blog.git"
+    "url": "git+https://github.com/escowin/fitness-logbook.git"
   },
   "keywords": [
     "mvc",
-    "orm"
+    "orm",
+    "node"
   ],
   "author": "Edwin M. Escobar",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/escowin/cms-blog/issues"
+    "url": "https://github.com/escowin/fitness-logbook/issues"
   },
-  "homepage": "https://github.com/escowin/cms-blog#readme",
+  "homepage": "https://github.com/escowin/fitness-logbook#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "connect-session-sequelize": "^7.1.5",
