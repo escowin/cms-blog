@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {};
+class Journal extends Model {};
 
 // defines fields & meta data configuration. user & post have a 1:M relationship.
-Post.init(
+Journal.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -32,7 +32,7 @@ Post.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'post'
+        modelName: 'journal'
     }
 )
-module.exports = Post;
+module.exports = Journal;

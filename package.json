@@ -32,7 +32,6 @@
     "express-session": "^1.17.3",
     "jest": "^29.3.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.28.0",
-    "sqlite3": "^5.1.4"
+    "sequelize": "^6.28.0"
   }
 }
