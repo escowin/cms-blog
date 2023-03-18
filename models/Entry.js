@@ -5,12 +5,16 @@ class Entry extends Model {}
 
 Entry.init(
   {
-    // defined fields | id, entry_text, user_id, journal_id
+    // defined fields
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     entry_text: {
       type: DataTypes.TEXT,

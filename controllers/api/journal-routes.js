@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Journal, User, Entry } = require("../../models");
-const withAuth = require('../../utils/auth');
+const withAuth = require("../../utils/auth");
 
 // get | posts | /api/posts
 router.get("/", (req, res) => {
@@ -9,22 +9,17 @@ router.get("/", (req, res) => {
     attributes: ["id", "title", "description", "created_at"],
     order: [["created_at", "DESC"]],
     include: [
-    //   {
-    //     model: Entry,
-    //     attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-    //     // including the user model here allows the username to be attached to the comment
-    //     include: {
-    //       model: User,
-    //       attributes: ["username"],
-    //     },
-    //   },
+      {
+        model: Entry,
+        attributes: ["id", "title", "journal_id", "user_id", "created_at"],
+      },
       {
         model: User,
         attributes: ["username"],
       },
     ],
   })
-    .then((dbPostData) => res.json(dbPostData))
+    .then((dbJournalData) => res.json(dbJournalData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -39,7 +34,7 @@ router.post("/", withAuth, (req, res) => {
     description: req.body.description,
     user_id: req.session.user_id,
   })
-    .then((dbPostData) => res.json(dbPostData))
+    .then((dbJournalData) => res.json(dbJournalData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -52,27 +47,22 @@ router.get("/:id", (req, res) => {
     where: { id: req.params.id },
     attributes: ["id", "title", "description", "created_at"],
     include: [
-    //   {
-    //     model: Comment,
-    //     attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-    //     // including the user model here allows the username to be attached to the comment
-    //     include: {
-    //       model: User,
-    //       attributes: ["username"],
-    //     },
-    //   },
+      {
+        model: Entry,
+        attributes: ["id", "title", "journal_id", "user_id", "created_at"],
+      },
       {
         model: User,
         attributes: ["username"],
       },
     ],
   })
-    .then((dbPostData) => {
-      if (!dbPostData) {
+    .then((dbJournalData) => {
+      if (!dbJournalData) {
         res.status(404).json({ message: "journal does not exist" });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbJournalData);
     })
     .catch((err) => {
       console.log(err);
@@ -91,12 +81,12 @@ router.put("/:id", withAuth, (req, res) => {
       where: { id: req.params.id },
     }
   )
-    .then((dbPostData) => {
-      if (!dbPostData) {
+    .then((dbJournalData) => {
+      if (!dbJournalData) {
         req.status(404).json({ message: "post does not exist" });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbJournalData);
     })
     .catch((err) => {
       console.log(err);
@@ -109,12 +99,12 @@ router.delete("/:id", withAuth, (req, res) => {
   Journal.destroy({
     where: { id: req.params.id },
   })
-    .then((dbPostData) => {
-      if (!dbPostData) {
+    .then((dbJournalData) => {
+      if (!dbJournalData) {
         res.status(404).json({ message: "journal does not exist" });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbJournalData);
     })
     .catch((err) => {
       console.log(err);
