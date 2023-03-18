@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const { Comment } = require("../../models");
+const { Entry } = require("../../models");
 const withAuth = require('../../utils/auth');
 
 // restful api | comments | /api/comments/
 // - read
 router.get("/", (req, res) => {
-  Comment.findAll()
+  Entry.findAll()
     .then((dbCommentData) => res.json(dbCommentData))
     .catch((err) => {
       console.log(err);
@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 router.post("/", withAuth, (req, res) => {
   // only logged in users can comment on posts as the user id is tied to the corresponding session user id
   if (req.session) {
-    Comment.create({
+    Entry.create({
       comment_text: req.body.comment_text,
       post_id: req.body.post_id,
       // use the id from the session
@@ -33,7 +33,7 @@ router.post("/", withAuth, (req, res) => {
 
 // - update
 router.put("/:id", withAuth, (req, res) => {
-  Comment.update(
+  Entry.update(
     {
       comment_text: req.body.comment_text,
     },
@@ -56,7 +56,7 @@ router.put("/:id", withAuth, (req, res) => {
 
 // - delete
 router.delete("/:id", withAuth, (req, res) => {
-  Comment.destroy({
+  Entry.destroy({
     where: { id: req.params.id },
   })
     .then((dbCommentData) => {
