@@ -5,7 +5,6 @@ main {
 .homepage-header {
     background: var(--secondary);
     /* math maintains 1:2 ratio */
-    margin: 0 var(--indent);
     padding-left: calc(var(--indent)*2);
 }
 

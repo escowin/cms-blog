@@ -1,12 +1,12 @@
 {{!-- custom stylesheet --}}
 <link rel="stylesheet" href="/css/homepage.css">
 
-<h2 class="homepage-header">Latest posts</h2>
+<h2 class="homepage-header">Journals</h2>
 <ul class="posts-list">
-  {{#each posts as |post|}}
+  {{#each journals as |journal|}}
     <li>
       {{!-- rendering the partial --}}
-      {{> post-info post }}
+      {{> journal-info journal }}
     </li>
   {{/each}}
 </ul>

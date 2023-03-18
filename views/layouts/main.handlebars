@@ -16,14 +16,14 @@
   <body>
     <header>
       <h1>
-        <a href="/">fintess-logbook</a>
+        <a href="/">fitness-logbook</a>
       </h1>
       <nav>
         {{#if loggedIn}}
           <a id="dashboard" href="/dashboard">dashboard</a>
           <button id="logout">log out</button>
         {{else}}
-          <a href="/login">log in</a>
+          <a href="/login" class="btn nav-btn">log in</a>
         {{/if}}
       </nav>
     </header>

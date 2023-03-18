@@ -1,12 +1,12 @@
 {{! custom stylesheet }}
-<link rel="stylesheet" href="/css/single-post.css" />
+<link rel="stylesheet" href="/css/single-journal.css" />
 
 {{#if loggedIn}}
 <script defer src="/javascript/comment.js"></script>
 {{/if}}
 
 {{!-- renders partial --}}
-{{> post-info post }}
+{{> journal-info journal }}
 
 {{!-- only renders for logged in users due to the conditions set in the res.render('single-post) within home-routes --}}
 {{#if loggedIn}}
@@ -23,4 +23,4 @@
 {{/if}}
 
 {{!-- renders partial --}}
-{{> comments post.comments }}
+{{> entries journal.entries }}
