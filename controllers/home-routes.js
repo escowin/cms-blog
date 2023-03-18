@@ -1,24 +1,24 @@
 // mvc | view routes
 const router = require("express").Router();
-const sequelize = require("../config/connection");
-const { Post, User, Comment } = require("../models");
+// const sequelize = require("../config/connection");
+const { User, Journal, Entry } = require("../models");
 
 // rendering views
 // - homepage template
 router.get("/", (req, res) => {
   console.log(req.session);
 
-  Post.findAll({
-    attributes: ["id", "content", "title", "created_at"],
+  Journal.findAll({
+    attributes: ["id", "description", "title", "created_at"],
     order: [["created_at", "DESC"]],
     include: [
       {
-        model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
+        model: Entry,
+        attributes: ["id", "entry_text", "journal_id", "user_id", "created_at"],
+        // include: {
+        //   model: User,
+        //   attributes: ["username"],
+        // },
       },
       {
         model: User,
@@ -26,11 +26,11 @@ router.get("/", (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
+    .then((dbJournalData) => {
       // to display every post without issue
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      const journals = dbJournalData.map((journal) => journal.get({ plain: true }));
       res.render("homepage", {
-        posts,
+        journals,
         loggedIn: req.session.loggedIn,
         customstyle: '<link rel="stylesheet" href="/css/homepage.css">',
       });
@@ -55,17 +55,17 @@ router.get("/login", (req, res) => {
 
 // - single post template
 router.get("/post/:id", (req, res) => {
-  Post.findOne({
+  Journal.findOne({
     where: { id: req.params.id },
-    attributes: ["id", "content", "title", "created_at"],
+    attributes: ["id", "description", "title", "created_at"],
     include: [
       {
-        model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
+        model: Entry,
+        attributes: ["id", "entry_text", "journal_id", "user_id", "created_at"],
+        // include: {
+        //   model: User,
+        //   attributes: ["username"],
+        // },
       },
       {
         model: User,
@@ -73,20 +73,20 @@ router.get("/post/:id", (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
-      if (!dbPostData) {
+    .then((dbJournalData) => {
+      if (!dbJournalData) {
         res.status(404).json({ message: "post not found" });
         return;
       }
 
       // serializes data
-      const post = dbPostData.get({ plain: true });
+      const post = dbJournalData.get({ plain: true });
 
       // passes data to template, loggedIn allows for conditional rendering within the template
-      res.render("single-post", {
+      res.render("single-journal", {
         post,
         loggedIn: req.session.loggedIn,
-        customstyle: '<link rel="stylesheet" href="/css/single-post.css">',
+        customstyle: '<link rel="stylesheet" href="/css/single-journal.css">',
       });
     })
     .catch((err) => {
