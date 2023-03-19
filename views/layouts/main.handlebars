@@ -20,10 +20,10 @@
       </h1>
       <nav>
         {{#if loggedIn}}
-          <a id="dashboard" href="/dashboard">dashboard</a>
-          <button id="logout">log out</button>
+          <a class="btn" id="add-btn" href="/add-journal">add journal</a>
+          <button class="btn" id="logout">log out</button>
         {{else}}
-          <a href="/login" class="btn nav-btn">log in</a>
+          <a href="/login" class="btn">log in</a>
         {{/if}}
       </nav>
     </header>

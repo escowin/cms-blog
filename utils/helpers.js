@@ -1,14 +1,24 @@
 module.exports = {
-    format_date: date => {
-        return `${
-            new Date(date).getMonth() + 1}/${
-                new Date(date).getDate()}/${
-                    new Date(date).getFullYear()}`;
-    },
-    format_plural: (word, amount) => {
-        if (amount !== 1) {
-            return `${word}s`;
-        }
-        return word;
+  // YYYY.MM.DD
+  format_date: (date) => {
+    let year = new Date(date).getFullYear();
+    let month = new Date(date).getMonth();
+    let day = new Date(date).getDate();
+
+    if (month < 10) {
+      return `${year}.0${month}.${day}`;
     }
-}
+    return `${year}.${month}.${day}`;
+  },
+  format_plural: (word, amount) => {
+    if (amount !== 1) {
+      switch (word) {
+        case "entry":
+          return `entries`;
+        default:
+          return `${word}s`;
+      }
+    }
+    return word;
+  },
+};

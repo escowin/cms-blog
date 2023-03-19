@@ -13,7 +13,7 @@
 
 * {
     box-sizing: border-box;
-    outline: 1px dotted blue;
+    /* outline: 1px dotted blue; */
     padding: 0;
     margin: 0;
 }
@@ -57,6 +57,12 @@ main {
     font-family: var(--text-body);
 }
 
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 
 /* lists */
 ul,
@@ -67,11 +73,12 @@ ol {
 /* buttons */
 .btn {
     background-color: var(--primary);
+    border-radius: var(--corners);
+    border: none;
+    padding: .25rem var(--indent);
 }
 
-.nav-btn {
-    padding: 0 var(--indent);
-    border-radius: var(--corners);
+nav .btn {
     color: var(--text-light);
 }
 

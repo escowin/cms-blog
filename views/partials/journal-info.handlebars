@@ -1,22 +1,22 @@
-<article class="post">
+<li class="journal">
   <h3 class="title">
-    <a href="/post/{{id}}">{{title}}</a>
+    <a href="/journal/{{id}}">{{id}} &middot; {{title}}</a>
   </h3>
 
   <div class="details">
+
+
     <p class="author">
-      posted by
-      {{user.username}}
       &#183;
       {{format_date created_at}}
     </p>
     <a href="/journal/{{id}}">
       {{entries.length}}
-      {{format_plural "comment" entries.length}}
+      {{format_plural "entry" entries.length}}
     </a>
   </div>
   
   <div class="content">
     <p>{{content}}</p>
   </div>
-</article>
+</li>

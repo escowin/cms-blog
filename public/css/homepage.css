@@ -8,13 +8,21 @@ main {
     padding-left: calc(var(--indent)*2);
 }
 
-.posts-list {
+.journals {
     margin: var(--indent) 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem
+}
+
+.journal {
+    background-color: var(--secondary);
+    padding: 0 var(--indent)
 }
 
 
 @media screen and (min-width: 1024px) {
-    .posts-list {
+    .journals {
         display: grid;
         /* flex-direction: auto auto;  */
         grid-template-columns: repeat(3, auto);

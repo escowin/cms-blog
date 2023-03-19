@@ -2,11 +2,9 @@
 <link rel="stylesheet" href="/css/homepage.css">
 
 <h2 class="homepage-header">Journals</h2>
-<ul class="posts-list">
+<ul class="journals">
   {{#each journals as |journal|}}
-    <li>
       {{!-- rendering the partial --}}
       {{> journal-info journal }}
-    </li>
   {{/each}}
 </ul>

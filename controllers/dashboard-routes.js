@@ -12,10 +12,6 @@ router.get("/", withAuth, (req, res) => {
       {
         model: Entry,
         attributes: ["id", "entry_text", "journal_id", "user_id", "created_at"],
-        // include: {
-        //   model: User,
-        //   attributes: ["username"],
-        // },
       },
       {
         model: User,
