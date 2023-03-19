@@ -29,7 +29,11 @@
     </header>
 
     <main>
-      {{{body}}}
+      {{#if loggedIn}}
+        {{{body}}}
+      {{else}}
+        {{> login }}
+      {{/if}}
     </main>
 
     <footer>

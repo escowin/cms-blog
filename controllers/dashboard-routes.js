@@ -1,21 +1,21 @@
 const router = require("express").Router();
-const { Post, User, Comment } = require("../models");
+const { User, Journal, Entry } = require("../models");
 const withAuth = require("../utils/auth");
 
 // get | dashboard | /dashboard/ | accessible only to session user
 router.get("/", withAuth, (req, res) => {
-  Post.findAll({
+  Journal.findAll({
     where: { user_id: req.session.user_id },
     order: [["created_at", "DESC"]],
-    attributes: ["id", "content", "title", "created_at"],
+    attributes: ["id", "title", "description", "created_at"],
     include: [
       {
-        model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
+        model: Entry,
+        attributes: ["id", "entry_text", "journal_id", "user_id", "created_at"],
+        // include: {
+        //   model: User,
+        //   attributes: ["username"],
+        // },
       },
       {
         model: User,
@@ -23,11 +23,11 @@ router.get("/", withAuth, (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
+    .then((dbJournalData) => {
       // serializes data before passing to template
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      const journals = dbJournalData.map((journal) => journal.get({ plain: true }));
       res.render("dashboard", {
-        posts,
+        journals,
         loggedIn: true,
         customstyle: '<link rel="stylesheet" href="/css/dashboard.css">'
       });
@@ -39,12 +39,12 @@ router.get("/", withAuth, (req, res) => {
 });
 
 router.get("/edit/:id", withAuth, (req, res) => {
-  Post.findOne({
+  Journal.findOne({
     where: { id: req.params.id },
-    attributes: ["id", "content", "title", "created_at"],
+    attributes: ["id", "title", "description", "created_at"],
     include: [
       {
-        model: Comment,
+        model: Entry,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
