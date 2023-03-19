@@ -20,6 +20,18 @@ Journal.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    start_date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    end_date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    duration: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

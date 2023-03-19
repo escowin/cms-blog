@@ -1,22 +1,15 @@
 <li class="journal">
-  <h3 class="title">
-    <a href="/journal/{{id}}">{{id}} &middot; {{title}}</a>
-  </h3>
+  <a href="/journal/{{id}}">
+    <h3 class="title">{{id}} &middot; {{title}}</h3>
 
-  <div class="details">
-
-
-    <p class="author">
-      &#183;
-      {{format_date created_at}}
-    </p>
-    <a href="/journal/{{id}}">
-      {{entries.length}}
-      {{format_plural "entry" entries.length}}
-    </a>
-  </div>
-  
-  <div class="content">
-    <p>{{content}}</p>
-  </div>
+    <div class="details">
+      <p>s. {{format_date start_date}}</p>
+      <p>e. {{format_date end_date}}</p>
+      <p>12 {{format_plural "week" duration}}</p>
+      <a href="/journal/{{id}}">
+        {{entries.length}}
+        {{format_plural "entry" entries.length}}
+      </a>
+    </div>
+  </a>
 </li>

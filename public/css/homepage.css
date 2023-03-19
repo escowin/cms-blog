@@ -20,6 +20,9 @@ main {
     padding: 0 var(--indent)
 }
 
+.details {
+    padding-left: var(--indent);
+}
 
 @media screen and (min-width: 1024px) {
     .journals {
