@@ -16,16 +16,14 @@
   <body>
     <header>
       <h1>
-        <a href="/">fitness-logbook</a>
+        <a href="/">fitness-log</a>
       </h1>
+      {{#if loggedIn}}
       <nav>
-        {{#if loggedIn}}
-          <a class="btn" id="add-btn" href="/add-journal">add journal</a>
+          <a class="btn" id="add-btn" href="/add-journal">add</a>
           <button class="btn" id="logout">log out</button>
-        {{else}}
-          <a href="/login" class="btn">log in</a>
-        {{/if}}
       </nav>
+      {{/if}}      
     </header>
 
     <main>

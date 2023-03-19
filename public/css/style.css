@@ -9,6 +9,8 @@
     --text-body: 'Alegreya Sans', sans-serif;
     --corners: 25rem;
     --indent: 1rem;
+    --input: rgb(222, 222, 222);
+    --input-focus: rgba(211, 211, 211, 0.627);
 }
 
 * {
@@ -35,6 +37,8 @@ body {
     padding: 0 var(--indent);
     min-height: 100vh;
     font-variant: small-caps;
+    gap: var(--indent);
+    font-size: 1.25rem;
 }
 
 footer {
@@ -50,11 +54,13 @@ header {
     font-family: var(--text-header);
     background-color: var(--secondary);
     padding: 0 var(--indent);
+    border-radius: var(--corners);
 }
 
 main {
     flex-grow: 1;
     font-family: var(--text-body);
+    gap: var(--indent);
 }
 
 nav {
@@ -62,7 +68,6 @@ nav {
     align-items: center;
     gap: 1rem;
 }
-
 
 /* lists */
 ul,
@@ -72,13 +77,15 @@ ol {
 
 /* buttons */
 .btn {
-    background-color: var(--primary);
     border-radius: var(--corners);
     border: none;
     padding: .25rem var(--indent);
+    transition: 1s;
+    font-variant: small-caps;
 }
 
 nav .btn {
+    background-color: var(--primary);
     color: var(--text-light);
 }
 

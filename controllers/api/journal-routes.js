@@ -6,7 +6,15 @@ const withAuth = require("../../utils/auth");
 router.get("/", (req, res) => {
   console.log("=== get all posts ====");
   Journal.findAll({
-    attributes: ["id", "title", "description", "created_at"],
+    attributes: [
+      "id",
+      "title",
+      "start_date",
+      "end_date",
+      "duration",
+      "description",
+      "created_at",
+    ],
     order: [["created_at", "DESC"]],
     include: [
       {
@@ -31,6 +39,9 @@ router.get("/", (req, res) => {
 router.post("/", withAuth, (req, res) => {
   Journal.create({
     title: req.body.title,
+    start_date: req.body.start_date,
+    end_date: req.body.end_date,
+    duration: req.body.duration,
     description: req.body.description,
     user_id: req.session.user_id,
   })
@@ -45,7 +56,15 @@ router.post("/", withAuth, (req, res) => {
 router.get("/:id", (req, res) => {
   Journal.findOne({
     where: { id: req.params.id },
-    attributes: ["id", "title", "description", "created_at"],
+    attributes: [
+      "id",
+      "title",
+      "start_date",
+      "end_date",
+      "duration",
+      "description",
+      "created_at",
+    ],
     include: [
       {
         model: Entry,
@@ -75,7 +94,10 @@ router.put("/:id", withAuth, (req, res) => {
   Journal.update(
     {
       title: req.body.title,
-      content: req.body.description,
+      start_date: req.body.start_date,
+      end_date: req.body.end_date,
+      duration: req.body.duration,
+      description: req.body.description,
     },
     {
       where: { id: req.params.id },

@@ -2,21 +2,6 @@
 <link rel="stylesheet" href="/css/dashboard.css">
 <script defer src="/javascript/add-post.js"></script>
 
-<section>
-    <h2 class="form-h2">Create new post</h2>
-    <form id="new-post-form">
-        <div class="wrapper">
-            <label for="post-title">title</label>
-            <input type="text" id="post-title" name="post-title"/>
-        </div>
-        <div>
-            <label for="post-content">text</label>
-            <textarea id="post-content" name="post-content"></textarea>
-        </div>
-        <button type="submit" class="btn add-btn">Submit post</button>
-    </form>
-</section>
-
 {{!-- controllers | dashboard | get route --}}
 {{!-- populates the dashboard view with user-created posts --}}
 {{!-- {{#if posts.length}}

@@ -16,13 +16,10 @@ Journal.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
     start_date: {
       type: DataTypes.STRING,
       allowNull: false,
+      max: 10
     },
     end_date: {
       type: DataTypes.STRING,
@@ -31,6 +28,10 @@ Journal.init(
     duration: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
