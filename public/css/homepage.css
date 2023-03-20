@@ -5,7 +5,8 @@ main {
 .homepage-header {
     background: var(--secondary);
     /* math maintains 1:2 ratio */
-    padding-left: calc(var(--indent)*2);
+    padding-left: calc(var(--indent)*1.25);
+    border-radius: var(--corners);
 }
 
 .journals {
@@ -17,35 +18,40 @@ main {
 
 .journal {
     background-color: var(--secondary);
-    padding: 0 var(--indent)
+    padding: 0 var(--indent);
+    border-radius: .5rem;
+}
+
+.journal-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    border-bottom: 1px solid var(--accent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.duration {
+    font-size: 75%;
 }
 
 .details {
-    padding-left: var(--indent);
+    padding-left: calc(var(--indent)/5);
+}
+
+.description {
+    margin-top: .5rem;
+    min-height: 5rem;
+}
+
+@media screen and (min-width: 768px) {
+
 }
 
 @media screen and (min-width: 1024px) {
-    .journals {
-        display: grid;
-        /* flex-direction: auto auto;  */
-        grid-template-columns: repeat(3, auto);
-        gap: 1rem;
-    }
 
-    .title {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        /* header cuts off after 1 line */
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-    }
-
-    .content {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
-    }
 }

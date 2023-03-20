@@ -1,13 +1,17 @@
-main {
-    gap: 2rem;
-}
+#entry-form {
+    display: grid;
+    grid-template-columns: auto 1fr;
 
-#comment-form {
-    margin: 0 .75rem;
-}
-
-#comments h3 {
-    margin: var(--indent);
-    padding: var(--indent) calc(var(--indent)*2);
     background-color: var(--secondary);
+    padding: var(--indent)
+}
+
+#entry-form h3,
+#entry-form button {
+    grid-column: span 2;
+}
+
+#entry-date {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
 }

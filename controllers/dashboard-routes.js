@@ -6,8 +6,8 @@ const withAuth = require("../utils/auth");
 router.get("/", withAuth, (req, res) => {
   Journal.findAll({
     where: { user_id: req.session.user_id },
+    attributes: ["id", "title", "description", "start_date", "end_date", "duration"],
     order: [["created_at", "DESC"]],
-    attributes: ["id", "title", "description", "created_at"],
     include: [
       {
         model: Entry,
@@ -37,15 +37,15 @@ router.get("/", withAuth, (req, res) => {
 router.get("/edit/:id", withAuth, (req, res) => {
   Journal.findOne({
     where: { id: req.params.id },
-    attributes: ["id", "title", "description", "created_at"],
+    attributes: ["id", "title", "description", "start_date", "end_date", "duration"],
     include: [
       {
         model: Entry,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
+        attributes: ["id", "entry_text", "journal_id", "user_id", "created_at"],
+        // include: {
+        //   model: User,
+        //   attributes: ["username"],
+        // },
       },
       {
         model: User,
@@ -53,16 +53,16 @@ router.get("/edit/:id", withAuth, (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
-      if (!dbPostData) {
+    .then((dbJournalData) => {
+      if (!dbJournalData) {
         res.status(404).json({ message: "post not found" });
         return;
       }
       // serializes data
-      const post = dbPostData.get({ plain: true });
+      const journal = dbJournalData.get({ plain: true });
 
       res.render("edit-post", {
-        post,
+        journal,
         loggedIn: true,
       });
     })

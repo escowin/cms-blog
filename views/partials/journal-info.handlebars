@@ -1,15 +1,14 @@
-<li class="journal">
-  <a href="/journal/{{id}}">
-    <h3 class="title">{{id}} &middot; {{title}}</h3>
-
-    <div class="details">
-      <p>s. {{format_date start_date}}</p>
-      <p>e. {{format_date end_date}}</p>
-      <p>12 {{format_plural "week" duration}}</p>
-      <a href="/journal/{{id}}">
-        {{entries.length}}
-        {{format_plural "entry" entries.length}}
-      </a>
-    </div>
+<article class="journal">
+  <a class="journal-wrapper" href="/journals/{{id}}">
+    <h3 class="title">
+      {{title}}
+      <span class="duration">{{duration}} {{format_plural "week" duration}}</span>
+    </h3>
+    <p class="details">s. {{start_date}}</p>
+    <p class="details">e. {{end_date}}</p>
+    <p class="details">{{entries.length}} {{format_plural "entry" entries.length}}
+    </p>
+    <p class="details description">{{description}}</p>
   </a>
-</li>
+</article>
+

@@ -1,10 +1,10 @@
 {{!-- custom stylesheet --}}
 <link rel="stylesheet" href="/css/homepage.css">
 
-<h2 class="homepage-header">Journals</h2>
-<ul class="journals">
+<h2 class="homepage-header">Journals homepage</h2>
+<section class="journals">
   {{#each journals as |journal|}}
       {{!-- rendering the partial --}}
       {{> journal-info journal }}
   {{/each}}
-</ul>
+</section>

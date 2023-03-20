@@ -1,0 +1,47 @@
+{{! custom stylesheet }}
+<link rel="stylesheet" href="/css/single-journal.css" />
+
+{{#if loggedIn}}
+<script defer src="/javascript/comment.js"></script>
+{{/if}}
+
+<section>
+  {{> journal-info journal}}
+</section>
+
+{{!-- paused here --}}
+{{#if loggedIn}}
+  <form id="entry-form">
+    <h3>Log</h3>
+
+    <p>date</p>
+    <div id="entry-date">
+      <div>
+        <label for="year">year</label>
+        <input name="year" />
+      </div>
+      <div>
+        <label for="month">month</label>
+        <input name="month" />
+      </div>
+      <div>
+        <label for="day">day</label>
+        <input name="day" />      
+      </div>
+    </div>
+    
+
+    <label for="weight">weight</label>
+    <input name="weight" />
+
+    <p>notes</p>
+    <textarea name="comment-body"></textarea>
+    
+    <button type="submit" class="btn add-btn">add comment</button>
+  </form>
+{{/if}}
+
+{{!-- renders partial --}}
+<section>
+  {{> entries journal.entries }}
+</section>

@@ -1,15 +1,14 @@
 // mvc | view routes
 const router = require("express").Router();
-// const sequelize = require("../config/connection");
 const { User, Journal, Entry } = require("../models");
 
 // rendering views
 // - homepage template
 router.get("/", (req, res) => {
-  console.log(req.session);
+  // console.log(req.session);
 
   Journal.findAll({
-    attributes: ["id", "description", "title", "created_at"],
+    attributes: ["id", "title", "description", "start_date", "end_date", "duration"],
     order: [["created_at", "DESC"]],
     include: [
       {
@@ -54,10 +53,10 @@ router.get("/login", (req, res) => {
 });
 
 // - single post template
-router.get("/post/:id", (req, res) => {
+router.get("/journals/:id", (req, res) => {
   Journal.findOne({
     where: { id: req.params.id },
-    attributes: ["id", "description", "title", "created_at"],
+    attributes: ["id", "title", "description", "start_date", "end_date", "duration"],
     include: [
       {
         model: Entry,
@@ -80,11 +79,11 @@ router.get("/post/:id", (req, res) => {
       }
 
       // serializes data
-      const post = dbJournalData.get({ plain: true });
+      const journal = dbJournalData.get({ plain: true });
 
       // passes data to template, loggedIn allows for conditional rendering within the template
       res.render("single-journal", {
-        post,
+        journal,
         loggedIn: req.session.loggedIn,
         customstyle: '<link rel="stylesheet" href="/css/single-journal.css">',
       });
