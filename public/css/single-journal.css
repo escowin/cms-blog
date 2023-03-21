@@ -1,17 +1,57 @@
 #entry-form {
     display: grid;
-    grid-template-columns: auto 1fr;
-
+    grid-template-columns: auto repeat(4, auto);
+    gap: .75rem .25rem;
     background-color: var(--secondary);
-    padding: var(--indent)
+    align-items: flex-end;
+    padding: var(--indent);
+    border-radius: .5rem;
 }
 
-#entry-form h3,
-#entry-form button {
-    grid-column: span 2;
+#entry-year,
+#entry-weight {
+    width: 3rem;
 }
 
+#entry-month,
 #entry-date {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    width: 2.5rem;
+}
+
+label {
+    font-size: 90%;
+}
+
+input {
+    padding: 0 .25rem;
+    margin-bottom: .25rem;
+    width: 100%;
+    border: none;
+}
+
+input,
+textarea {
+    border-radius: .25rem;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+
+#entry-form button, #entry-text {
+    grid-column: span 5;
+}
+
+
+#entry-text {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    height: 5rem;
+    resize: none;
+    padding: calc(var(--indent)/2) var(--indent);
 }

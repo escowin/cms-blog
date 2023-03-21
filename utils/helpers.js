@@ -1,5 +1,4 @@
 module.exports = {
-  // YYYY.MM.DD
   format_date: (date) => {
     let year = new Date(date).getFullYear();
     let month = new Date(date).getMonth();
@@ -21,4 +20,7 @@ module.exports = {
     }
     return word;
   },
+  current_year: () => {
+    return new Date().getFullYear();
+  }
 };

@@ -2,46 +2,48 @@
 <link rel="stylesheet" href="/css/single-journal.css" />
 
 {{#if loggedIn}}
-<script defer src="/javascript/comment.js"></script>
+<script defer src="/javascript/add-entry.js"></script>
 {{/if}}
 
 <section>
   {{> journal-info journal}}
 </section>
 
-{{!-- paused here --}}
+{{!-- entry form --}}
 {{#if loggedIn}}
   <form id="entry-form">
-    <h3>Log</h3>
+    <h3>Log new entry</h3>
 
-    <p>date</p>
-    <div id="entry-date">
-      <div>
+    <div id="entry-year">
         <label for="year">year</label>
-        <input name="year" />
-      </div>
-      <div>
-        <label for="month">month</label>
-        <input name="month" />
-      </div>
-      <div>
-        <label for="day">day</label>
-        <input name="day" />      
-      </div>
+        <input name="date" id="year" placeholder="yyyy" type="number" min="0000" max="{{ current_year }}" />
     </div>
-    
 
-    <label for="weight">weight</label>
-    <input name="weight" />
+    <div id="entry-month">
+      <label for="month">month</label>
+      <input name="date" id="month" placeholder="mm" type="number" min="01" max="12" />
+    </div>
 
-    <p>notes</p>
-    <textarea name="comment-body"></textarea>
-    
-    <button type="submit" class="btn add-btn">add comment</button>
+    <div id="entry-date">
+      <label for="date">day</label>
+      <input name="date" id="date" placeholder="dd" type="number" min="01" max="31" />
+    </div>
+
+    <div id="entry-weight">
+      <label for="weight">weight</label>
+      <input name="weight" type="number" max="999.9" step="0.1" />
+    </div>
+
+    <div id="entry-text">
+      <label for="text">notes</label>
+      <textarea name="entry-text" id="text"></textarea>
+    </div>
+
+    <button type="submit" class="btn add-btn">+ entry</button>
   </form>
 {{/if}}
 
-{{!-- renders partial --}}
+{{!-- partial | entries.handlebars--}}
 <section>
   {{> entries journal.entries }}
 </section>
