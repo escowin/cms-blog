@@ -9,8 +9,8 @@
     --text-body: 'Alegreya Sans', sans-serif;
     --corners: 25rem;
     --indent: 1rem;
-    --input: rgb(222, 222, 222);
-    --input-focus: rgba(211, 211, 211, 0.627);
+    --input: rgba(38, 45, 60, 0.075);
+    --input-focus: rgba(211, 211, 211, 0.25);
 }
 
 * {
@@ -87,6 +87,28 @@ ol {
 nav .btn {
     background-color: var(--primary);
     color: var(--text-light);
+}
+
+/* form label & input fields */
+label {
+    
+}
+input, textarea {
+    background-color: var(--input);
+    color: var(--text-dark);
+    transition: 1s;
+    border: none;
+    border-radius: .12rem;
+}
+
+input::placeholder {
+    color: var(--accent);
+}
+
+input:focus, textarea:focus {
+    background-color: var(--input-focus);
+    outline: none;
+    /* border: none; */
 }
 
 /* typography */

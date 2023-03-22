@@ -12,26 +12,16 @@
 {{!-- entry form --}}
 {{#if loggedIn}}
   <form id="entry-form">
-    <h3>Log new entry</h3>
+    <h3>New entry</h3>
 
-    <div id="entry-year">
-        <label for="year">year</label>
-        <input name="date" id="year" placeholder="yyyy" type="number" min="0000" max="{{ current_year }}" />
+    <div class="details" id="entry-date">
+      <label for="date">date</label>
+      <input name="date" id="date" type="date" required />
     </div>
 
-    <div id="entry-month">
-      <label for="month">month</label>
-      <input name="date" id="month" placeholder="mm" type="number" min="01" max="12" />
-    </div>
-
-    <div id="entry-date">
-      <label for="date">day</label>
-      <input name="date" id="date" placeholder="dd" type="number" min="01" max="31" />
-    </div>
-
-    <div id="entry-weight">
+    <div class="details" id="entry-weight">
       <label for="weight">weight</label>
-      <input name="weight" type="number" max="999.9" step="0.1" />
+      <input name="weight" type="number" id="weight" max="999.9" step="0.1" />
     </div>
 
     <div id="entry-text">
