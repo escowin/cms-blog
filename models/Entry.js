@@ -12,7 +12,11 @@ Entry.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    entry_date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    entry_weight: {
       type: DataTypes.STRING,
       allowNull: false,
     },

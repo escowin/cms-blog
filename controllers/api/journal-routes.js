@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Entry,
-        attributes: ["id", "title", "journal_id", "user_id", "created_at"],
+        attributes: ["id", "entry_date", "entry_weight", "created_at"],
       },
       {
         model: User,
@@ -68,7 +68,7 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Entry,
-        attributes: ["id", "title", "journal_id", "user_id", "created_at"],
+        attributes: ["id", "entry_date", "entry_weight", "created_at"],
       },
       {
         model: User,

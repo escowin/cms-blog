@@ -18,10 +18,10 @@ router.post("/", withAuth, (req, res) => {
   // only logged in users can comment on posts as the user id is tied to the corresponding session user id
   if (req.session) {
     Entry.create({
-      title: req.body.title,
+      entry_date: req.body.entry_date,
+      entry_weight: req.body.entry_weight,
       entry_text: req.body.entry_text,
       journal_id: req.body.journal_id,
-      // use the id from the session
       user_id: req.session.user_id,
     })
       .then((dbEntryData) => res.json(dbEntryData))
@@ -37,7 +37,7 @@ router.get("/:id", withAuth, (req, res) => {
   if (req.session) {
     Entry.findOne({
       where: { id: req.params.id },
-      attributes: ["id", "title", "entry_text", "user_id", "journal_id"],
+      attributes: ["id", "entry_date", "entry_weight", "entry_text", "user_id", "journal_id"],
       include: [
         {
           model: Journal,
