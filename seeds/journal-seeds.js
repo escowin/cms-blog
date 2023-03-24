@@ -5,7 +5,7 @@ const journalData = [
     title: "Hot boy summer prep",
     start_date: "2023.03.01",
     end_date: "2023.06.12",
-    duration: "16 weeks",
+    duration: 16,
     description: "first journal",
     user_id: 1
   },
@@ -13,7 +13,7 @@ const journalData = [
     title: "2023 on-season",
     start_date: "2023.03.20",
     end_date: "2023.06.12",
-    duration: "12 weeks",
+    duration: 12,
     description: "first journal",
     user_id: 1
   },
@@ -21,7 +21,7 @@ const journalData = [
     title: "2023 spring lifts",
     start_date: "2023.03.20",
     end_date: "2023.06.12",
-    duration: "12 weeks",
+    duration: 12,
     description: "first journal",
     user_id: 1
   },

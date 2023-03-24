@@ -9,7 +9,7 @@ router.post("/", ({ body }, res) => {
 });
 
 router.get("/", (req, res) => {
-  Tag.fineAll({
+  Tag.findAll({
     include: [
       {
         model: Entry,

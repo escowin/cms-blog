@@ -2,7 +2,7 @@ const { Tag } = require("../models");
 
 const tagData = [
   {
-    tag_name: "back-day"
+    tag_name: "meal prep"
   },
   {
     tag_name: "rowing"

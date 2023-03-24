@@ -2,6 +2,7 @@ const seedUsers = require('./user-seeds');
 const seedJournals = require('./journal-seeds');
 const seedEntries = require('./entry-seeds');
 const seedTags = require('./tag-seeds');
+const seedEntryTags = require('./entry-tag-seeds');
 
 const sequelize = require("../config/connection");
 
@@ -20,6 +21,9 @@ const seedAll = async () => {
   
   await seedTags();
   console.log("\n----- TAGS SEEDED -----\n");
+
+  await seedEntryTags();
+  console.log("\n----- ENTRY TAGS SEEDED -----\n");
 
   process.exit(0);
 };

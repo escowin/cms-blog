@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Entry, Journal } = require("../../models");
+const { Entry, Journal, EntryTag, Tag } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // restful api | comments | /api/comments/
@@ -43,6 +43,10 @@ router.get("/:id", withAuth, (req, res) => {
           model: Journal,
           attributes: ["id", "title"],
         },
+        {
+          model: Tag,
+          through: EntryTag,
+        }
       ],
     })
       .then((dbEntryData) => res.json(dbEntryData))
