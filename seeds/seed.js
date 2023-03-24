@@ -1,28 +1,27 @@
-const { Sequelize } = require("sequelize");
-const dotenv = require('dotenv');
+const seedUsers = require('./user-seeds');
+const seedJournals = require('./journal-seeds');
+const seedEntries = require('./entry-seeds');
+const seedTags = require('./tag-seeds');
 
-// loads environment variables from .env
-dotenv.config();
+const sequelize = require("../config/connection");
 
-// creates new Sequelize instance
-const sequelize = new Sequelize(
-  process.env.DB_NAME, // use DB_NAME as the first argument
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  {
-    dialect: "mysql",
-  },
-);
+const seedAll = async () => {
+  await sequelize.sync({ force: true });
+  console.log("\n----- DATABASE SYNCED -----\n");
 
-// creates the database
-// error:
-// error creating database: ConnectionError [SequelizeConnectionError]: Unknown database 'fitness_logbook_db'
-function sourceDatabase() {
-  sequelize
-    .query(`DROP DATABASE IF EXISTS ${process.env.DB_NAME}; CREATE DATABASE ${process.env.DB_NAME};`)
-    .then(() => console.log(`created ${process.env.DB_NAME}.`))
-    .catch((err) => console.error("error creating database:", err))
-    .finally(() => sequelize.close());
-}
+  await seedUsers();
+  console.log("\n----- USERS SEEDED -----\n");
+  
+  await seedJournals();
+  console.log("\n----- JOURNALS SEEDED -----\n");
+  
+  await seedEntries();
+  console.log("\n----- ENTRIES SEEDED -----\n");
+  
+  await seedTags();
+  console.log("\n----- TAGS SEEDED -----\n");
 
-sourceDatabase();
+  process.exit(0);
+};
+
+seedAll();
