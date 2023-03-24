@@ -10,6 +10,9 @@ const tagData = [
   {
     tag_name: "erg"
   },
+  {
+    tag_name: "weightlifting"
+  }
 ];
 
 const seedTags = () => Tag.bulkCreate(tagData);

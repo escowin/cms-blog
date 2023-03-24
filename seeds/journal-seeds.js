@@ -2,13 +2,28 @@ const { Journal } = require("../models");
 
 const journalData = [
   {
-    // add fields
+    title: "Hot boy summer prep",
+    start_date: "2023.03.01",
+    end_date: "2023.06.12",
+    duration: "16 weeks",
+    description: "first journal",
+    user_id: 1
   },
   {
-    // add fields
+    title: "2023 on-season",
+    start_date: "2023.03.20",
+    end_date: "2023.06.12",
+    duration: "12 weeks",
+    description: "first journal",
+    user_id: 1
   },
   {
-    // add fields
+    title: "2023 spring lifts",
+    start_date: "2023.03.20",
+    end_date: "2023.06.12",
+    duration: "12 weeks",
+    description: "first journal",
+    user_id: 1
   },
 ];
 
