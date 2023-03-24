@@ -2,13 +2,13 @@ const { Tag } = require("../models");
 
 const tagData = [
   {
-    // add fields
+    tag_name: "back-day"
   },
   {
-    // add fields
+    tag_name: "rowing"
   },
   {
-    // add fields
+    tag_name: "erg"
   },
 ];
 
