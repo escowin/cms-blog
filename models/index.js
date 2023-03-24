@@ -45,7 +45,7 @@ Entry.belongsToMany(Tag, {
     model: EntryTag,
     unique: false,
   },
-  as: "",
+  as: "entry_id",
 });
 
 Tag.belongsToMany(Entry, {
@@ -53,7 +53,7 @@ Tag.belongsToMany(Entry, {
     model: EntryTag,
     unique: false,
   },
-  as: "",
+  as: "tag_id",
 });
 
-module.exports = { User, Journal, Entry, Tag };
+module.exports = { User, Journal, Entry, Tag, EntryTag };
