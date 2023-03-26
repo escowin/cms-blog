@@ -5,7 +5,18 @@ const withAuth = require("../../utils/auth");
 // restful api | comments | /api/comments/
 // - read
 router.get("/", (req, res) => {
-  Entry.findAll()
+  Entry.findAll({
+    include: [
+      {
+        model: Tag,
+        through: {
+          attributes: ["id"],
+        },
+        as: "tag",
+        attributes: ["id", "tag_name"]
+      },
+    ],
+  })
     .then((dbEntryData) => res.json(dbEntryData))
     .catch((err) => {
       console.log(err);
@@ -37,7 +48,14 @@ router.get("/:id", withAuth, (req, res) => {
   if (req.session) {
     Entry.findOne({
       where: { id: req.params.id },
-      attributes: ["id", "entry_date", "entry_weight", "entry_text", "user_id", "journal_id"],
+      attributes: [
+        "id",
+        "entry_date",
+        "entry_weight",
+        "entry_text",
+        "user_id",
+        "journal_id",
+      ],
       include: [
         {
           model: Journal,
@@ -46,7 +64,7 @@ router.get("/:id", withAuth, (req, res) => {
         {
           model: Tag,
           through: EntryTag,
-        }
+        },
       ],
     })
       .then((dbEntryData) => res.json(dbEntryData))
@@ -60,7 +78,8 @@ router.get("/:id", withAuth, (req, res) => {
 router.put("/:id", withAuth, (req, res) => {
   Entry.update(
     {
-      title: req.body.title,
+      entry_date: req.body.entry_date,
+      entry_weight: req.body.entry_weight,
       entry_text: req.body.entry_text,
     },
     {

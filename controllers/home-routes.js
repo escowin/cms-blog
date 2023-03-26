@@ -1,33 +1,32 @@
 // mvc | view routes
 const router = require("express").Router();
-const { User, Journal, Entry } = require("../models");
+const { Tag, Journal, Entry } = require("../models");
 
 // rendering views
 // - homepage template
 router.get("/", (req, res) => {
-  // console.log(req.session);
-
   Journal.findAll({
-    attributes: ["id", "title", "description", "start_date", "end_date", "duration"],
+    attributes: [
+      "id",
+      "title",
+      "description",
+      "start_date",
+      "end_date",
+      "duration",
+    ],
     order: [["created_at", "DESC"]],
     include: [
       {
         model: Entry,
         attributes: ["id", "entry_text", "journal_id", "user_id", "created_at"],
-        // include: {
-        //   model: User,
-        //   attributes: ["username"],
-        // },
-      },
-      {
-        model: User,
-        attributes: ["username"],
       },
     ],
   })
     .then((dbJournalData) => {
       // to display every post without issue
-      const journals = dbJournalData.map((journal) => journal.get({ plain: true }));
+      const journals = dbJournalData.map((journal) =>
+        journal.get({ plain: true })
+      );
       res.render("homepage", {
         journals,
         loggedIn: req.session.loggedIn,
@@ -56,19 +55,28 @@ router.get("/login", (req, res) => {
 router.get("/journals/:id", (req, res) => {
   Journal.findOne({
     where: { id: req.params.id },
-    attributes: ["id", "title", "description", "start_date", "end_date", "duration"],
+    attributes: [
+      "id",
+      "title",
+      "description",
+      "start_date",
+      "end_date",
+      "duration",
+    ],
     include: [
       {
         model: Entry,
-        attributes: ["id", "entry_text", "journal_id", "user_id", "created_at"],
-        // include: {
-        //   model: User,
-        //   attributes: ["username"],
-        // },
-      },
-      {
-        model: User,
-        attributes: ["username"],
+        attributes: ["id", "entry_date", "entry_weight", "entry_text"],
+        include: [
+          {
+            model: Tag,
+            through: {
+              attributes: ["id"],
+            },
+            as: "tag",
+            attributes: ["tag_name"],
+          },
+        ],
       },
     ],
   })

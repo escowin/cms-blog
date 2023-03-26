@@ -1,15 +1,14 @@
-<article id="comments">
-  <h3>Entries</h3>
+<ol id="entries">
   {{#each this}}
-    <div class="comment">
-      <p class="author">
-        {{user.username}}
-        &#183;
-        {{format_date created_at}}
+  <li class="entry">
+      <p class="date"> &#183; {{entry_date}}</p>
+      <p class="tags">
+        {{#each tag}}
+          <span class="tag">{{tag_name}}</span>
+        {{/each}}
       </p>
-      <p class="comment-text">
-        {{entry_text}}
-      </p>
-    </div>
+      <p class="weight">{{entry_weight}} lbs</p>
+      <p>{{entry_text}}</p>
+    </li>  
   {{/each}}
-</article>
+</ol>

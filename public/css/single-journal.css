@@ -1,11 +1,18 @@
+main {
+    background-color: var(--secondary);
+    padding: 0 var(--indent);
+}
+
 #entry-form {
     display: grid;
     grid-template-columns: 2fr 1fr auto;
     gap: 0 .25rem;
-    background-color: var(--secondary);
     align-items: flex-end;
-    padding: calc(var(--indent)/2) var(--indent);
     border-radius: .5rem;
+}
+
+#entry-form h3 {
+    padding-left: calc(var(--indent)/2);
 }
 
 #entry-form .details {
@@ -29,6 +36,7 @@ input {
 
 label {
     font-size: 95%;
+    width: 100%;
 }
 
 input {
@@ -56,4 +64,28 @@ textarea {
 
 #entry-form button {
     margin-top: .75rem;
+}
+
+#entries {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.entry {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .25rem .5rem;
+}
+
+.entry .date {
+    border-radius: var(--corners);
+}
+
+* {
+    outline: 1px dotted white
+}
+
+#entries-section {
+    border-top-left-radius: calc(var(--corners)/15);
 }

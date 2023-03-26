@@ -1,10 +1,10 @@
 :root {
     --primary: rgb(38, 45, 60);
-    --secondary: rgb(104, 134, 147);
+    --secondary: rgba(104, 133, 146, 0.95);
     --accent: rgb(0, 0, 0);
     --link: rgb(122, 39, 39);
-    --text-dark: rgb(28, 26, 26);
-    --text-light: rgb(214, 235, 237);
+    --accent-dark: rgb(28, 26, 26);
+    --accent-light: rgb(214, 235, 237);
     --text-header: 'Raleway', sans-serif;
     --text-body: 'Alegreya Sans', sans-serif;
     --corners: 25rem;
@@ -34,10 +34,9 @@ main {
 
 body {
     background-color: var(--primary);
-    padding: 0 var(--indent);
+    padding-left: var(--indent);
     min-height: 100vh;
     font-variant: small-caps;
-    gap: var(--indent);
     font-size: 1.25rem;
 }
 
@@ -45,6 +44,7 @@ footer {
     text-align: center;
 }
 
+/* header styles */
 header {
     justify-content: space-between;
     align-items: center;
@@ -54,13 +54,12 @@ header {
     font-family: var(--text-header);
     background-color: var(--secondary);
     padding: 0 var(--indent);
-    border-radius: var(--corners);
+    /* border-top-left-radius: calc(var(--corners)/10); */
+    border-bottom: 1px solid var(--accent-light);
 }
 
-main {
+h1 {
     flex-grow: 1;
-    font-family: var(--text-body);
-    gap: var(--indent);
 }
 
 nav {
@@ -68,6 +67,16 @@ nav {
     align-items: center;
     gap: 1rem;
 }
+
+/* main styles */
+main {
+    flex-grow: 1;
+    font-family: var(--text-body);
+    gap: var(--indent);
+    padding-left: var(--indent);
+}
+
+
 
 /* lists */
 ul,
@@ -86,7 +95,7 @@ ol {
 
 nav .btn {
     background-color: var(--primary);
-    color: var(--text-light);
+    color: var(--accent-light);
 }
 
 /* form label & input fields */
@@ -95,7 +104,7 @@ label {
 }
 input, textarea {
     background-color: var(--input);
-    color: var(--text-dark);
+    color: var(--accent-dark);
     transition: 1s;
     border: none;
     border-radius: .12rem;
