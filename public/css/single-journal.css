@@ -89,3 +89,15 @@ textarea {
 #entries-section {
     border-top-left-radius: calc(var(--corners)/15);
 }
+
+.tags {
+    display: flex;
+    gap: 1rem;
+}
+.tag {
+    background-color: var(--overlay-dark);
+    color: var(--accent-light);
+    font-size: 85%;
+    padding: .12rem 1rem;
+    border-radius: var(--corners);
+}

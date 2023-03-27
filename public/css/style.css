@@ -11,6 +11,7 @@
     --indent: 1rem;
     --input: rgba(38, 45, 60, 0.075);
     --input-focus: rgba(211, 211, 211, 0.25);
+    --overlay-dark: hsla(199, 17%, 25%, 0.95);
 }
 
 * {
@@ -99,9 +100,6 @@ nav .btn {
 }
 
 /* form label & input fields */
-label {
-    
-}
 input, textarea {
     background-color: var(--input);
     color: var(--accent-dark);
