@@ -1,15 +1,50 @@
 // logic
-function postEntry(journal_id, entry_date, entry_weight, entry_text) {
-  console.log(`
-  ${journal_id}
-  ${entry_date}
-  ${entry_weight}
-  ${entry_text}`
-  );
+async function postEntry(journal_id, entry_date, entry_weight, entry_text) {
+  // console.log("POST entry")
+  // try {
+  const response = await fetch("/api/entries", {
+    method: "post",
+    body: JSON.stringify({
+      journal_id,
+      entry_date,
+      entry_weight,
+      entry_text,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (response.ok) {
+    document.location.reload();
+    console.log("posted entry");
+  } else {
+    alert(response.statusText);
+  }
+  // } catch (err) {
+  //   console.err(err)
+  //   alert('failed to post entry')
+  // }
 }
 
-function postTagName(tag_name) {
+// bug front end doesn't post tag. need to revisit routes & controllers
+async function postTagName(tag_name) {
   console.log(tag_name);
+  // try {
+  const response = await fetch("/api/tags", {
+    method: "post",
+    body: JSON.stringify({ tag_name }),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (response.ok) {
+    document.location.reload();
+    console.log("posted tag");
+  } else {
+    alert(response.statusText);
+  }
+  // } catch (err) {
+  //   console.err(err)
+  //   alert('failed to post entry')
+  // }
 }
 
 async function entryFormHandler(e) {
@@ -31,10 +66,10 @@ async function entryFormHandler(e) {
   const tag_name = document.getElementById("tag-name").value.trim();
 
   if (entry_text && tag_name) {
-    postEntry(journal_id, entry_date, entry_weight, entry_text);
-    postTagName(tag_name);
+    await postEntry(journal_id, entry_date, entry_weight, entry_text);
+    await postTagName(tag_name);
   } else if (entry_text) {
-    postEntry(journal_id, entry_date, entry_weight, entry_text);
+    await postEntry(journal_id, entry_date, entry_weight, entry_text);
   } else {
     return console.log("entry text required");
   }
