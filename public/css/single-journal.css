@@ -9,6 +9,8 @@ main {
     gap: 0 .25rem;
     align-items: flex-end;
     border-radius: .5rem;
+    background-color: var(--overlay-dark);
+    padding: .125rem;
 }
 
 #entry-form h3 {
@@ -44,7 +46,7 @@ input {
     margin-bottom: .25rem;
     width: 100%;
     border: none;
-    font-variant: small-caps;
+    font-variant: normal;
 }
 
 #entry-form button, #entry-text {
@@ -74,25 +76,23 @@ textarea {
 
 .entry {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 6rem 3.5rem 1fr;
     gap: .25rem .5rem;
 }
 
-.entry .date {
-    border-radius: var(--corners);
+.entry .notes {
+    padding-left: 1rem;
+    grid-column: span 3;
 }
 
 * {
-    outline: 1px dotted white
-}
-
-#entries-section {
-    border-top-left-radius: calc(var(--corners)/15);
+    /* outline: 1px dotted white */
 }
 
 .tags {
     display: flex;
     gap: 1rem;
+    justify-content: flex-end;
 }
 .tag {
     background-color: var(--overlay-dark);
