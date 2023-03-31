@@ -1,6 +1,6 @@
 :root {
-    --primary: rgb(38, 45, 60);
-    --secondary: rgba(104, 133, 146, 0.95);
+    --primary: rgb(68, 79, 104);
+    --secondary: rgba(156, 199, 221, 0.95);
     --accent: rgb(0, 0, 0);
     --link: rgb(122, 39, 39);
     --accent-dark: rgb(28, 26, 26);
@@ -9,9 +9,9 @@
     --text-body: 'Alegreya Sans', sans-serif;
     --corners: 25rem;
     --indent: 1rem;
-    --input: rgba(38, 45, 60, 0.075);
+    --input: rgba(38, 45, 60, 0.099);
     --input-focus: rgba(211, 211, 211, 0.25);
-    --overlay-dark: hsla(199, 17%, 25%, 0.95);
+    --overlay-dark: hsla(199, 17%, 25%, 0.246);
 }
 
 * {
