@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Journal, User, Entry } = require("../../models");
+const { Journal, User, Entry, EntryTag, Tag } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // get | posts | /api/posts
@@ -15,15 +15,16 @@ router.get("/", (req, res) => {
       "description",
       "created_at",
     ],
-    order: [["created_at", "DESC"]],
+    order: [["start_date", "DESC"]],
     include: [
-      {
-        model: Entry,
-        attributes: ["id", "entry_date", "entry_weight", "created_at"],
-      },
       {
         model: User,
         attributes: ["username"],
+      },
+      {
+        model: Entry,
+        attributes: ["id", "entry_date", "entry_weight", "entry_text", "created_at"],
+        order: [["start_date", "DESC"]],
       },
     ],
   })
@@ -68,11 +69,8 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Entry,
-        attributes: ["id", "entry_date", "entry_weight", "created_at"],
-      },
-      {
-        model: User,
-        attributes: ["username"],
+        attributes: ["id", "entry_date", "entry_weight", "entry_text", "created_at"],
+        order: [["start_date", "DESC"]],
       },
     ],
   })
