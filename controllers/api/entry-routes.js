@@ -2,38 +2,26 @@ const router = require("express").Router();
 const { Entry, Journal, EntryTag, Tag } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-// restful api | comments | /api/comments/
+// restful api end point | /api/entries/
 // - read
 router.get("/", (req, res) => {
-  Entry.findAll({
-    include: [
-      {
-        model: Tag,
-        through: {
-          attributes: ["id"],
-        },
-        as: "tag",
-        attributes: ["id", "tag_name"]
-      },
-    ],
-  })
-    .then((dbEntryData) => res.json(dbEntryData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// - create | accessible only to session user
-router.post("/", withAuth, (req, res) => {
-  // only logged in users can comment on posts as the user id is tied to the corresponding session user id
   if (req.session) {
-    Entry.create({
-      entry_date: req.body.entry_date,
-      entry_weight: req.body.entry_weight,
-      entry_text: req.body.entry_text,
-      journal_id: req.body.journal_id,
-      user_id: req.session.user_id,
+    Entry.findAll({
+      attributes: [
+        "id",        
+        "entry_date",
+        "entry_weight",
+        "entry_text",
+        "user_id",
+        "journal_id",        
+      ],
+      include: [
+        {
+          model: Tag,
+          through: EntryTag,
+          attributes: ["id", "tag_name"]
+        },
+      ],
     })
       .then((dbEntryData) => res.json(dbEntryData))
       .catch((err) => {
@@ -43,30 +31,52 @@ router.post("/", withAuth, (req, res) => {
   }
 });
 
+// - create | accessible only to session user
+router.post("/", withAuth, (req, res) => {
+  // only logged in users can comment on posts as the user id is tied to the corresponding session user id
+
+  if (req.session) {
+    console.log(req.session)
+    console.log(req.body)
+    Entry.create({
+      entry_date: req.body.entry_date,
+      entry_weight: req.body.entry_weight,
+      entry_text: req.body.entry_text,
+      user_id: req.session.user_id,
+      journal_id: req.body.journal_id,
+    })
+      .then((dbEntryData) => {
+        if (req.body.tagIds && req.body.tagIds.length) {
+          const entryTagIdArr = req.body.tagIds.map ((tag_id) => {
+            return {
+              entry_id: dbEntryData.id,
+              tag_id
+            };
+          });
+          return EntryTag.bulkCreate(entryTagIdArr);
+        }
+        res.status(200).json(dbEntryData);
+      })
+      .then((entryTagIds) => res.status(200).json(entryTagIds))
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  }
+});
+
+// restful api end point | /api/entries/:id
 // - get an entry
 router.get("/:id", withAuth, (req, res) => {
   if (req.session) {
     Entry.findOne({
-      where: { id: req.params.id },
-      attributes: [
-        "id",
-        "entry_date",
-        "entry_weight",
-        "entry_text",
-        "user_id",
-        "journal_id",
-      ],
+      where: {
+        id: req.params.id,
+      },
       include: [
         {
-          model: Journal,
-          attributes: ["id", "title"],
-        },
-        {
           model: Tag,
-          through: {
-            attributes: ["id"],
-          },
-          as: "tag",
+          through: EntryTag,
           attributes: ["id", "tag_name"]
         },
       ],

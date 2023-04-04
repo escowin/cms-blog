@@ -41,19 +41,13 @@ Entry.belongsTo(Journal, {
 // M:M | Entry:Tag
 // - to do : EntryTag through table
 Entry.belongsToMany(Tag, {
-  through: {
-    model: EntryTag,
-    unique: false,
-  },
-  as: "tag",
+  through: EntryTag,
+  foreignKey: "entry_id",
 });
 
 Tag.belongsToMany(Entry, {
-  through: {
-    model: EntryTag,
-    unique: false,
-  },
-  as: "entry",
+  through: EntryTag,
+  foreignKey: 'tag_id'
 });
 
 module.exports = { User, Journal, Entry, Tag, EntryTag };
