@@ -63,7 +63,11 @@ router.get("/:id", withAuth, (req, res) => {
         },
         {
           model: Tag,
-          through: EntryTag,
+          through: {
+            attributes: ["id"],
+          },
+          as: "tag",
+          attributes: ["id", "tag_name"]
         },
       ],
     })
