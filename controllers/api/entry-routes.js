@@ -8,18 +8,18 @@ router.get("/", (req, res) => {
   if (req.session) {
     Entry.findAll({
       attributes: [
-        "id",        
+        "id",
         "entry_date",
         "entry_weight",
         "entry_text",
         "user_id",
-        "journal_id",        
+        "journal_id",
       ],
       include: [
         {
           model: Tag,
           through: EntryTag,
-          attributes: ["id", "tag_name"]
+          attributes: ["id", "tag_name"],
         },
       ],
     })
@@ -33,11 +33,7 @@ router.get("/", (req, res) => {
 
 // - create | accessible only to session user
 router.post("/", withAuth, (req, res) => {
-  // only logged in users can comment on posts as the user id is tied to the corresponding session user id
-
   if (req.session) {
-    console.log(req.session)
-    console.log(req.body)
     Entry.create({
       entry_date: req.body.entry_date,
       entry_weight: req.body.entry_weight,
@@ -46,11 +42,11 @@ router.post("/", withAuth, (req, res) => {
       journal_id: req.body.journal_id,
     })
       .then((dbEntryData) => {
-        if (req.body.tagIds && req.body.tagIds.length) {
-          const entryTagIdArr = req.body.tagIds.map ((tag_id) => {
+        if (req.body.tags && req.body.tags.length) {
+          const entryTagIdArr = req.body.tags.map((tag_id) => {
             return {
               entry_id: dbEntryData.id,
-              tag_id
+              tag_id,
             };
           });
           return EntryTag.bulkCreate(entryTagIdArr);
@@ -77,7 +73,7 @@ router.get("/:id", withAuth, (req, res) => {
         {
           model: Tag,
           through: EntryTag,
-          attributes: ["id", "tag_name"]
+          attributes: ["id", "tag_name"],
         },
       ],
     })
@@ -88,8 +84,10 @@ router.get("/:id", withAuth, (req, res) => {
       });
   }
 });
-// - update
+
+// - update by id
 router.put("/:id", withAuth, (req, res) => {
+  // updates an entry's key-value properties, locating it by its api endpoint
   Entry.update(
     {
       entry_date: req.body.entry_date,
@@ -101,15 +99,40 @@ router.put("/:id", withAuth, (req, res) => {
     }
   )
     .then((dbEntryData) => {
-      if (!dbEntryData) {
-        req.status(404).json({ message: "comment does not exist" });
-        return;
-      }
-      res.json(dbEntryData);
+      // Remove old entry tags. the anon function  object is used as a placeholder to satisfy the returning a resolved promise requirement 
+      return EntryTag.destroy({ where: { entry_id: req.params.id } });
     })
+    .then(() => {
+      // entry that includes an array of tags
+      if (req.body.tags && req.body.tags.length) {
+        // mapping the `tag_id` key-value to that of the `PUT` request body json `tags` array's matching key
+        const entryTags = req.body.tags.map((tag_id) => {
+          // objects in the array of tags are formatted to the EntryTag through table. this is how an association between tags & entries is possible.
+          return {
+            entry_id: req.params.id,
+            tag_id,
+          };
+        });
+        // creates a new array of tags in place of the old. this array
+        return EntryTag.bulkCreate(entryTags);
+      }
+    })
+    .then(() =>{
+      return Entry.findOne({
+        where: { id: req.params.id },
+        include: [
+          {
+            model: Tag,
+            through: EntryTag,
+            attributes: ["id", "tag_name"]
+          }
+        ]
+      });
+    })
+    .then(dbEntryData => res.status(200).json(dbEntryData))
     .catch((err) => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json(err);
     });
 });
 
