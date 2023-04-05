@@ -49,11 +49,26 @@ router.post("/", withAuth, (req, res) => {
               tag_id,
             };
           });
-          return EntryTag.bulkCreate(entryTagIdArr);
+          return EntryTag.bulkCreate(entryTagIdArr).then(() => {
+            return Entry.findByPk(dbEntryData.id, {
+              include: [
+                {
+                  model: Tag,
+                  attributes: { exclude: ["createdAt", "updatedAt"] },
+                },
+              ],
+              attributes: { exclude: ["createdAt", "updatedAt"] },
+            });
+          });
         }
-        res.status(200).json(dbEntryData);
+        return Entry.findByPk(dbEntryData.id, {
+          include: [
+            { model: Tag, attributes: { exclude: ["createdAt", "updatedAt"] } },
+          ],
+          attributes: { exclude: ["createdAt", "updatedAt"] },
+        });
       })
-      .then((entryTagIds) => res.status(200).json(entryTagIds))
+      .then((dbEntryData) => res.status(200).json(dbEntryData))
       .catch((err) => {
         console.log(err);
         res.status(400).json(err);
@@ -99,7 +114,7 @@ router.put("/:id", withAuth, (req, res) => {
     }
   )
     .then((dbEntryData) => {
-      // Remove old entry tags. the anon function  object is used as a placeholder to satisfy the returning a resolved promise requirement 
+      // Remove old entry tags. the anon function  object is used as a placeholder to satisfy the returning a resolved promise requirement
       return EntryTag.destroy({ where: { entry_id: req.params.id } });
     })
     .then(() => {
@@ -117,19 +132,19 @@ router.put("/:id", withAuth, (req, res) => {
         return EntryTag.bulkCreate(entryTags);
       }
     })
-    .then(() =>{
+    .then(() => {
       return Entry.findOne({
         where: { id: req.params.id },
         include: [
           {
             model: Tag,
             through: EntryTag,
-            attributes: ["id", "tag_name"]
-          }
-        ]
+            attributes: ["id", "tag_name"],
+          },
+        ],
       });
     })
-    .then(dbEntryData => res.status(200).json(dbEntryData))
+    .then((dbEntryData) => res.status(200).json(dbEntryData))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
