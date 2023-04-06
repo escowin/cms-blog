@@ -7,17 +7,16 @@ async function entryFormHandler(e) {
     const entryWeight = document.getElementById("weight").value.trim();
     const entryText = document.getElementById("text").value.trim();
     const journalId = window.location.toString().split("/").pop().split("?")[0];
+    const tagsInput = document.getElementById("tag-name").value.trim();
 
-    const tagString = document.getElementById("tag-name").value.trim();
     let tags = [];
-    if (tagString.trim() !== "") {
-      console.log(tagString)
+    if (tagsInput.trim() !== "") {
+      // fills the empty tags array by splitting up string objects anytime a semi-colon appears.
+      tags = tagsInput.split(";").map((tag) => tag.trim());
+      console.log(tags)
     } else {
       console.log(tags)
-      console.log('no tags')
     }
-
-
     // note : post entry & tags into database, association  via EntryTag through table
 
     } catch (err) {
