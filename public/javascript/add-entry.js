@@ -9,14 +9,15 @@ async function entryFormHandler(e) {
     const journalId = window.location.toString().split("/").pop().split("?")[0];
 
     const tagString = document.getElementById("tag-name").value.trim();
-    const tags = tagString.split(';').map((tag) => tag.trim());
-    console.log(entryDate)
-    console.log(entryWeight)
-    console.log(entryText)
-    console.log(entryDate)
-    console.log(journalId)
-    console.log(tagString)
-    console.log(tags)
+    let tags = [];
+    if (tagString.trim() !== "") {
+      console.log(tagString)
+    } else {
+      console.log(tags)
+      console.log('no tags')
+    }
+
+
     // note : post entry & tags into database, association  via EntryTag through table
 
     } catch (err) {
