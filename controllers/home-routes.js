@@ -1,6 +1,6 @@
 // mvc | view routes
 const router = require("express").Router();
-const { Tag, Journal, Entry } = require("../models");
+const { Tag, Journal, Entry, EntryTag } = require("../models");
 
 // rendering views
 // - homepage template
@@ -66,15 +66,13 @@ router.get("/journals/:id", (req, res) => {
     include: [
       {
         model: Entry,
-        attributes: ["id", "entry_date", "entry_weight", "entry_text"],
+        attributes: ["id", "entry_date", "entry_weight", "entry_text", "created_at"],
+        order: [["start_date", "DESC"]],
         include: [
           {
             model: Tag,
-            through: {
-              attributes: ["id"],
-            },
-            as: "tag",
-            attributes: ["tag_name"],
+            through: EntryTag,
+            attributes: ["id", "tag_name"],
           },
         ],
       },
@@ -88,6 +86,7 @@ router.get("/journals/:id", (req, res) => {
 
       // serializes data
       const journal = dbJournalData.get({ plain: true });
+      console.log(journal)
 
       // passes data to template, loggedIn allows for conditional rendering within the template
       res.render("single-journal", {
