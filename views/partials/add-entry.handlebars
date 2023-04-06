@@ -1,0 +1,25 @@
+  <form id="entry-form">
+    <h3>New entry</h3>
+
+    <div class="details" id="entry-date">
+      <label for="date">date</label>
+      <input name="date" id="date" type="date" required />
+    </div>
+
+    <div class="details" id="entry-weight">
+      <label for="weight">weight</label>
+      <input name="weight" type="number" id="weight" max="999.9" step="0.1" />
+    </div>
+
+    <div id="entry-text">
+      <label for="text">notes</label>
+      <textarea name="entry-text" id="text"></textarea>
+    </div>
+
+    <div id="entry-tags">
+      <label for="tag-name">tags (seperate by <code>;</code>)</label>
+      <input name="tag-name" id="tag-name" type="text" />
+    </div>
+
+    <button type="submit" class="btn add-btn">+ entry</button>
+  </form>

@@ -86,7 +86,6 @@ router.get("/journals/:id", (req, res) => {
 
       // serializes data
       const journal = dbJournalData.get({ plain: true });
-      console.log(journal)
 
       // passes data to template, loggedIn allows for conditional rendering within the template
       res.render("single-journal", {
