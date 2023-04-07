@@ -1,6 +1,7 @@
 async function entryFormHandler(e) {
   try {
     e.preventDefault();
+    let tagIds = [];
 
     // data | entry & tag values from the input form. tag string is split into an array;
     const entryDate = document.getElementById("date").value.replace(/-/g, ".");
@@ -9,14 +10,13 @@ async function entryFormHandler(e) {
     const journalId = window.location.toString().split("/").pop().split("?")[0];
     const tagsInput = document.getElementById("tag-name").value.trim();
 
-    let tags = [];
     if (tagsInput.trim() !== "") {
       // fills the empty tags array by splitting up string objects anytime a semi-colon appears.
       // possible solution : get all tags, check against matchig 'tag_name'.
       // - if there is a match, get the corresponding id value from the Tag table. that value will then be pushed into the tags array
       // - if not, post new tag(s) to /api/tags. then make a get fetch request (api/tags/:tag_name). get its id value. that value will then be pushed into the tags array.
-      tags = tagsInput.split(";").map((tag) => tag.trim());
-      postTags(tags);
+      formTagStrings = tagsInput.split(";").map((tag) => tag.trim());
+      postTags(formTagStrings);
     }
 
     // console.log(tags);
@@ -28,7 +28,7 @@ async function entryFormHandler(e) {
         entry_text: entryText,
         journal_id: journalId,
         // bug | sending string object, but tags are made up of tag_id
-        tags: tags,
+        tags: tagIds,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -42,16 +42,21 @@ async function entryFormHandler(e) {
   }
 }
 
-function postTags(tagArr) {
-  const response = fetch("/api/tags/").then((response) => {
-    response.json().then((tags) => {
-      tags.forEach((tag) => {
-        console.log(tag.tag_name)});
-    });
-  });
+const postTags = async (formTagArray) => {
+  const existingTags = await getExistingTags();
+  // console.log(existingTags);
 
-  // console.log(response);
+  existingTags.forEach(tag => console.log(tag))
+  // check if formTagArray string objects match with any existing 'tag_name' value. If so, that object's 'id' will be returned. if not, post the entry, do another get all request, grab the new object's 'tag_id' integer value.
 }
+
+// returns an array of all tags
+const getExistingTags = async () => {
+  const response = await fetch('/api/tags');
+  const tags = await response.json();
+  console.log(tags);
+  return tags;
+};
 
 // calls
 document
