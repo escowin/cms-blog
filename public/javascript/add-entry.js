@@ -44,7 +44,10 @@ async function entryFormHandler(e) {
 
 function postTags(tagArr) {
   const response = fetch("/api/tags/").then((response) => {
-    response.json().then((data) => console.log(data));
+    response.json().then((tags) => {
+      tags.forEach((tag) => {
+        console.log(tag.tag_name)});
+    });
   });
 
   // console.log(response);
