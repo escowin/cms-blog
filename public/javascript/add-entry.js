@@ -42,19 +42,30 @@ async function entryFormHandler(e) {
   }
 }
 
-const postTags = async (formTagArray) => {
+const postTags = async (formTags) => {
   const existingTags = await getExistingTags();
   // console.log(existingTags);
 
-  existingTags.forEach(tag => console.log(tag))
+  const newTags = formTags.filter(formTag=> {
+    return !existingTags.some(existingTag => existingTag.tag_name === formTag);
+  });
+
+  newTags.forEach((newTag) => {
+    console.log(newTag)
+    // fetch("/api/tags", {
+    //   method: "POST",
+    //   body: JSON.stringify({ tag_name: newTag })
+    // })
+  });
+
+  // console.log(newTags);
   // check if formTagArray string objects match with any existing 'tag_name' value. If so, that object's 'id' will be returned. if not, post the entry, do another get all request, grab the new object's 'tag_id' integer value.
-}
+};
 
 // returns an array of all tags
 const getExistingTags = async () => {
   const response = await fetch('/api/tags');
   const tags = await response.json();
-  console.log(tags);
   return tags;
 };
 
