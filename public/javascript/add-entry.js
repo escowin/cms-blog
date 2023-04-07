@@ -1,8 +1,3 @@
-function postTags(tagArr) {
-  console.log(tagArr)
-  
-}
-
 async function entryFormHandler(e) {
   try {
     e.preventDefault();
@@ -24,6 +19,7 @@ async function entryFormHandler(e) {
       postTags(tags);
     }
 
+    // console.log(tags);
     const response = await fetch("/api/entries", {
       method: "POST",
       body: JSON.stringify({
@@ -31,20 +27,27 @@ async function entryFormHandler(e) {
         entry_weight: entryWeight,
         entry_text: entryText,
         journal_id: journalId,
-        // bug | sending string object, but tags are made up of tag_id 
+        // bug | sending string object, but tags are made up of tag_id
         tags: tags,
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
-    console.log(response);
 
     // note : post entry & tags into database, association  via EntryTag through table
   } catch (err) {
     console.log("failed at the `try... catch`");
     console.log(err);
   }
+}
+
+function postTags(tagArr) {
+  const response = fetch("/api/tags/").then((response) => {
+    response.json().then((data) => console.log(data));
+  });
+
+  // console.log(response);
 }
 
 // calls
