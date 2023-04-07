@@ -6,7 +6,11 @@
   
 ## Description
 
-  Logs fitness-related observations & data using the MVC architectural pattern.
+  Logging fitness-related observations in an app built on MVC architerctual principals.
+
+  This app fits into my overall life goal: noting observations in my life to then look back to in order to make life fun & efficient. Something I like to do every year is get 'hot boy summer' ready. However, I have yet to ever truly achieve the goal I envision for myself. I suspect by logging data relevant, I will break this undesired outcome pattern & replace it with a desired one in its place.
+
+  A big part of the development process for me has been to `console.log()` data passed around within MVC architecure. I learned a lot in server-client side communication by thoroughly building the back-end logic first. The development approach being analogous to a rooted phylogenetic tree.
 
 ## Table of Contents
   * [Languages](#languages)

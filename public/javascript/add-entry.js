@@ -1,3 +1,8 @@
+function postTags(tagArr) {
+  console.log(tagArr)
+  
+}
+
 async function entryFormHandler(e) {
   try {
     e.preventDefault();
@@ -16,6 +21,7 @@ async function entryFormHandler(e) {
       // - if there is a match, get the corresponding id value from the Tag table. that value will then be pushed into the tags array
       // - if not, post new tag(s) to /api/tags. then make a get fetch request (api/tags/:tag_name). get its id value. that value will then be pushed into the tags array.
       tags = tagsInput.split(";").map((tag) => tag.trim());
+      postTags(tags);
     }
 
     const response = await fetch("/api/entries", {
