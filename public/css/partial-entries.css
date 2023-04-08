@@ -10,13 +10,13 @@
 
 .entry {
     display: grid;
-    grid-template-columns: 6rem 3.5rem 1fr;
+    grid-template-columns: 1fr auto;
     gap: .25rem .5rem;
 }
 
 .entry .notes {
     padding-left: 1rem;
-    grid-column: span 3;
+    grid-column: span 2;
 }
 
 

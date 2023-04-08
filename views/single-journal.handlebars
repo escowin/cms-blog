@@ -1,5 +1,6 @@
 {{! custom stylesheet }}
 <link rel="stylesheet" href="/css/single-journal.css" />
+<link rel="stylesheet" href="/css/partial-entry-form.css" />
 <link rel="stylesheet" href="/css/partial-entries.css" />
 
 {{#if loggedIn}}
@@ -12,7 +13,7 @@
 
 {{!-- entry form --}}
 {{#if loggedIn}}
-  {{> add-entry}}
+  {{> entry-form}}
 {{/if}}
 
 {{!-- partial | entries.handlebars--}}
