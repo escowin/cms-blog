@@ -1,0 +1,39 @@
+* {
+    outline: 1px dotted white
+}
+
+#entries {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.entry {
+    display: grid;
+    grid-template-columns: 6rem 3.5rem 1fr;
+    gap: .25rem .5rem;
+}
+
+.entry .notes {
+    padding-left: 1rem;
+    grid-column: span 3;
+}
+
+
+
+.tags {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+.tag {
+    background-color: var(--overlay-dark);
+    color: var(--accent-light);
+    font-size: 85%;
+    padding: .12rem 1rem;
+    border-radius: var(--corners);
+}
+
+/* .oldest {
+    flex-direction: column-reverse;
+} */
