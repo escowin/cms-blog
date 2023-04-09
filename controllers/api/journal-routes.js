@@ -74,6 +74,7 @@ router.get("/:id", (req, res) => {
         order: [["entry_date", "DESC"]]
       },
     ],
+    order: [[Entry, "entry_date", "DESC"]]
   })
     .then((dbJournalData) => {
       if (!dbJournalData) {

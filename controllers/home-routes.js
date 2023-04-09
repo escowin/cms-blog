@@ -77,10 +77,10 @@ router.get("/journals/:id", (req, res) => {
             attributes: ["id", "tag_name"],
           },
         ],
-        // bug | desc entry date doesn't work. might be an issue with the format
-        // order: [["entry_date", "DESC"]]
+        order: [["entry_date", "DESC"]]
       },
     ],
+    order: [[Entry, "entry_date", "DESC"]]
   })
     .then((dbJournalData) => {
       if (!dbJournalData) {

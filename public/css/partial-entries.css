@@ -1,8 +1,6 @@
 #entries {
     display: flex;
     flex-direction: column;
-    /* temp fix to sort entries by newest to oldest */
-    flex-direction: column-reverse;
     gap: .5rem;
 }
 
