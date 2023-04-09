@@ -32,3 +32,6 @@ async function editEntryFormHandler(e) {
 document
   .getElementById("entry-form")
   .addEventListener("submit", editEntryFormHandler);
+document
+  .getElementById("back-btn")
+  .addEventListener("click", () => window.history.back());
