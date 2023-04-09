@@ -1,18 +1,17 @@
-
 <form id="entry-form">
   <div class="form-details" id="entry-date">
     <label for="date">date</label>
-    <input name="date" id="date" type="date" required />
+    <input name="date" id="date" type="date" value="{{entry_date}}" required />
   </div>
 
   <div class="form-details" id="entry-weight">
     <label for="weight">weight</label>
-    <input name="weight" type="number" id="weight" max="999.9" step="0.1" />
+    <input name="weight" type="number" id="weight" max="999.9" step="0.1" value="{{entry_weight}}" />
   </div>
 
   <div id="entry-text">
     <label for="text">notes</label>
-    <textarea name="entry-text" id="text"></textarea>
+    <textarea name="entry-text" id="text">{{entry_text}}</textarea>
   </div>
 
   <div id="entry-tags">

@@ -4,7 +4,7 @@ async function entryFormHandler(e) {
     let tagIds = [];
 
     // data | entry & tag values from the input form. tag string is split into an array;
-    const entryDate = document.getElementById("date").value.replace(/-/g, ".");
+    const entryDate = document.getElementById("date").value;
     const entryWeight = document.getElementById("weight").value.trim();
     const entryText = document.getElementById("text").value.trim();
     const journalId = window.location.toString().split("/").pop().split("?")[0];

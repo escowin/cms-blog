@@ -5,16 +5,18 @@ async function getJournalId() {
   return entryData.journal_id;
 }
 
-async function editPostFormHandler(e) {
+async function editEntryFormHandler(e) {
   e.preventDefault();
-  // entry form variables
+  const entryDate = document.getElementById("date").value;
+  const entryWeight = document.getElementById("weight").value.trim();
+  const entryText = document.getElementById("text").value.trim();
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
 
   const response = await fetch(`/api/entries/${id}`, {
     method: "PUT",
-    body: JSON.stringify({ /* form variables */ }),
+    body: JSON.stringify({ entryDate, entryWeight, entryText }),
     headers: { "Content-Type": "application/json" },
   });
 
@@ -27,9 +29,6 @@ async function editPostFormHandler(e) {
 }
 
 // calls
-getJournalId()
-  .then((journalId) => console.log(journalId))
-  .catch((err) => console.log(err));
-// document
-//   .getElementById("edit-post-form")
-//   .addEventListener("submit", editPostFormHandler);
+document
+  .getElementById("entry-form")
+  .addEventListener("submit", editEntryFormHandler);
