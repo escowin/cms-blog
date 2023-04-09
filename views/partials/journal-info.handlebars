@@ -4,8 +4,8 @@
       {{title}}
     </h3>
 
-    <p class="details">s. {{start_date}}</p>
-    <p class="details">e. {{end_date}}</p>
+    <p class="details">s. {{format_date start_date}}</p>
+    <p class="details">e. {{format_date end_date}}</p>
     <p class="duration">{{duration}} {{format_plural "week" duration}}</p>
     <p class="details">{{entries.length}} {{format_plural "entry" entries.length}}
     </p>
