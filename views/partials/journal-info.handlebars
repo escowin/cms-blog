@@ -2,13 +2,14 @@
   <a class="journal-wrapper" href="/journals/{{id}}">
     <h3 class="title">
       {{title}}
-      <span class="duration">{{duration}} {{format_plural "week" duration}}</span>
     </h3>
+
     <p class="details">s. {{start_date}}</p>
     <p class="details">e. {{end_date}}</p>
+    <p class="duration">{{duration}} {{format_plural "week" duration}}</p>
     <p class="details">{{entries.length}} {{format_plural "entry" entries.length}}
     </p>
-    <p class="details description">{{description}}</p>
+    <p class="description">{{description}}</p>
   </a>
 </article>
 

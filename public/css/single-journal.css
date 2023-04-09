@@ -1,5 +1,31 @@
 main {
     background-color: var(--secondary);
-    padding: 0 calc(var(--indent)/2);
 }
 
+.journal {
+    padding-left: var(--indent);
+    background-color: var(--overlay-dark);
+}
+
+.journal-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, auto)
+}
+
+.journal .title {
+    font-size: 2rem;
+}
+
+.details, .duration {
+    font-size: 75%;
+}
+
+.title ,
+.description {
+    grid-column: span 4;
+}
+
+#form-section,
+#entries-section {
+    margin: 0 calc(var(--indent)/2);
+}

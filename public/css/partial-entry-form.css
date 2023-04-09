@@ -8,12 +8,8 @@
     padding: .25rem .25rem .25rem .5rem;
 }
 
-#entry-form button {
-    justify-self: end;
-}
-
-/* entry details */
-.details {
+/* form entry details */
+.form-details {
     display: grid;
     gap: .5rem;
 }
@@ -60,4 +56,10 @@ textarea {
 
 input::placeholder {
     color: rgba(0, 0, 0, .5);
+}
+
+#entry-form button {
+    grid-column: span 2;
+    background-color: var(--primary);
+    width: 100%;
 }

@@ -35,7 +35,7 @@ main {
 
 body {
     background-color: var(--primary);
-    padding-left: var(--indent);
+    padding-left: calc(var(--indent)/2);
     min-height: 100vh;
     font-variant: small-caps;
     font-size: 1.25rem;
@@ -74,7 +74,7 @@ main {
     flex-grow: 1;
     font-family: var(--text-body);
     gap: var(--indent);
-    padding-left: var(--indent);
+    /* padding-left: var(--indent); */
 }
 
 

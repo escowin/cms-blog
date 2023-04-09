@@ -7,16 +7,18 @@
 <script defer src="/javascript/add-entry.js"></script>
 {{/if}}
 
+{{!-- partials populate each section --}}
 <section>
   {{> journal-info journal}}
 </section>
 
-{{!-- entry form --}}
-{{#if loggedIn}}
-  {{> entry-form}}
-{{/if}}
+<section id="form-section">
+  <h3 id="form-header">New entry</h3>
+  {{#if loggedIn}}
+    {{> entry-form}}
+  {{/if}}
+</section>
 
-{{!-- partial | entries.handlebars--}}
 <section id="entries-section">
   <h3>Entries</h3>
   {{> entries journal.entries }}
