@@ -10,25 +10,45 @@ async function getJournalId() {
 }
 
 async function editEntryFormHandler(e) {
-  e.preventDefault();
-  const entryDate = document.getElementById("date").value;
-  const entryWeight = document.getElementById("weight").value.trim();
-  const entryText = document.getElementById("text").value.trim();
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
-
-  const response = await fetch(`/api/entries/${id}`, {
-    method: "PUT",
-    body: JSON.stringify({ entryDate, entryWeight, entryText }),
-    headers: { "Content-Type": "application/json" },
-  });
-
-  if (response.ok) {
-    const journalId = await getJournalId();
-    document.location.replace(`journals/${journalId}`);
-  } else {
-    alert(response.statusText);
+  try {
+    e.preventDefault();
+    // let tagIds = [];
+  
+    const entryDate = document.getElementById("date").value;
+    const entryWeight = document.getElementById("weight").value.trim();
+    const entryText = document.getElementById("text").value.trim();
+    const id = window.location.toString().split("/")[
+      window.location.toString().split("/").length - 1
+    ];
+    // const tagsInput = document.getElementById("tag-name").value.trim().toLowerCase();
+  
+    // if (tagsInput.trim() !== "") {
+    //   const formTagStrings = tagsInput.split(";").map((tag) => tag.trim());
+    //   const generatedTagIds = await generateTagIds(formTagStrings);
+    //   tagIds.push(...generatedTagIds);
+    //   console.log(tagIds);
+    // }
+  
+    const response = await fetch(`/api/entries/${id}`, {
+      method: "PUT",
+      body: JSON.stringify({ 
+        entry_date: entryDate,
+        entry_weight: entryWeight,
+        entry_text: entryText,
+        // tags: tagIds
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+  
+    if (response.ok) {
+      const journalId = await getJournalId();
+      document.location.replace(`journals/${journalId}`);
+    } else {
+      alert(response.statusText);
+    }
+  } catch (err) {
+    console.log("failed at the `try... catch`");
+    console.log(err);
   }
 }
 

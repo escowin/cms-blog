@@ -22,5 +22,9 @@ module.exports = {
   },
   current_year: () => {
     return new Date().getFullYear();
-  }
+  },
+  is_edit_entry_page: () => {
+    const currentPage = windows.location.href;
+    return currentPage.include("/entries/edit/");
+  },
 };

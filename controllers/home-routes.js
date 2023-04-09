@@ -108,6 +108,13 @@ router.get("/entries/edit/:id", withAuth, (req, res) => {
   Entry.findOne({
     where: { id: req.params.id },
     attributes: ["id", "entry_text", "entry_date", "entry_weight"],
+    include: [
+      {
+        model: Tag,
+        through: EntryTag,
+        attributes: ["id", "tag_name"],
+      },
+    ],
   })
     .then((dbEntryData) => {
       if (!dbEntryData) {
