@@ -1,5 +1,6 @@
   <form id="entry-form">
-    <h3>New entry</h3>
+    <h3 id="form-header">New entry</h3>
+    <button type="submit" class="btn add-btn">&#xff0b; entry</button>
 
     <div class="details" id="entry-date">
       <label for="date">date</label>
@@ -17,9 +18,7 @@
     </div>
 
     <div id="entry-tags">
-      <label for="tag-name">tags (seperate by <code>;</code>)</label>
-      <input name="tag-name" id="tag-name" type="text" />
+      <label for="tag-name">tags</label>
+      <input name="tag-name" id="tag-name" type="text" placeholder="tag 1; tag 2; tag 3; etc..." />
     </div>
-
-    <button type="submit" class="btn add-btn">+ entry</button>
   </form>

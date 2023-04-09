@@ -1,34 +1,21 @@
 #entry-form {
     display: grid;
-    grid-template-columns: 2fr 1fr auto;
-    gap: 0 .25rem;
+    grid-template-columns: repeat(2, auto);
+    gap: .25rem .5rem;
     align-items: flex-end;
     border-radius: .5rem;
     background-color: var(--overlay-dark);
-    padding: .125rem;
+    padding: .25rem .25rem .25rem .5rem;
 }
 
-#entry-form h3 {
-    padding-left: calc(var(--indent)/2);
+#entry-form button {
+    justify-self: end;
 }
 
-#entry-form .details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding-left: auto;
-}
-
-input {
-    height: 1.2rem;
-}
-
-#entry-date {
-    width: 7rem;
-}
-
-#entry-weight {
-    width: 3rem;
+/* entry details */
+.details {
+    display: grid;
+    gap: .5rem;
 }
 
 label {
@@ -38,19 +25,31 @@ label {
 
 input {
     padding: 0 .25rem;
-    margin-bottom: .25rem;
     width: 100%;
     border: none;
     font-variant: normal;
+    height: 100%;
+    border-radius: .25rem;
 }
 
-#entry-form button, #entry-text {
-    grid-column: span 3;
+#entry-text,
+#entry-tags {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    gap: .5rem;
 }
 
-#entry-text {
-    display: flex;
-    flex-direction: column;
+#entry-date {
+    grid-template-columns: 2.25rem 1fr;
+}
+
+#entry-weight {
+    grid-template-columns: auto 1fr;
+}
+
+#weight {
+    width: 3rem;
 }
 
 textarea {
@@ -59,7 +58,6 @@ textarea {
     padding: calc(var(--indent)/2) var(--indent);
 }
 
-#entry-form button {
-    margin-top: .75rem;
+input::placeholder {
+    color: rgba(0, 0, 0, .5);
 }
-
