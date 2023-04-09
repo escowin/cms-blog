@@ -1,7 +1,8 @@
 // mvc | view routes
 const router = require("express").Router();
 const { Tag, Journal, Entry, EntryTag } = require("../models");
-const { sort_entries } = require("../utils/helpers")
+const withAuth = require("../utils/auth");
+// const { sort_entries } = require("../utils/helpers")
 
 // rendering views
 // - homepage template
@@ -20,7 +21,7 @@ router.get("/", (req, res) => {
       {
         model: Entry,
         attributes: ["id", "entry_text", "journal_id", "user_id", "created_at"],
-        order: [["entry_date", "DESC"]]
+        order: [["entry_date", "DESC"]],
       },
     ],
   })
@@ -95,6 +96,29 @@ router.get("/journals/:id", (req, res) => {
         journal,
         loggedIn: req.session.loggedIn,
         customstyle: '<link rel="stylesheet" href="/css/single-journal.css">',
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/entries/edit/:id", withAuth, (req, res) => {
+  Entry.findOne({
+    where: { id: req.params.id },
+    attributes: ["id", "entry_text", "entry_date", "entry_weight"],
+  })
+    .then((dbEntryData) => {
+      if (!dbEntryData) {
+        res.status(404).json({ message: "entry not found" });
+        return;
+      }
+      const entry = dbEntryData.get({ plain: true });
+      // renders edit-entry view when logged in
+      res.render("edit-entry", {
+        entry,
+        loggedIn: true,
       });
     })
     .catch((err) => {
