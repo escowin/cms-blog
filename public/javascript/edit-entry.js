@@ -42,7 +42,7 @@ async function editEntryFormHandler(e) {
   
     if (response.ok) {
       const journalId = await getJournalId();
-      document.location.replace(`journals/${journalId}`);
+      document.location.replace(`../../journals/${journalId}`);
     } else {
       alert(response.statusText);
     }

@@ -6,15 +6,16 @@
 
 .entry {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr repeat(2, auto);
     gap: .25rem .5rem;
     border-radius: .5rem;
     background-color: var(--overlay-dark);
     padding: .25rem 1rem;
+    align-items: center;
 }
 
 .entry .notes, .tags {
-    grid-column: span 2;
+    grid-column: span 3;
 }
 
 .tags {
@@ -30,10 +31,14 @@
     border-radius: var(--corners);
 }
 
+.weight {
+    text-align: end;
+}
 .entry-buttons {
-    grid-column: span 2;
+    /* grid-column: span 2; */
     display: flex;
     gap: 1rem;
+    justify-content: flex-end;
 }
 
 .entry-buttons .btn {
@@ -42,4 +47,8 @@
     font-family: var(--text-header);
     font-size: 1rem;
     font-weight: bold;
+}
+
+* {
+    outline: 1px dotted white;
 }

@@ -3,6 +3,9 @@
   <li class="entry">
       <p class="date">{{format_date entry_date}}</p>
       <p class="weight">{{entry_weight}} lbs</p>
+      <div class="entry-buttons">
+        <a class="btn" href="/entries/edit/{{id}}">edit</a>
+      </div>      
       <p class="notes">{{entry_text}}</p>
       <p class="tags">
         {{#each tags}}
@@ -10,10 +13,7 @@
         {{/each}}
       </p>
 
-      <div class="entry-buttons">
-        <a class="btn" href="/entries/edit/{{id}}">edit</a>
-        {{!-- <button class="btn">delete</button> --}}
-      </div>
+
     </li>
   {{/each}}
 </ol>

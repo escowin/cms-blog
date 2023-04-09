@@ -76,12 +76,7 @@ main {
     flex-grow: 1;
     font-family: var(--text-body);
     gap: var(--indent);
-    /* padding-left: var(--indent); */
     background-color: var(--secondary);
-}
-
-* {
-    outline: 1px dotted white;
 }
 
 .section {
