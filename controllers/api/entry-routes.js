@@ -22,6 +22,7 @@ router.get("/", (req, res) => {
           attributes: ["id", "tag_name"],
         },
       ],
+      order: [["entry_date", "DESC"]]
     })
       .then((dbEntryData) => res.json(dbEntryData))
       .catch((err) => {

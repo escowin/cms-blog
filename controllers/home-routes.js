@@ -1,6 +1,7 @@
 // mvc | view routes
 const router = require("express").Router();
 const { Tag, Journal, Entry, EntryTag } = require("../models");
+const { sort_entries } = require("../utils/helpers")
 
 // rendering views
 // - homepage template
@@ -19,6 +20,7 @@ router.get("/", (req, res) => {
       {
         model: Entry,
         attributes: ["id", "entry_text", "journal_id", "user_id", "created_at"],
+        order: [["entry_date", "DESC"]]
       },
     ],
   })
@@ -66,8 +68,7 @@ router.get("/journals/:id", (req, res) => {
     include: [
       {
         model: Entry,
-        attributes: ["id", "entry_date", "entry_weight", "entry_text", "created_at"],
-        order: [["start_date", "DESC"]],
+        attributes: ["id", "entry_date", "entry_weight", "entry_text"],
         include: [
           {
             model: Tag,
@@ -75,6 +76,8 @@ router.get("/journals/:id", (req, res) => {
             attributes: ["id", "tag_name"],
           },
         ],
+        // bug | desc entry date doesn't work. might be an issue with the format
+        // order: [["entry_date", "DESC"]]
       },
     ],
   })

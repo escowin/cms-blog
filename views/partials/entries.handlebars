@@ -3,12 +3,12 @@
   <li class="entry">
       <p class="date"> &#183; {{entry_date}}</p>
       <p class="weight">{{entry_weight}} lbs</p>
+      <p class="notes">{{entry_text}}</p>
       <p class="tags">
         {{#each tags}}
           <span class="tag">{{tag_name}}</span>
         {{/each}}
       </p>
-      <p class="notes">{{entry_text}}</p>
     </li>  
   {{/each}}
 </ol>

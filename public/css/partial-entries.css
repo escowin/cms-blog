@@ -5,17 +5,19 @@
 #entries {
     display: flex;
     flex-direction: column;
-    gap: .25rem;
+    gap: .5rem;
 }
 
 .entry {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: .25rem .5rem;
+    border-radius: .5rem;
+    background-color: var(--overlay-dark);
+    padding: .25rem;
 }
 
-.entry .notes {
-    padding-left: 1rem;
+.entry .notes, .tags {
     grid-column: span 2;
 }
 
@@ -23,14 +25,15 @@
 
 .tags {
     display: flex;
-    gap: 1rem;
+    gap: .75rem;
     justify-content: flex-end;
 }
+
 .tag {
     background-color: var(--overlay-dark);
     color: var(--accent-light);
-    font-size: 85%;
-    padding: .12rem 1rem;
+    font-size: 75%;
+    padding: .05rem .75rem;
     border-radius: var(--corners);
 }
 

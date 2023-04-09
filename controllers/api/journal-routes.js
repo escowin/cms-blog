@@ -24,7 +24,8 @@ router.get("/", (req, res) => {
       {
         model: Entry,
         attributes: ["id", "entry_date", "entry_weight", "entry_text", "created_at"],
-        order: [["start_date", "DESC"]],
+        // bug | desc entry date doesn't work. might be an issue with the format
+        // order: [["entry_date", "DESC"]]
       },
     ],
   })
@@ -70,7 +71,7 @@ router.get("/:id", (req, res) => {
       {
         model: Entry,
         attributes: ["id", "entry_date", "entry_weight", "entry_text", "created_at"],
-        order: [["start_date", "DESC"]],
+        order: [["entry_date", "DESC"]]
       },
     ],
   })

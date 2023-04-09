@@ -4,14 +4,15 @@ const { Tag, Entry, EntryTag } = require("../../models");
 // rest api
 router.get("/", (req, res) => {
   Tag.findAll({
-    include: [
-      {
-        model: Entry,
-        through: EntryTag,
-        attributes: ["id", "entry_date", "entry_text"],
-      },
-    ],
+    // include: [
+    //   {
+    //     model: Entry,
+    //     through: EntryTag,
+    //     attributes: ["id"],
+    //   },
+    // ],
     attributes: ["id", "tag_name"],
+    order: [["tag_name", "ASC"]]
   })
     .then((tags) => res.status(200).json(tags))
     .catch((err) => res.status(500).json(err));
