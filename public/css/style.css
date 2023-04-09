@@ -7,8 +7,10 @@
     --accent-light: rgb(214, 235, 237);
     --text-header: 'Raleway', sans-serif;
     --text-body: 'Alegreya Sans', sans-serif;
+    --rounded-corner: 1.25rem;
     --corners: 25rem;
     --indent: 1rem;
+    --indent-sm: calc(var(--indent)/2);
     --input: rgba(38, 45, 60, 0.099);
     --input-focus: rgba(211, 211, 211, 0.25);
     --overlay-dark: hsla(199, 17%, 25%, 0.246);
@@ -75,9 +77,23 @@ main {
     font-family: var(--text-body);
     gap: var(--indent);
     /* padding-left: var(--indent); */
+    background-color: var(--secondary);
 }
 
+* {
+    outline: 1px dotted white;
+}
 
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--overlay-dark);
+    margin: var(--indent) 0 var(--indent) var(--indent);
+    border-top-left-radius: var(--rounded-corner);
+    border-bottom-left-radius: var(--rounded-corner);
+    padding: var(--indent-sm) 0 var(--indent-sm) var(--indent);   
+}
 
 /* lists */
 ul,
@@ -87,7 +103,6 @@ ol {
 
 /* buttons */
 .btn {
-    border-radius: var(--corners);
     border: none;
     padding: .25rem var(--indent);
     transition: 1s;
@@ -97,8 +112,13 @@ ol {
 nav .btn {
     background-color: var(--primary);
     color: var(--accent-light);
+    border-radius: var(--corners);
 }
 
+.form-btn {
+    border-top-left-radius: var(--corners);
+    border-bottom-left-radius: var(--corners);
+}
 /* form label & input fields */
 input, textarea {
     background-color: var(--input);
