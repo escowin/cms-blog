@@ -12,14 +12,14 @@
   {{> journal-info journal}}
 </section>
 
-<section id="form-section">
+<section class="section" id="form-section">
   <h3 id="form-header">New entry</h3>
   {{#if loggedIn}}
     {{> entry-form}}
   {{/if}}
 </section>
 
-<section id="entries-section">
+<section class="section" id="entries-section">
   <h3>Entries</h3>
   {{> entries journal.entries }}
 </section>

@@ -1,8 +1,9 @@
 {{!-- custom stylesheet --}}
 <link rel="stylesheet" href="/css/homepage.css">
 
-<h2 class="homepage-header">Journals homepage</h2>
-<section class="journals">
+<section class="journals section">
+  <h2 class="section-header">Journals homepage</h2>
+
   {{#each journals as |journal|}}
       {{!-- rendering the partial --}}
       {{> journal-info journal }}

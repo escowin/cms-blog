@@ -1,15 +1,19 @@
 <article class="journal">
-  <a class="journal-wrapper" href="/journals/{{id}}">
-    <h3 class="title">
-      {{title}}
-    </h3>
-
-    <p class="details">s. {{format_date start_date}}</p>
-    <p class="details">e. {{format_date end_date}}</p>
-    <p class="duration">{{duration}} {{format_plural "week" duration}}</p>
-    <p class="details">{{entries.length}} {{format_plural "entry" entries.length}}
-    </p>
-    <p class="description">{{description}}</p>
+  <a href="/journals/{{id}}">
+    <svg class="icon-wrapper journal-icon">
+      <image class="icon" xlink:href="/icons/book-solid.svg" />
+    </svg>
   </a>
-</article>
 
+  <div class="journal-description">
+    <h3 class="title">{{title}}</h3>
+    <p class="description">{{description}}</p>
+  </div>
+  
+  <div class="journal-details">
+    <p>s. {{format_date start_date}}</p>
+    <p>e. {{format_date end_date}}</p>
+    <p>{{duration}} {{format_plural "week" duration}}</p>
+    <p>{{entries.length}} {{format_plural "entry" entries.length}}</p>
+  </div>
+</article>

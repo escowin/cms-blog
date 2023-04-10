@@ -14,6 +14,7 @@
     --input: rgba(38, 45, 60, 0.099);
     --input-focus: rgba(211, 211, 211, 0.25);
     --overlay-dark: hsla(199, 17%, 25%, 0.246);
+    --section-indent: var(--indent-sm) 0 var(--indent-sm) var(--indent-sm)
 }
 
 * {
@@ -24,7 +25,6 @@
 }
 
 .icon-wrapper {
-    color: black;
     width: 2rem;
     height: 2rem;
 }
@@ -90,12 +90,19 @@ main {
     background-color: var(--secondary);
 }
 
+.section-header {
+    background: var(--secondary);
+    padding-left: calc(var(--indent)*1.25);
+    border-top-left-radius: var(--corners);
+    border-bottom-left-radius: var(--corners);
+}
+
 .section {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: .25rem;
     background-color: var(--overlay-dark);
-    margin: var(--indent) 0 var(--indent) var(--indent);
+    margin-left: var(--indent-sm);
     border-top-left-radius: var(--rounded-corner);
     border-bottom-left-radius: var(--rounded-corner);
     padding: var(--indent-sm) 0 var(--indent-sm) var(--indent);   
@@ -141,7 +148,6 @@ input::placeholder {
 input:focus, textarea:focus {
     background-color: var(--input-focus);
     outline: none;
-    /* border: none; */
 }
 
 /* typography */
