@@ -23,6 +23,17 @@
     margin: 0;
 }
 
+.icon-wrapper {
+    color: black;
+    width: 2rem;
+    height: 2rem;
+}
+
+.icon {
+    width: inherit;
+    height: inherit;
+}
+
 /* divs */
 body,
 header,
