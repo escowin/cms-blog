@@ -8,16 +8,17 @@ async function entryFormHandler(e) {
     const entryWeight = document.getElementById("weight").value.trim();
     const entryText = document.getElementById("text").value.trim();
     const journalId = window.location.toString().split("/").pop().split("?")[0];
-    const tagsInput = document.getElementById("tag-name").value.trim().toLowerCase();
+    const tagsInput = document
+      .getElementById("tag-name")
+      .value.trim()
+      .toLowerCase();
 
     if (tagsInput.trim() !== "") {
       const formTagStrings = tagsInput.split(";").map((tag) => tag.trim());
       const generatedTagIds = await generateTagIds(formTagStrings);
       tagIds.push(...generatedTagIds);
-      console.log(tagIds);
     }
 
-    console.log(tagIds);
     const response = await fetch("/api/entries", {
       method: "POST",
       body: JSON.stringify({
@@ -32,7 +33,11 @@ async function entryFormHandler(e) {
       },
     });
 
-    // note : post entry & tags into database, association  via EntryTag through table
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert(response.statusText);
+    }
   } catch (err) {
     console.log("failed at the `try... catch`");
     console.log(err);
@@ -65,11 +70,10 @@ const generateTagIds = async (formTags) => {
 
   const existingTagIds = await Promise.all(
     formTags
-      .filter(
-        (formTag) =>
-          existingTags.some(
-            (existingTag) => existingTag.tag_name.toLowerCase() === formTag
-          )
+      .filter((formTag) =>
+        existingTags.some(
+          (existingTag) => existingTag.tag_name.toLowerCase() === formTag
+        )
       )
       .map(async (existingTag) => {
         const existingTagObj = existingTags.find(

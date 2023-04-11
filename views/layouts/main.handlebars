@@ -19,9 +19,28 @@
         <a href="/">fitlog</a>
       </h1>
       {{#if loggedIn}}
-      <nav>
+      <nav class="nav-links">
           {{!-- <a class="btn" id="add-btn" href="/add-journal">add</a> --}}
-          <button class="btn" id="logout">log out</button>
+        <a href="/">
+          <svg class="icon-wrapper">
+            <image class="icon" xlink:href="/icons/book-solid.svg"/>
+          </svg>
+        </a>  
+        <a href="/">
+          <svg class="icon-wrapper">
+            <image class="icon" xlink:href="/icons/tags-solid.svg"/>
+          </svg>
+        </a>
+        <a href="/">
+          <svg class="icon-wrapper">
+            <image class="icon" xlink:href="/icons/profile-solid.svg"/>
+          </svg>
+        </a>  
+        <a href="/">
+          <svg class="icon-wrapper">
+            <image class="icon" xlink:href="/icons/logout-solid.svg"/>
+          </svg>
+        </a>  
       </nav>
       {{/if}}
     </header>
