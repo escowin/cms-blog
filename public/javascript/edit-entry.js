@@ -55,9 +55,7 @@ async function editEntryFormHandler(e) {
 async function deleteEntryHandler(e) {
   e.preventDefault();
 
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
+
   const journalId = await getJournalId();
 
   const response = await fetch(`/api/entries/${id}`, {
@@ -71,6 +69,18 @@ async function deleteEntryHandler(e) {
     alert(response.statusText);
   }
 }
+
+function getCurrentTags() {
+  const id = window.location.toString().split("/")[
+    window.location.toString().split("/").length - 1
+  ];
+  const response = fetch(`/api/entries/${id}`);
+  console.log(id)
+  console.log(response)
+
+}
+
+getCurrentTags();
 
 // calls
 document
