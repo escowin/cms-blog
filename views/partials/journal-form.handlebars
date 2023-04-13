@@ -1,25 +1,32 @@
-<form>
-  <div>
-    <button>add journal</button>
-  </div>
-  <div>
-    <label for="journal-title">Title</label>
-    <input type="text" id="journal-title" value="journal-title" />
-  </div>
-  <div>
-    <label for="journal-start">start date</label>
-    <input type="text" id="journal-start" value="journal-start" />
-  </div>
-  <div>
-    <label for="journal-end">end date</label>
-    <input type="text" id="journal-end" value="journal-end" />
-  </div>
-  <div>
-    <p id="journal-duration"></p>
-  </div>
-  <div>
-    <label for="journal-description">journal description</label>
-    <input type="text" id="journal-description" value="journal-description" />
-  </div>
+<link rel="stylesheet" href="/css/partial-journal-form.css" />
+<form id="journal-form">
+  <article>
+    <button type="submit" id="add-journal-btn">add journal</button>
+  </article>
+  <article id="journal-form-details">
+    <div class="span-2">
+      <label for="journal-title">Title</label>
+      <input type="text" id="journal-title" value="journal-title" />
+    </div>
+    <div>
+      <label for="journal-description">journal description</label>
+      <textarea id="journal-description" value="journal-description"></textarea>
+    </div>
+  </article>
+  <article>
+    <div>
+      <label for="journal-duration">duration</label>
+      <p id="journal-duration"></p>
+    </div>
+    <div>
+      <label for="journal-start">start date</label>
+      <input type="text" id="journal-start" value="journal-start" />
+    </div>
+    <div>
+      <label for="journal-end">end date</label>
+      <input type="text" id="journal-end" value="journal-end" />
+    </div>
+
+  </article>
 
 </form>
