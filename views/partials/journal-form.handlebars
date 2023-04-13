@@ -1,12 +1,21 @@
 <link rel="stylesheet" href="/css/partial-journal-form.css" />
+<script defer src="/javascript/add-journal.js"></script>
+
 <form id="journal-form">
   <article>
-    <button type="submit" id="add-journal-btn">add journal</button>
+    <svg
+      class="icon-wrapper page-icon"
+      onclick="newJournalFormHandler()"
+      style="cursor: pointer"
+      id="add-journal-btn"
+    >
+      <image class="icon" xlink:href="/icons/add-entry.svg" />
+    </svg>
   </article>
   <article id="journal-form-details">
     <div class="span-2">
       <label for="journal-title">Title</label>
-      <input type="text" id="journal-title" value="journal-title" />
+      <input type="text" id="journal-title" />
     </div>
     <div>
       <label for="journal-description">journal description</label>
