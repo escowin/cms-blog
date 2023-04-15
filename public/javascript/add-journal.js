@@ -17,7 +17,7 @@ function durationRange() {
 }
 
 function calculateEndDate(start_date, duration) {
-  console.log(start_date);
+  console.log(typeof start_date);
   console.log(duration);
 }
 
@@ -30,12 +30,8 @@ async function newJournalFormHandler() {
   .value.trim();
   const start_date = document.getElementById("journal-start").value.trim();
   const duration = selectedDuration;
-  // const end_date = calculateEndDate(start_date, duration);
+  const end_date = calculateEndDate(start_date, duration);
 
-  console.log(title);
-  console.log(description);
-  console.log(start_date);
-  console.log(duration);
   // user_id is obtained from the session in controllers/api/journal-routes
   // const response = await fetch(`/api/journals`, {
   //   method: "post",
