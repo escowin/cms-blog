@@ -1,23 +1,56 @@
 * {
-    outline: 1px dotted white;
+    /* outline: 1px dotted white; */
 }
 
 #journal-form {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr;
     align-items: center;
     gap: .5rem;
+    border-top-left-radius: 15rem;
+    border-bottom-left-radius: 15rem;
+    background-color: var(--overlay-dark);
+    padding: var(--indent-sm) 0 var(--indent-sm) var(--indent-sm);
+}
+
+.button-wrapper {
+    border: dashed 2px var(--secondary);
+    border-radius: 50%;
+    padding: 1rem;
+    transition: 1s;
+}
+
+.button-wrapper:hover {
+    background-color: var(--link);
+    box-shadow: 0 0 1rem var(--link);
 }
 
 #add-journal-btn {
-    --size: 5rem;
-    border-radius: 50%;
+    --size: 3rem;
+    /* border-radius: 50%; */
     width: var(--size);
     height: var(--size);
     border: none;
 }
 
+#journal-form-details {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 0 .25rem;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+.span-3 {
+    grid-column: span 3;
+}
 textarea {
     width: 100%;
     height: 2.5rem;
+}
+
+.date-input {
+    font-size: .75rem;
 }

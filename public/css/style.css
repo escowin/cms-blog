@@ -2,7 +2,7 @@
     --primary: rgb(68, 79, 104);
     --secondary: rgba(156, 199, 221, 0.95);
     --accent: rgb(0, 0, 0);
-    --link: rgb(122, 39, 39);
+    --link: rgb(218, 218, 218);
     --accent-dark: rgb(28, 26, 26);
     --accent-light: rgb(214, 235, 237);
     --text-header: 'Raleway', sans-serif;
@@ -91,7 +91,8 @@ main {
 }
 
 .section-header {
-    background: var(--secondary);
+    /* background: var(--secondary); */
+    margin-left: 5rem;
     padding-left: calc(var(--indent)*1.25);
     border-top-left-radius: var(--corners);
     border-bottom-left-radius: var(--corners);
@@ -103,8 +104,8 @@ main {
     gap: .25rem;
     background-color: var(--overlay-dark);
     margin-left: var(--indent-sm);
-    border-top-left-radius: var(--rounded-corner);
-    border-bottom-left-radius: var(--rounded-corner);
+    border-top-left-radius: 15rem;
+    border-bottom-left-radius: 15rem;
     padding: var(--indent-sm) 0 var(--indent-sm) var(--indent);   
 }
 
@@ -133,6 +134,10 @@ nav .btn {
     border-bottom-left-radius: var(--corners);
 }
 /* form label & input fields */
+textarea {
+    resize: none;
+}
+
 input, textarea {
     background-color: var(--input);
     color: var(--accent-dark);

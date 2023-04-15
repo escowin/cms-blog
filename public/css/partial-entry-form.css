@@ -50,7 +50,6 @@ input {
 
 textarea {
     height: 5rem;
-    resize: none;
     padding: calc(var(--indent)/2) var(--indent);
 }
 

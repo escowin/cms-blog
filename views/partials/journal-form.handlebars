@@ -1,41 +1,44 @@
 <link rel="stylesheet" href="/css/partial-journal-form.css" />
 <script defer src="/javascript/add-journal.js"></script>
 
-<form id="journal-form">
-  <article>
+<form class="form" id="journal-form">
+  <article class="button-wrapper" style="cursor: pointer">
     <svg
       class="icon-wrapper page-icon"
       onclick="newJournalFormHandler()"
-      style="cursor: pointer"
       id="add-journal-btn"
     >
-      <image class="icon" xlink:href="/icons/add-entry.svg" />
+      <image class="icon" xlink:href="/icons/add-solid.svg" />
     </svg>
   </article>
   <article id="journal-form-details">
-    <div class="span-2">
+    <div class="span-3">
       <label for="journal-title">Title</label>
       <input type="text" id="journal-title" />
     </div>
-    <div>
-      <label for="journal-description">journal description</label>
+    <div class="span-3">
+      <label for="journal-description">description</label>
       <textarea id="journal-description" value="journal-description"></textarea>
-    </div>
-  </article>
-  <article>
-    <div>
-      <label for="journal-duration">duration</label>
-      <p id="journal-duration"></p>
     </div>
     <div>
       <label for="journal-start">start date</label>
-      <input type="text" id="journal-start" value="journal-start" />
-    </div>
-    <div>
-      <label for="journal-end">end date</label>
-      <input type="text" id="journal-end" value="journal-end" />
+      <input
+        class="date-input"
+        type="date"
+        id="journal-start"
+        value="journal-start"
+      />
     </div>
 
+    <div>
+      <label for="journal-duration">duration</label>
+      <select id="journal-duration"></select>
+    </div>
+
+    <div>
+      <label for="journal-end">end date</label>
+      <p id="journal-end"></p>
+    </div>
   </article>
 
 </form>

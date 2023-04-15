@@ -1,3 +1,20 @@
+function durationRange() {
+  const durationSelectEl = document.getElementById("journal-duration");
+
+  for (let i = 1; i <= 20; i++) {
+    const option = document.createElement("option");
+    option.value = i;
+    option.text = i;
+    durationSelectEl.appendChild(option);
+  }
+}
+
+
+function calculateEndDate(start_date, duration) {
+  console.log(start_date)
+  console.log(duration)
+}
+
 // logic
 async function newJournalFormHandler(e) {
   // e.preventDefault();
@@ -5,8 +22,8 @@ async function newJournalFormHandler(e) {
 
   const title = document.getElementById('journal-title').value.trim();
   const start_date = document.getElementById("start-date").value.trim();
-  const end_date = document.getElementById("end-date").value.trim();
-  const duration = document.getElementById("duration").value.trim();
+  const duration = document.getElementById("end-date").value.trim();
+  const end_date = calculateEndDate(start_date, duration);
   const description = document
     .querySelector('textarea[name="journal-description"]')
     .value.trim();
@@ -30,3 +47,5 @@ async function newJournalFormHandler(e) {
 document
   .getElementById("add-journal-btn")
   .addEventListener("submit", newJournalFormHandler);
+
+durationRange();
