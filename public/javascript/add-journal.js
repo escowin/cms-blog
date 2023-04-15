@@ -1,34 +1,41 @@
+let selectedDuration = null;
+
 function durationRange() {
-  const durationSelectEl = document.getElementById("journal-duration");
+  const journalDurationEl = document.getElementById("journal-duration");
 
   for (let i = 1; i <= 20; i++) {
     const option = document.createElement("option");
     option.value = i;
     option.text = i;
-    durationSelectEl.appendChild(option);
+    journalDurationEl.appendChild(option);
   }
+
+  // captures selected duration value
+  journalDurationEl.addEventListener("change", function () {
+    selectedDuration = this.value;
+  });
 }
 
-
 function calculateEndDate(start_date, duration) {
-  console.log(start_date)
-  console.log(duration)
+  console.log(start_date);
+  console.log(duration);
 }
 
 // logic
-async function newJournalFormHandler(e) {
+async function newJournalFormHandler() {
   // e.preventDefault();
-  console.log("add journal button clicked")
-
-  const title = document.getElementById('journal-title').value.trim();
-  const start_date = document.getElementById("start-date").value.trim();
-  const duration = document.getElementById("end-date").value.trim();
-  const end_date = calculateEndDate(start_date, duration);
+  const title = document.getElementById("journal-title").value.trim();
   const description = document
-    .querySelector('textarea[name="journal-description"]')
-    .value.trim();
+  .getElementById("journal-description")
+  .value.trim();
+  const start_date = document.getElementById("journal-start").value.trim();
+  const duration = selectedDuration;
+  // const end_date = calculateEndDate(start_date, duration);
 
-    console.log(title)
+  console.log(title);
+  console.log(description);
+  console.log(start_date);
+  console.log(duration);
   // user_id is obtained from the session in controllers/api/journal-routes
   // const response = await fetch(`/api/journals`, {
   //   method: "post",
@@ -44,8 +51,7 @@ async function newJournalFormHandler(e) {
 }
 
 // calls
+durationRange();
 document
   .getElementById("add-journal-btn")
-  .addEventListener("submit", newJournalFormHandler);
-
-durationRange();
+  .addEventListener("click", newJournalFormHandler);
