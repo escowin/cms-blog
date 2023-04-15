@@ -17,8 +17,12 @@ function durationRange() {
 }
 
 function calculateEndDate(start_date, duration) {
-  console.log(typeof start_date);
-  console.log(duration);
+  const startDateObj = new Date(start_date);
+  const durationInMs = parseInt(duration) * 7 * 24 * 60 * 60 * 1000;
+  const endDateObj = new Date(startDateObj.getTime() + durationInMs);
+
+  const endDate = endDateObj.toISOString().split("T")[0];
+  console.log(endDate)
 }
 
 // logic
