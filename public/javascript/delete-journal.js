@@ -12,7 +12,6 @@ async function deleteJournalHandler(e) {
 
     if (response.ok) {
       journalEl.remove();
-      document.location.reload();
     } else {
       throw new Error(`failed to delete journal #${journalId}`);
     }
