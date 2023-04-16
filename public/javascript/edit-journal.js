@@ -1,4 +1,7 @@
 // variables
+const id = window.location.toString().split("/")[
+    window.location.toString().split("/").length - 1
+  ];
 const updateJournalBtn = document.getElementById("add-journal-btn");
 const journalTitleEl = document.getElementById("journal-title");
 const journalDescriptionEl = document.getElementById("journal-description");
@@ -9,7 +12,8 @@ const journalEndEl = document.getElementById("journal-end");
 const durationMin = 1;
 const durationMax = 20;
 
-// logic
+// - logic
+// - updating existing journal data
 function durationRange() {
   // adds the duration range as selectable options for the user
   for (let i = durationMin; i <= durationMax; i++) {
@@ -42,9 +46,6 @@ function calculateEndDate(start_date, duration) {
 async function editJournalFormHandler(e) {
   e.preventDefault();
 
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
   const title = journalTitleEl.value.trim();
   const description = journalDescriptionEl.value.trim();
   const duration = journalDurationEl.value.trim();
@@ -85,7 +86,27 @@ async function editJournalFormHandler(e) {
   }
 }
 
+// - deleting a journal from the edit-journal view
+async function deleteJournalHandler(e) {
+    e.preventDefault();
+    const response = await fetch(`/api/journals/${id}`, {
+        method: "DELETE",
+    });
+
+    if (response.ok) {
+        document.location.replace("../../")
+    } else {
+        alert(response.statusText)
+    }
+}
+
 // calls
 durationRange();
 journalDurationEl.addEventListener("change", updateEndDate);
 updateJournalBtn.addEventListener("click", editJournalFormHandler);
+document
+  .getElementById("delete-btn")
+  .addEventListener("click", async (e) => deleteJournalHandler(e));
+document
+  .getElementById("back-btn")
+  .addEventListener("click", () => window.history.back());
