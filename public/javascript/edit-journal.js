@@ -42,17 +42,47 @@ function calculateEndDate(start_date, duration) {
 async function editJournalFormHandler(e) {
   e.preventDefault();
 
+  const id = window.location.toString().split("/")[
+    window.location.toString().split("/").length - 1
+  ];
   const title = journalTitleEl.value.trim();
   const description = journalDescriptionEl.value.trim();
   const duration = journalDurationEl.value.trim();
   const start_date = journalStartEl.value.trim();
   const end_date = calculateEndDate(start_date, duration);
 
-  console.log(title);
-  console.log(description);
-  console.log(duration);
-  console.log(start_date);
-  console.log(end_date);
+  if (isNaN(duration) || duration < durationMin || duration > durationMax) {
+    console.log(`duration must be a number between ${durationMin} - ${durationMax}`)
+  }
+  
+  if (title && description && duration && start_date && end_date) {
+    // implemented try / catch for further granular error handling
+    try {
+      // user_id is obtained from the session in controllers/api/journal-routes
+      const response = await fetch(`/api/journals/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          title,
+          description,
+          duration,
+          start_date,
+          end_date,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (response.ok) {
+        document.location.replace(`../../`);
+      } else {
+        alert(response.statusText);
+      }
+    } catch (err) {
+      console.log(err);
+      console.log("fetch put request error");
+    }
+  } else {
+    console.log("all form fields must be complete");
+  }
 }
 
 // calls
