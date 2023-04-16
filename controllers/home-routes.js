@@ -1,11 +1,9 @@
-// mvc | view routes
 const router = require("express").Router();
 const { Tag, Journal, Entry, EntryTag } = require("../models");
 const withAuth = require("../utils/auth");
-// const { sort_entries } = require("../utils/helpers")
 
-// rendering views
-// - homepage template
+// packaged data for specified endpoints to render. each endpoint has a corresponding view file to display data.
+// - data accessible to the homepage view
 router.get("/", (req, res) => {
   Journal.findAll({
     attributes: [
@@ -42,7 +40,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// - login template
+// - login template | note: using partial for login. login view may not be needed.
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -54,7 +52,7 @@ router.get("/login", (req, res) => {
   });
 });
 
-// - single post template
+// - data accessible to the single-journal view
 router.get("/journals/:id", (req, res) => {
   Journal.findOne({
     where: { id: req.params.id },
@@ -104,6 +102,7 @@ router.get("/journals/:id", (req, res) => {
     });
 });
 
+// - data accessible to the edit-journal view
 router.get("/journals/edit/:id", withAuth, (req, res) => {
   Journal.findOne({
     where: { id: req.params.id },
@@ -134,6 +133,7 @@ router.get("/journals/edit/:id", withAuth, (req, res) => {
     });
 });
 
+// - data accessible to the edit-entry view
 router.get("/entries/edit/:id", withAuth, (req, res) => {
   Entry.findOne({
     where: { id: req.params.id },
