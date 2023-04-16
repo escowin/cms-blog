@@ -1,5 +1,9 @@
-async function deleteJournalHandler() {
+const deleteButtons = document.querySelectorAll('.delete-journal-btn');
+
+async function deleteJournalHandler(e) {
     console.log("clicked")
 }
 
-deleteJournalHandler;
+deleteButtons.forEach(button => {
+    button.addEventListener('click', deleteJournalHandler)
+})
