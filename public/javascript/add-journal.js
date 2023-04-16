@@ -5,8 +5,20 @@ const journalDurationEl = document.getElementById("journal-duration");
 const journalStartEl = document.getElementById("journal-start");
 const journalEndEl = document.getElementById("journal-end");
 
+const durationMin = 1;
+const durationMax = 20;
+
 function durationRange() {
-  for (let i = 1; i <= 20; i++) {
+  // add an empty default option
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.text = "";
+  defaultOption.disabled = true;
+  defaultOption.selected = true;
+  journalDurationEl.appendChild(defaultOption);
+
+  // adds the duration range as selectable options for the user
+  for (let i = durationMin; i <= durationMax; i++) {
     const option = document.createElement("option");
     option.value = i;
     option.text = i;
@@ -44,6 +56,10 @@ async function newJournalFormHandler(e) {
   const start_date = journalStartEl.value.trim();
   const end_date = calculateEndDate(start_date, duration);
 
+  if (isNaN(duration) || duration < durationMin || duration > durationMax) {
+    console.log(`duration must be a number between ${durationMin} - ${durationMax}`)
+  }
+  
   if (title && description && duration && start_date && end_date) {
     // implemented try / catch for further granular error handling
     try {
