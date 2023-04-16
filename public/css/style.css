@@ -107,7 +107,7 @@ main {
     background-color: var(--overlay-dark);
     margin-left: var(--indent-sm);
     border-top-left-radius: 5rem;
-    padding: var(--indent-sm) 0 var(--indent-sm) var(--indent);
+    padding: var(--indent) 0 var(--indent-sm) var(--indent);
 }
 
 /* lists */

@@ -1,4 +1,4 @@
-<article class="journal" data-id="{{id}}">
+<li class="journal" data-id="{{id}}">
   <a href="/journals/{{id}}">
     <svg class="icon-wrapper journal-icon">
       <image class="icon" xlink:href="/icons/book-solid.svg" />
@@ -8,12 +8,11 @@
   <div class="journal-description">
     <h3 class="title">{{title}}</h3>
     <p class="description">{{description}}</p>
-  </div>
-  
-  <div class="journal-details">
-    <p>s. {{format_date start_date}}</p>
-    <p>e. {{format_date end_date}}</p>
-    <p>{{duration}} {{format_plural "week" duration}}</p>
     <p>{{entries.length}} {{format_plural "entry" entries.length}}</p>
   </div>
-</article>
+  
+  <div class="journal-options">
+    <button class="btn">delete</button>
+    <a class="btn">edit</a>
+  </div>
+</li>

@@ -2,7 +2,7 @@ main {
     padding-top: var(--indent-sm);
 }
 
-.journals {
+.journals ul {
     gap: 1rem;
     height: 100%;
 }

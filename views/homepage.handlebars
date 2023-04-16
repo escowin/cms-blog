@@ -1,15 +1,20 @@
-{{!-- custom stylesheet --}}
+{{!-- stylesheet & javascript --}}
 <link rel="stylesheet" href="/css/homepage.css">
+<script defer src="/javascript/delete-journal.js"></script>
+
+{{!-- html --}}
 <section>
   <h2 class="section-header">Add journal</h2>
   {{> journal-form }}
 </section>
 
-<section class="journals section">
+<section class="journals">
   <h2 class="section-header">Current {{format_plural "journal" journals}}</h2>
 
+  <ul class="section">
   {{#each journals as |journal|}}
       {{!-- rendering the partial --}}
-      {{> journal-info journal }}
+      {{> journal-info-min journal }}
   {{/each}}
+  </ul>
 </section>
