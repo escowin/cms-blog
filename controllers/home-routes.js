@@ -77,10 +77,10 @@ router.get("/journals/:id", (req, res) => {
             attributes: ["id", "tag_name"],
           },
         ],
-        order: [["entry_date", "DESC"]]
+        order: [["entry_date", "DESC"]],
       },
     ],
-    order: [[Entry, "entry_date", "DESC"]]
+    order: [[Entry, "entry_date", "DESC"]],
   })
     .then((dbJournalData) => {
       if (!dbJournalData) {
@@ -96,6 +96,36 @@ router.get("/journals/:id", (req, res) => {
         journal,
         loggedIn: req.session.loggedIn,
         customstyle: '<link rel="stylesheet" href="/css/single-journal.css">',
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/journals/edit/:id", withAuth, (req, res) => {
+  Journal.findOne({
+    where: { id: req.params.id },
+    attributes: [
+      "id",
+      "title",
+      "description",
+      "start_date",
+      "end_date",
+      "duration",
+    ],
+  })
+    .then((dbJournalData) => {
+      if (!dbJournalData) {
+        console.log(err);
+        res.status(404).json({ message: `journal #${id} not found` });
+        return;
+      }
+      const journal = dbJournalData.get({ plain: true });
+      res.render("edit-journal", {
+        journal,
+        loggedIn: true,
       });
     })
     .catch((err) => {
