@@ -1,6 +1,4 @@
 <link rel="stylesheet" href="/css/partial-journal-form.css" />
-<script defer src="/javascript/add-journal.js"></script>
-
 <form class="form" id="journal-form">
   <article class="button-wrapper" style="cursor: pointer">
     <svg
@@ -13,11 +11,11 @@
   <article id="journal-form-details">
     <div class="span-3">
       <label for="journal-title">Title</label>
-      <input type="text" id="journal-title" />
+      <input type="text" id="journal-title" value="{{title}}"/>
     </div>
     <div class="span-3">
       <label for="journal-description">description</label>
-      <textarea id="journal-description"></textarea>
+      <textarea id="journal-description">{{description}}</textarea>
     </div>
     <div>
       <label for="journal-start">start date</label>
@@ -25,19 +23,19 @@
         class="date-details"
         type="date"
         id="journal-start"
-        value="journal-start"
+        value="{{start_date}}"
       />
     </div>
     <div>
       <label for="journal-end">end date</label>
-      <p id="journal-end" class="date-details"></p>
+      <p id="journal-end" class="date-details">{{end_date}}</p>
     </div>
     <div id="duration-wrapper">
       <label for="journal-duration">duration</label>
-      <select id="journal-duration" class="date-details"></select>
+      <select id="journal-duration" class="date-details">
+        <option>{{duration}}</option>
+      </select>
     </div>
-
-
   </article>
 
 </form>
