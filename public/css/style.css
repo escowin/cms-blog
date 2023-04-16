@@ -19,7 +19,6 @@
 
 * {
     box-sizing: border-box;
-    /* outline: 1px dotted white; */
     padding: 0;
     margin: 0;
 }
@@ -38,6 +37,7 @@
 body,
 header,
 main,
+footer,
 nav,
 .section {
     display: flex;
@@ -58,7 +58,15 @@ body {
 }
 
 footer {
+    color: var(--overlay-dark);
     text-align: center;
+    background-color: var(--secondary);
+    padding-left: var(--indent-sm);
+}
+
+footer p {
+    background-color: var(--overlay-dark);
+    flex-grow: 1;
 }
 
 /* header styles */
@@ -71,7 +79,6 @@ header {
     font-family: var(--text-header);
     background-color: var(--secondary);
     padding: 0 var(--indent);
-    /* border-top-left-radius: calc(var(--corners)/10); */
     border-bottom: 1px solid var(--accent-light);
 }
 
@@ -106,7 +113,7 @@ main {
     gap: .25rem;
     background-color: var(--overlay-dark);
     margin-left: var(--indent-sm);
-    border-top-left-radius: 5rem;
+    border-top-left-radius: 4rem;
     padding: var(--indent) 0 var(--indent-sm) var(--indent);
 }
 
@@ -119,7 +126,6 @@ ol {
 /* buttons */
 .btn {
     border: none;
-    padding: .25rem var(--indent);
     transition: 1s;
     font-variant: small-caps;
 }

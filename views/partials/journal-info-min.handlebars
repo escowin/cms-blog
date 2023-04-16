@@ -1,5 +1,5 @@
 <li class="journal" data-id="{{id}}">
-  <a href="/journals/{{id}}">
+  <a class="journal-link" href="/journals/{{id}}">
     <svg class="icon-wrapper journal-icon">
       <image class="icon" xlink:href="/icons/book-solid.svg" />
     </svg>
@@ -10,9 +10,16 @@
     <p class="description">{{description}}</p>
     <p>{{entries.length}} {{format_plural "entry" entries.length}}</p>
   </div>
-  
+
   <div class="journal-options">
-    <button class="btn delete-journal-btn">delete</button>
-    <a class="btn" href="/journals/edit/{{id}}">edit</a>
+    <svg class="icon-wrapper delete-journal-btn">
+      <image class="icon" xlink:href="/icons/delete-solid.svg" />
+    </svg>
+    {{! <button class="btn delete-journal-btn">delete</button> }}
+    <a class="btn" href="/journals/edit/{{id}}">
+      <svg class="icon-wrapper edit-journal-btn">
+        <image class="icon" xlink:href="/icons/pen-solid.svg" />
+      </svg>
+    </a>
   </div>
 </li>
