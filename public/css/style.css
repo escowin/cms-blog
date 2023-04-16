@@ -37,12 +37,15 @@
 /* divs */
 body,
 header,
-main {
+main,
+nav,
+.section {
     display: flex;
 }
 
 body,
-main {
+main,
+.section {
     flex-direction: column;
 }
 
@@ -77,7 +80,6 @@ h1 {
 }
 
 nav {
-    display: flex;
     align-items: center;
     gap: 1rem;
 }
@@ -90,23 +92,22 @@ main {
     background-color: var(--secondary);
 }
 
+.form {
+    margin-left: var(--indent-sm);
+}
+
 .section-header {
-    /* background: var(--secondary); */
     margin-left: 5rem;
-    padding-left: calc(var(--indent)*1.25);
     border-top-left-radius: var(--corners);
     border-bottom-left-radius: var(--corners);
 }
 
 .section {
-    display: flex;
-    flex-direction: column;
     gap: .25rem;
     background-color: var(--overlay-dark);
     margin-left: var(--indent-sm);
-    border-top-left-radius: 15rem;
-    border-bottom-left-radius: 15rem;
-    padding: var(--indent-sm) 0 var(--indent-sm) var(--indent);   
+    border-top-left-radius: 5rem;
+    padding: var(--indent-sm) 0 var(--indent-sm) var(--indent);
 }
 
 /* lists */
@@ -133,12 +134,13 @@ nav .btn {
     border-top-left-radius: var(--corners);
     border-bottom-left-radius: var(--corners);
 }
+
 /* form label & input fields */
 textarea {
     resize: none;
 }
 
-input, textarea {
+input, textarea, option, select {
     background-color: var(--input);
     color: var(--accent-dark);
     transition: 1s;

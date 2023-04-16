@@ -1,12 +1,12 @@
 {{!-- custom stylesheet --}}
 <link rel="stylesheet" href="/css/homepage.css">
 <section>
-  <h2 class="">Add journal</h2>
+  <h2 class="section-header">Add journal</h2>
   {{> journal-form }}
 </section>
 
 <section class="journals section">
-  <h2 class="section-header">Journals</h2>
+  <h2 class="section-header">Current {{format_plural "journal" journals}}</h2>
 
   {{#each journals as |journal|}}
       {{!-- rendering the partial --}}
