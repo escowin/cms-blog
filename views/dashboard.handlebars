@@ -1,16 +1,10 @@
-{{!-- custom stylesheet --}}
-<link rel="stylesheet" href="/css/dashboard.css">
-<script defer src="/javascript/add-journal.js"></script>
-
-{{!-- controllers | dashboard | get route --}}
-{{!-- populates the dashboard view with user-created posts --}}
-{{#if journals.length}}
+{{! custom stylesheet }}
+<link rel="stylesheet" href="/css/dashboard.css" />
 <section>
-    <h2>Journals (/dashboard)</h2>
-    <article class="journals">
-        {{#each journals as |journal|}}
-            {{> journal-info journal}}
-        {{/each}}
-    </article>
+  <h2>profile</h2>
+  <p>username value</p>
+  <p>journals: {{journals.length}}</p>      
+  <p>entries: entries.length value</p>
+  <p>tags: tags.length value</p>
+  <p>meal prep</p>
 </section>
-{{/if}}

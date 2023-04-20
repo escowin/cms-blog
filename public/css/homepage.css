@@ -61,7 +61,46 @@ main {
 }
 
 @media screen and (min-width: 768px) {
+    main {
+        font-size: 2rem;
+    }
 
+    .section {
+        border-top-left-radius: 5rem;
+    }
+
+    #journal-form-details {
+        display: flex;
+        flex-direction: column;
+        gap: .25rem;
+    }
+
+    div {
+       display: grid;
+       grid-template-columns: repeat(2, auto);
+       width: 100%;
+    }
+
+    textarea {
+        height: 5rem;
+    }
+    
+    .journal-options {
+        gap: 1.5rem;
+        margin: .25rem 1.5rem 0 0;
+    }
+
+    .journal-options .icon-wrapper {
+        --size: 2.5rem;
+        width: var(--size);
+        height: var(--size);
+    }
+
+    .journal-icon {
+        --size: 5rem;
+        width: var(--size);
+        height: var(--size);
+    }
 }
 
 @media screen and (min-width: 1024px) {

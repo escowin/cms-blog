@@ -1,9 +1,10 @@
 * {
-    /* outline: 1px dotted white; */
+    outline: 1px dotted white;
 }
 
 .form {
-    border-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -33,10 +34,10 @@ label {
 }
 
 input {
-    font-size: 1.5rem;
-    border-radius: var(--corners);
+    font-size: 2rem;
+    border-top-left-radius: var(--corners);
+    border-bottom-left-radius: var(--corners);
     padding: .25rem 1rem;
-    background-color: var(--input);
     width: 100%;
     transition: 1s;
 }
@@ -48,11 +49,16 @@ input:focus {
 
 .login-btn {
     background-color: var(--secondary);
-    width: 100%;
-    font-size: 1.5rem;
+    width: 80%;
+    font-size: 2rem;
     margin: 1rem 0 2rem 0;
+    border-radius: var(--corners);
 }
 
 .login-btn:active {
     background-color: var(--link);
+}
+
+footer p {
+    background-color: transparent;
 }

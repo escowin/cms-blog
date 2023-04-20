@@ -28,6 +28,7 @@ app.use(session(sess));
 // server uses the handlebars template engine with custom formatting helpers
 const hbs = exphbs.create({ helpers });
 
+// configures view | `.handlebars` file extension
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 

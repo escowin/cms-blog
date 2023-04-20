@@ -35,18 +35,23 @@
 
 #journal-form-details {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: auto 1fr;
     gap: 0 .25rem;
     align-items: flex-start;
 }
 
-div {
+.journal-text {
     display: flex;
     flex-direction: column;
+    grid-column: span 2;
 }
-.span-3 {
-    grid-column: span 3;
+
+.time-details {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: .5rem;
 }
+
 
 textarea {
     width: 100%;
@@ -66,4 +71,10 @@ textarea {
 
 #journal-end {
     font-size: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+    #journal-form-details {
+        display: grid;
+    }
 }

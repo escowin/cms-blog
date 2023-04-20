@@ -13,3 +13,7 @@
 .details {
     padding-left: var(--indent);
 }
+
+footer p {
+    background-color: transparent;
+}

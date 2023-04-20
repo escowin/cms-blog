@@ -6,7 +6,14 @@ const withAuth = require("../utils/auth");
 router.get("/", withAuth, (req, res) => {
   Journal.findAll({
     where: { user_id: req.session.user_id },
-    attributes: ["id", "title", "description", "start_date", "end_date", "duration"],
+    attributes: [
+      "id",
+      "title",
+      "description",
+      "start_date",
+      "end_date",
+      "duration",
+    ],
     order: [["created_at", "DESC"]],
     include: [
       {
@@ -21,11 +28,11 @@ router.get("/", withAuth, (req, res) => {
   })
     .then((dbJournalData) => {
       // serializes data before passing to template
-      const journals = dbJournalData.map((journal) => journal.get({ plain: true }));
+      const journals = dbJournalData.map((journal) => journal.get({ plain: true }))
       res.render("dashboard", {
         journals,
         loggedIn: true,
-        customstyle: '<link rel="stylesheet" href="/css/dashboard.css">'
+        customstyle: '<link rel="stylesheet" href="/css/dashboard.css">',
       });
     })
     .catch((err) => {
@@ -37,7 +44,14 @@ router.get("/", withAuth, (req, res) => {
 router.get("/edit/:id", withAuth, (req, res) => {
   Journal.findOne({
     where: { id: req.params.id },
-    attributes: ["id", "title", "description", "start_date", "end_date", "duration"],
+    attributes: [
+      "id",
+      "title",
+      "description",
+      "start_date",
+      "end_date",
+      "duration",
+    ],
     include: [
       {
         model: Entry,

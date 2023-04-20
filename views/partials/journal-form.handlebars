@@ -1,23 +1,21 @@
 <link rel="stylesheet" href="/css/partial-journal-form.css" />
 <form class="form" id="journal-form">
   <article class="button-wrapper" style="cursor: pointer">
-    <svg
-      class="icon-wrapper page-icon"
-      id="add-journal-btn"
-    >
+    <svg class="icon-wrapper page-icon" id="add-journal-btn">
       <image class="icon" xlink:href="/icons/add-solid.svg" />
     </svg>
   </article>
   <article id="journal-form-details">
-    <div class="span-3">
+    <div class="journal-text">
       <label for="journal-title">Title</label>
-      <input type="text" id="journal-title" value="{{title}}"/>
+      <input type="text" id="journal-title" value="{{title}}" />
     </div>
-    <div class="span-3">
+    <div class="journal-text">
       <label for="journal-description">description</label>
       <textarea id="journal-description">{{description}}</textarea>
     </div>
-    <div>
+
+    <div class="time-details">
       <label for="journal-start">start date</label>
       <input
         class="date-details"
@@ -26,16 +24,17 @@
         value="{{start_date}}"
       />
     </div>
-    <div>
-      <label for="journal-end">end date</label>
-      <p id="journal-end" class="date-details">{{end_date}}</p>
-    </div>
-    <div id="duration-wrapper">
+    <div class="time-details" id="duration-wrapper">
       <label for="journal-duration">duration</label>
       <select id="journal-duration" class="date-details">
         <option>{{duration}}</option>
       </select>
     </div>
+    <div class="time-details">
+      <label for="journal-end">end date</label>
+      <p id="journal-end" class="date-details">{{end_date}}</p>
+    </div>
+
   </article>
 
 </form>
