@@ -1,40 +1,43 @@
 <link rel="stylesheet" href="/css/partial-journal-form.css" />
 <form class="form" id="journal-form">
-  <article class="button-wrapper" style="cursor: pointer">
+  <article class="journal-text" id="title-wrapper">
+    <label for="journal-title">Title</label>
+    <input type="text" id="journal-title" value="{{title}}" />
+  </article>
+
+  <article class="journal-text" id="description-wrapper">
+    <label for="journal-description">description</label>
+    <textarea id="journal-description">{{description}}</textarea>
+  </article>
+
+  <article class="date">
+    <label for="journal-start">start date</label>
+    <input
+      class="date-details"
+      type="date"
+      id="journal-start"
+      value="{{start_date}}"
+    />
+  </article>
+
+  <article class="date">
+    <label for="journal-end">end date</label>
+    <p id="journal-end" class="date-details">{{end_date}}</p>
+  </article>
+
+  <article class="date" id="duration-wrapper">
+    <label for="journal-duration">duration</label>
+    <div>
+      <select id="journal-duration" class="date-details">
+        <option>{{duration}}</option>
+      </select>
+      <span class="date-details">weeks</span>
+    </div>
+  </article>
+
+  <article class="button-wrapper">
     <svg class="icon-wrapper page-icon" id="add-journal-btn">
       <image class="icon" xlink:href="/icons/add-solid.svg" />
     </svg>
   </article>
-  <article id="journal-form-details">
-    <div class="journal-text">
-      <label for="journal-title">Title</label>
-      <input type="text" id="journal-title" value="{{title}}" />
-    </div>
-    <div class="journal-text">
-      <label for="journal-description">description</label>
-      <textarea id="journal-description">{{description}}</textarea>
-    </div>
-
-    <div class="time-details">
-      <label for="journal-start">start date</label>
-      <input
-        class="date-details"
-        type="date"
-        id="journal-start"
-        value="{{start_date}}"
-      />
-    </div>
-    <div class="time-details" id="duration-wrapper">
-      <label for="journal-duration">duration</label>
-      <select id="journal-duration" class="date-details">
-        <option>{{duration}}</option>
-      </select>
-    </div>
-    <div class="time-details">
-      <label for="journal-end">end date</label>
-      <p id="journal-end" class="date-details">{{end_date}}</p>
-    </div>
-
-  </article>
-
 </form>
