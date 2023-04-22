@@ -156,3 +156,18 @@ label {
         gap: .5rem;
     }
 }
+
+@media screen and (min-width: 1024px) {
+    #journal-form {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, max-content);
+        grid-template-areas: 
+        "a a a"
+        "b b b"
+        "c d e"
+        "f f f";
+        flex-grow: 1;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
