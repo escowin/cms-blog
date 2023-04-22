@@ -176,12 +176,10 @@ a:hover {
 }
 
 @media screen and (min-width: 768px) {
-    body {
-        /* padding: 0; */
-    }
     header {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: auto 1fr;
+        gap: 2rem;
         font-size: 1.5rem;
         box-shadow: 0 0 1rem var(--primary);
         border-bottom: none;

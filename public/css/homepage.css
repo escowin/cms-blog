@@ -63,6 +63,8 @@ main {
 @media screen and (min-width: 768px) {
     main {
         font-size: 2rem;
+        padding: var(--indent-sm);
+
     }
 
     .section {
@@ -76,15 +78,13 @@ main {
     }
 
     div {
-       display: grid;
-       grid-template-columns: repeat(2, auto);
-       width: 100%;
+
     }
 
     textarea {
         height: 5rem;
     }
-    
+
     .journal-options {
         gap: 1.5rem;
         margin: .25rem 1.5rem 0 0;
@@ -103,6 +103,4 @@ main {
     }
 }
 
-@media screen and (min-width: 1024px) {
-
-}
+@media screen and (min-width: 1024px) {}

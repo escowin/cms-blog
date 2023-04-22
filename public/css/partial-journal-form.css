@@ -52,15 +52,12 @@ label {
 }
 
 /* journal text rows */
-.journal-text * {
-    font-size: 1.5rem;
-}
-
 #journal-title,
 #journal-description {
     padding: var(--indent-sm) var(--indent);
     border-top-left-radius: 2.25rem;
     border-bottom-left-radius: 2.25rem;
+    font-size: 1.5rem;
 }
 
 #journal-description {
@@ -78,5 +75,84 @@ label {
 }
 
 @media screen and (min-width: 768px) {
+    #journal-form {
+        align-items: flex-start;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-areas: 
+        "a c"
+        "b d"
+        "b e"
+        "b f";
+        gap: .25rem 1rem;
+        padding: var(--indent);
+    }
 
+    /* .form-section,
+    .form-section * {
+        outline: 1px dashed white;
+    } */
+
+    .form {
+        border-radius: 2rem;
+        background-color: var(--overlay-dark);
+        padding: var(--indent-sm) var(--indent);
+    }
+
+    #journal-title,
+    #journal-description {
+        padding: var(--indent-sm) var(--indent);
+        border-radius: 1rem;
+        /* grid-column: span 1; */
+    }
+
+    #title-wrapper {
+        grid-area: a;
+    }
+
+    #description-wrapper {
+        grid-area: b;
+        height: 100%;
+    }
+
+    #start-date-wrapper {
+        grid-area: c;
+    }
+
+    #end-date-wrapper {
+        grid-area: d;
+    }
+
+    #duration-wrapper {
+        grid-area: e;
+    }
+
+    .button-wrapper {
+        grid-area: f;
+        align-self: flex-end;
+    }
+
+    #journal-description {
+        height: inherit;
+    }
+
+    label {
+        padding: 0;
+        font-size: 2rem;
+    }
+
+    .date {
+        text-align: end;
+    }
+
+    .date-details {
+        height: inherit;
+    }
+    
+    #duration-wrapper div {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        width: 100%;
+        gap: .5rem;
+    }
 }
