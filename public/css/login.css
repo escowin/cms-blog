@@ -1,5 +1,5 @@
 * {
-    outline: 1px dotted white;
+    /* outline: 1px dotted white; */
 }
 
 .form {
@@ -61,4 +61,33 @@ input:focus {
 
 footer p {
     background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+    main {
+        flex-direction: row;
+        padding: var(--indent-sm);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form {
+        border-radius: 2rem;
+        background-color: var(--overlay-dark);
+        padding: var(--indent-sm) var(--indent);
+    }
+
+    input {
+        border-radius: var(--corners);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    main {
+        gap: 2rem;
+    }
+
+    .form button {
+        width: 100%;
+    }
 }
