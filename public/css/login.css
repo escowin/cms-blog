@@ -55,13 +55,12 @@ input:focus {
     background-color: var(--link);
 }
 
-footer p {
+/* footer p {
     background-color: transparent;
-}
+} */
 
 @media screen and (min-width: 768px) {
     main {
-        flex-direction: row;
         padding: var(--indent-sm);
         align-items: center;
         justify-content: center;
