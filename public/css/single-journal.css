@@ -1,27 +1,22 @@
+* {
+    outline: 1px dashed white;
+}
+/* section | journal info */
 .journal {
-    padding-left: var(--indent);
-    background-color: var(--overlay-dark);
+    display: flex;
+    gap: 1rem;
 }
 
-.journal-wrapper {
+.journal-info {
     display: grid;
-    grid-template-columns: repeat(4, auto)
+    grid-template-columns: repeat(4, 1fr);
+    gap: .25rem 1rem;
 }
 
-.journal .title {
-    font-size: 2rem;
-}
-
-.details, .duration {
-    font-size: 75%;
-}
-
-.title ,
+.title,
 .description {
     grid-column: span 4;
 }
+/* section | add entry */
 
-/* #form-section,
-#entries-section {
-    margin: 0 calc(var(--indent)/2);
-} */
+/* section | entry list */

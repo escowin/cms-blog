@@ -5,14 +5,13 @@
     </svg>
   </a>
 
-  <div class="journal-description">
+  <div class="journal-info">
     <h3 class="title">{{title}}</h3>
     <p class="description">{{description}}</p>
-  </div>
-  
-  <div class="journal-details">
-    <p>s. {{format_date start_date}}</p>
-    <p>e. {{format_date end_date}}</p>
+
+    {{! bug | using format_date helper displays the wrong date }}
+    <p>s. {{start_date}}</p>
+    <p>e. {{end_date}}</p>
     <p>{{duration}} {{format_plural "week" duration}}</p>
     <p>{{entries.length}} {{format_plural "entry" entries.length}}</p>
   </div>

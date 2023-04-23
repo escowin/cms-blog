@@ -73,6 +73,7 @@ async function editJournalFormHandler(e) {
       });
 
       if (response.ok) {
+        console.log(response.body.toString())
         document.location.replace(`../../`);
       } else {
         alert(response.statusText);

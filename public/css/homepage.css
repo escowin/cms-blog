@@ -102,6 +102,7 @@ main {
 @media screen and (min-width: 1024px) {
     main {
         flex-direction: row;
+        padding: 0;
     }
 
     .form-section {
@@ -122,5 +123,9 @@ main {
 
     .journal-icon {
         --size: 3rem;
+    }
+
+    .journal-options .icon-wrapper {
+        --size: 2rem;
     }
 }
