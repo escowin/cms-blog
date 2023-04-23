@@ -7,7 +7,7 @@
     --accent-light: rgb(214, 235, 237);
     --input: rgba(38, 45, 60, 0.099);
     --input-focus: rgba(211, 211, 211, 0.25);
-    --overlay-dark: hsla(199, 17%, 25%, 0.246); 
+    --overlay-dark: hsla(199, 17%, 25%, 0.246);
     --text-header: 'Raleway', sans-serif;
     --text-body: 'Alegreya Sans', sans-serif;
     --rounded-corner: 1.25rem;
@@ -25,8 +25,9 @@
 }
 
 .icon-wrapper {
-    width: 2rem;
-    height: 2rem;
+    --size: 2rem;
+    width: var(--size);
+    height: var(--size);
 }
 
 .icon {
@@ -92,6 +93,7 @@ h1 {
 .nav-links {
     justify-content: space-around;
 }
+
 /* main styles */
 main {
     flex-grow: 1;
@@ -148,7 +150,10 @@ textarea {
     resize: none;
 }
 
-input, textarea, option, select {
+input,
+textarea,
+option,
+select {
     background-color: var(--input);
     color: var(--accent-dark);
     transition: 1s;
@@ -160,7 +165,8 @@ input::placeholder {
     color: var(--accent);
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     background-color: var(--input-focus);
     outline: none;
 }
@@ -193,11 +199,12 @@ a:hover {
 }
 
 @media screen and (min-width: 1024px) {
+
     body,
     footer {
         padding: 0;
     }
-    
+
     footer p {
         background-color: transparent;
         flex-grow: 0;
@@ -205,5 +212,71 @@ a:hover {
 
     .nav-links {
         justify-content: space-around;
+    }
+
+    body {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr max-content;
+        grid-template-areas:
+            "a b"
+            "c b";
+    }
+
+    /* body divs */
+    header {
+        grid-area: a;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    footer {
+        grid-area: c;
+        flex-direction: column-reverse;
+        height: max-content;
+        color: var(--accent);
+        font-size: 1rem;
+        align-items: center;
+        background-color: transparent;
+    }
+
+    main {
+        grid-area: b;
+        flex-direction: row;
+        padding: 0;
+    }
+
+    /* - header divs */
+    h1 {
+        margin-left: var(--indent-sm);
+        padding: 0 var(--indent-sm);
+        border-right: none;
+        border-bottom: 2px solid var(--secondary);
+    }
+
+    .nav-links {
+        flex-grow: 1;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* footer divs */
+    footer a {
+        width: fit-content;
+        border-top: 1px double var(--primary);
+        padding: 0 var(--indent-sm);
+    }
+
+    .icon-wrapper {
+        --size: 3rem;
+    }
+
+    /* main divs */
+    .section {
+        margin: 0;
     }
 }

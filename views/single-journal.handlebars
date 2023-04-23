@@ -9,11 +9,12 @@
 
 {{!-- partials populate each section --}}
 <section id="journal-header">
-  {{> journal-info journal}}
+    <h2 class="section-header">{{journal.title}}</h2>
+    {{> journal-info journal}}
 </section>
 
-<section class="section" id="form-section">
-  <h3 id="form-header">New entry</h3>
+<section id="form-section">
+  <h2 id="form-header" class="section-header">Add entry</h2>
   {{#if loggedIn}}
     {{> entry-form}}
   {{/if}}

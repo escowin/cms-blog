@@ -1,12 +1,9 @@
 <article class="journal" data-id="{{id}}">
-  <a href="/journals/{{id}}">
-    <svg class="icon-wrapper journal-icon">
-      <image class="icon" xlink:href="/icons/book-solid.svg" />
-    </svg>
-  </a>
+  {{!-- <svg class="icon-wrapper journal-icon">
+    <image class="icon" xlink:href="/icons/book-solid.svg" />
+  </svg> --}}
 
   <div class="journal-info">
-    <h3 class="title">{{title}}</h3>
     <p class="description">{{description}}</p>
 
     {{! bug | using format_date helper displays the wrong date }}
