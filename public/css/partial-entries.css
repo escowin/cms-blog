@@ -26,13 +26,15 @@
     align-items: center;
 }
 
-.entry .notes, .tags {
+.entry .notes,
+.tags {
     grid-column: span 3;
 }
 
 .date {
     font-weight: bold;
 }
+
 .tags {
     display: flex;
     gap: .75rem;
@@ -49,6 +51,7 @@
 .weight {
     text-align: end;
 }
+
 .entry-buttons {
     /* grid-column: span 2; */
     display: flex;
@@ -62,4 +65,20 @@
     font-family: var(--text-header);
     font-size: 1rem;
     font-weight: bold;
+}
+
+@media screen and (min-width: 1024px) {
+    #entries {
+        height: 100%;
+        overflow-y: scroll;
+        background-color: var(--overlay-dark);
+        padding: var(--indent) 0 0 var(--indent);
+        border-top-left-radius: 3rem;
+    }
+
+    .entry {
+        border-top-left-radius: 3rem;
+        border-bottom-left-radius: 3rem;
+        padding: var(--indent) 0 var(--indent) var(--indent);
+    }
 }

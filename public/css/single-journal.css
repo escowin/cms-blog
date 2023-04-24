@@ -3,7 +3,7 @@
     /* body divs */
     main {
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: 20rem auto;
         grid-template-areas: 
         "aa aa"
         "bb cc";
@@ -28,6 +28,7 @@
 
     /* - section | journal-header */
     #journal-header .section-header {
+        width: 100%;
         margin-bottom: 0;
     }
 
@@ -62,6 +63,10 @@
     /* section | entry list */
     #entries-section {
         height: 100%;
-        overflow-y: scroll;
+        overflow-y: hidden;
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+        align-items: flex-end;
     }
 }
