@@ -68,5 +68,35 @@ input::placeholder {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    label {
+        font-size: 100%;
+    }
+
+    .form-details {
+        gap: 0 .5rem;
+    }
+
+    #entry-date,
+    #entry-weight {
+        grid-template-columns: 5rem 1fr;
+    }
+
+    #entry-text,
+    #entry-tags {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #entry-text {
+        height: 25vh;
+    }
+
+    textarea {
+        flex-grow: 1;
     }
 }

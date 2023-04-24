@@ -22,6 +22,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    /* outline: 1px dashed white; */
 }
 
 .icon-wrapper {
@@ -193,6 +194,10 @@ a:hover {
         background-color: var(--primary);
     }
 
+    main {
+        font-size: 2rem;
+    }
+
     .nav-links {
         justify-content: space-between;
     }
@@ -200,6 +205,25 @@ a:hover {
 
 @media screen and (min-width: 1024px) {
 
+    /* scrollbar */
+    ::-webkit-scrollbar {
+        width: .5rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 1rem;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-dark);
+    }
+
+    /* divs */
     body,
     footer {
         padding: 0;
@@ -276,6 +300,10 @@ a:hover {
     }
 
     /* main divs */
+    .section-header {
+        padding-right: 0;
+    }
+
     .section {
         margin: 0;
     }

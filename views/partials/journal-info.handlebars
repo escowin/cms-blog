@@ -1,15 +1,8 @@
 <article class="journal" data-id="{{id}}">
-  {{!-- <svg class="icon-wrapper journal-icon">
-    <image class="icon" xlink:href="/icons/book-solid.svg" />
-  </svg> --}}
-
-  <div class="journal-info">
-    <p class="description">{{description}}</p>
-
-    {{! bug | using format_date helper displays the wrong date }}
-    <p>s. {{start_date}}</p>
-    <p>e. {{end_date}}</p>
-    <p>{{duration}} {{format_plural "week" duration}}</p>
-    <p>{{entries.length}} {{format_plural "entry" entries.length}}</p>
-  </div>
+  {{! bug | using format_date helper displays the wrong date }}
+  <p class="journal-details">s. {{start_date}}</p>
+  <p class="journal-details">e. {{end_date}}</p>
+  <p class="journal-details">{{entries.length}} {{format_plural "entry" entries.length}}</p>
+  <p class="journal-details">{{duration}} {{format_plural "week" duration}}</p>
+  <p class="description">{{description}}</p>
 </article>

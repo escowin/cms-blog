@@ -15,6 +15,7 @@
     #journal-header {
         grid-area: aa;
         display: flex;
+        flex-direction: column;
     }
 
     #form-section {
@@ -26,35 +27,35 @@
     }
 
     /* - section | journal-header */
+    #journal-header .section-header {
+        margin-bottom: 0;
+    }
+
     .journal {
-        width: 100%;
         display: grid;
         grid-template-columns: auto 1fr;
-        gap: 1rem;
+        grid-template-rows: repeat(4, 1fr);
+        gap: 0 1rem;
         align-items: flex-start;
-        background-color: var(--primary);
+        padding-left: var(--indent);
+    }
+
+    .journal-details {
+        font-size: 50%;
+        text-align: end;
     }
 
     .wrapper {
         padding-bottom: 1rem;
     }
 
-    .journal-info {
-        color: var(--secondary);
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: .25rem 1rem;
-    }
-
-    .title,
     .description {
-        grid-column: span 4;
+        grid-area: 1 / 2 / -1 / -1;
     }
 
     /* section | add entry */
     #form-section {
-        border-top-left-radius: 0rem;
-        border-top-right-radius: 3rem;
+        border-radius: 0;
         padding: 0;
     }
 
