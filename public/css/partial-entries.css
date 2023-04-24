@@ -81,4 +81,8 @@
         border-bottom-left-radius: 3rem;
         padding: var(--indent) 0 var(--indent) var(--indent);
     }
+
+    #weight {
+        width: 5rem;
+    }
 }

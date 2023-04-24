@@ -11,7 +11,7 @@
 .form h2 {
     color: var(--text-light);
     text-align: center;
-    border-bottom: 1px dotted var(--secondary);
+    border-bottom: 2px solid var(--secondary);
     padding: 0 calc(var(--indent)*2);
 }
 
@@ -35,12 +35,6 @@ input {
     border-bottom-left-radius: var(--corners);
     padding: .25rem 1rem;
     width: 100%;
-    transition: 1s;
-}
-
-input:focus {
-    background-color: var(--input-focus);
-    outline: none;
 }
 
 .login-btn {
@@ -80,6 +74,10 @@ input:focus {
 @media screen and (min-width: 1024px) {
     main {
         gap: 2rem;
+    }
+
+    .form h2 {
+        width: 75%;
     }
 
     .form button {

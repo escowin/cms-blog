@@ -71,10 +71,12 @@ input::placeholder {
         height: 100%;
         border-radius: 0;
         border-top-right-radius: 4rem;
+        padding: var(--indent) var(--indent) 0 0;
     }
 
     label {
         font-size: 100%;
+        padding-left: var(--indent-sm);
     }
 
     .form-details {
@@ -97,6 +99,9 @@ input::placeholder {
         height: 25vh;
     }
 
+    #tag-name {
+        padding: var(--indent-sm);
+    }
     textarea {
         flex-grow: 1;
     }

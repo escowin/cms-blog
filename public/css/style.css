@@ -6,7 +6,6 @@
     --accent-dark: rgb(28, 26, 26);
     --accent-light: rgb(214, 235, 237);
     --input: rgba(38, 45, 60, 0.099);
-    --input-focus: rgba(211, 211, 211, 0.25);
     --overlay-dark: hsla(199, 17%, 25%, 0.246);
     --text-header: 'Raleway', sans-serif;
     --text-body: 'Alegreya Sans', sans-serif;
@@ -14,7 +13,6 @@
     --corners: 25rem;
     --indent: 1rem;
     --indent-sm: calc(var(--indent)/2);
-
     --section-indent: var(--indent-sm) 0 var(--indent-sm) var(--indent-sm)
 }
 
@@ -22,7 +20,6 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    /* outline: 1px dashed white; */
 }
 
 .icon-wrapper {
@@ -38,7 +35,6 @@
 
 /* divs */
 body,
-/* header, */
 main,
 footer,
 .nav-links,
@@ -135,15 +131,13 @@ ol {
     font-variant: small-caps;
 }
 
-nav .btn {
-    background-color: var(--primary);
-    color: var(--accent-light);
-    border-radius: var(--corners);
-}
-
 .form-btn {
     border-top-left-radius: var(--corners);
     border-bottom-left-radius: var(--corners);
+}
+
+.delete-journal-btn {
+    cursor: pointer;
 }
 
 /* form label & input fields */
@@ -151,10 +145,7 @@ textarea {
     resize: none;
 }
 
-input,
-textarea,
-option,
-select {
+.input {
     background-color: var(--input);
     color: var(--accent-dark);
     transition: 1s;
@@ -162,14 +153,38 @@ select {
     border-radius: .12rem;
 }
 
-input::placeholder {
-    color: var(--accent);
+.input:focus {
+    background-color: var(--secondary);
+    outline: none;
 }
 
-input:focus,
-textarea:focus {
-    background-color: var(--input-focus);
-    outline: none;
+.button-wrapper {
+    justify-content: center;
+    justify-self: center;
+    display: flex;
+    border: dashed 2px var(--secondary);
+    border-radius: var(--corners);
+    padding: .25rem;
+    transition: 1s;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button-wrapper:hover {
+    background-color: var(--link);
+    box-shadow: 0 0 1rem var(--link);
+}
+
+.form button:hover {
+    background-color: var(--accent-light);
+    box-shadow: 0 0 1rem var(--accent-light);
+}
+
+.submit-btn {
+    --size: 2rem;
+    width: var(--size);
+    height: var(--size);
+    border: none;
 }
 
 /* typography */
@@ -183,7 +198,25 @@ a:hover {
     color: var(--link);
 }
 
+/* svg icons */
+.icon-wrapper {
+    transition: 1s;
+}
+
+.nav-links a {
+    transition: 1s;
+}
+
+.nav-links a:hover {
+    background-color: var(--secondary);
+    box-shadow: 0 0 1rem 1rem var(--secondary);
+}
+
 @media screen and (min-width: 768px) {
+    body {
+        font-size: 2rem;
+    }
+
     header {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -193,11 +226,7 @@ a:hover {
         border-bottom: none;
         background-color: var(--primary);
     }
-
-    main {
-        font-size: 2rem;
-    }
-
+    
     .nav-links {
         justify-content: space-between;
     }
@@ -211,7 +240,7 @@ a:hover {
     }
 
     ::-webkit-scrollbar-track {
-        background: var(--secondary);
+        background: var(--overlay-dark);
     }
 
     ::-webkit-scrollbar-thumb {
@@ -288,6 +317,10 @@ a:hover {
         width: 100%;
     }
 
+    .nav-links a {
+        border-radius: 50%;
+    }
+
     /* footer divs */
     footer a {
         width: fit-content;
@@ -307,4 +340,7 @@ a:hover {
     .section {
         margin: 0;
     }
+
+    /* form */
+
 }

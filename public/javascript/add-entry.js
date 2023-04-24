@@ -1,3 +1,5 @@
+const addEntryBtn = document.getElementById("add-entry-btn");
+
 async function entryFormHandler(e) {
   try {
     e.preventDefault();
@@ -96,6 +98,5 @@ const getExistingTags = async () => {
 };
 
 // calls
-document
-  .getElementById("entry-form")
-  .addEventListener("submit", entryFormHandler);
+addEntryBtn.addEventListener("click", entryFormHandler);
+

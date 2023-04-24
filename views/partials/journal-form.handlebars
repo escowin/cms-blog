@@ -2,18 +2,18 @@
 <form class="form" id="journal-form">
   <article class="journal-text" id="title-wrapper">
     <label for="journal-title">Title</label>
-    <input type="text" id="journal-title" value="{{title}}" />
+    <input class="input" type="text" id="journal-title" value="{{title}}" />
   </article>
 
   <article class="journal-text" id="description-wrapper">
     <label for="journal-description">description</label>
-    <textarea id="journal-description">{{description}}</textarea>
+    <textarea class="input" id="journal-description">{{description}}</textarea>
   </article>
 
   <article class="date" id="start-date-wrapper">
     <label for="journal-start">start date</label>
     <input
-      class="date-details"
+      class="date-details input"
       type="date"
       id="journal-start"
       value="{{start_date}}"
@@ -28,15 +28,15 @@
   <article class="date" id="duration-wrapper">
     <label for="journal-duration">duration</label>
     <div>
-      <select id="journal-duration" class="date-details">
-        <option>{{duration}}</option>
+      <select class="input" id="journal-duration" class="date-details">
+        <option class="input">{{duration}}</option>
       </select> 
       <span class="time">weeks</span>
     </div>
   </article>
 
   <article class="button-wrapper">
-    <svg class="icon-wrapper page-icon" id="add-journal-btn">
+    <svg class="icon-wrapper page-icon submit-btn" id="add-journal-btn">
       <image class="icon" xlink:href="/icons/add-solid.svg" />
     </svg>
   </article>

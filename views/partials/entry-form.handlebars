@@ -1,12 +1,20 @@
 <form id="entry-form">
   <div class="form-details" id="entry-date">
     <label for="date">date</label>
-    <input name="date" id="date" type="date" value="{{entry_date}}" required />
+    <input
+      class="input"
+      name="date"
+      id="date"
+      type="date"
+      value="{{entry_date}}"
+      required
+    />
   </div>
 
   <div class="form-details" id="entry-weight">
     <label for="weight">weight</label>
     <input
+      class="input"
       name="weight"
       type="number"
       id="weight"
@@ -18,20 +26,29 @@
 
   <div id="entry-text">
     <label for="text">notes</label>
-    <textarea name="entry-text" id="text">{{entry_text}}</textarea>
+    <textarea
+      class="input"
+      name="entry-text"
+      id="text"
+    >{{entry_text}}</textarea>
   </div>
 
   {{!-- {{#if is_edit_entry_page}} --}}
-    <div id="entry-tags">
-      <label for="tag-name">tags</label>
-      <input
-        name="tag-name"
-        id="tag-name"
-        type="text"
-        placeholder="tag 1; tag 2; tag 3; etc..."
-      />
-    </div>
+  <div id="entry-tags">
+    <label for="tag-name">tags</label>
+    <input
+      class="input"
+      name="tag-name"
+      id="tag-name"
+      type="text"
+      placeholder="tag 1; tag 2; tag 3; etc..."
+    />
+  </div>
   {{!-- {{/if}} --}}
 
-  <button type="submit" class="btn add-btn">save</button>
-</form>
+    <article class="button-wrapper">
+      <svg class="icon-wrapper page-icon submit-btn" id="add-entry-btn">
+        <image class="icon" xlink:href="/icons/add-solid.svg" />
+      </svg>
+    </article>
+  </form>
