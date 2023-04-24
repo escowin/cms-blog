@@ -92,11 +92,6 @@
 
 @media screen and (min-width: 1024px) {
     /* - main divs */
-    .form-section {
-        display: flex;
-        flex-direction: column;
-    }
-
     .journals-section {
         flex-grow: 1;
         display: flex;

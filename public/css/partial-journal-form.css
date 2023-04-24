@@ -6,7 +6,6 @@
     border-top-left-radius: 2.25rem;
     border-bottom-left-radius: 2.25rem;
     background-color: var(--overlay-dark);
-    padding: var(--indent-sm) 0 var(--indent-sm) var(--indent-sm);
 }
 
 #title-wrapper,
@@ -61,7 +60,6 @@ label {
         "b e"
         "b f";
         gap: .25rem 1rem;
-        padding: var(--indent);
     }
 
     /* .form-section,
@@ -79,7 +77,6 @@ label {
     #journal-description {
         padding: var(--indent-sm) var(--indent);
         border-radius: 1rem;
-        /* grid-column: span 1; */
     }
 
     #title-wrapper {
@@ -145,7 +142,6 @@ label {
         flex-grow: 1;
         border-radius: 0;
         border-top-right-radius: 5rem;
-        margin: 0;
         gap: 0.5rem;
     }
 

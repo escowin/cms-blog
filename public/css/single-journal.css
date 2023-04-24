@@ -5,7 +5,7 @@
         display: grid;
         grid-template-columns: 20rem auto;
         grid-template-areas: 
-        "aa aa"
+        "bb aa"
         "bb cc";
         height: 100vh;
         overflow-y: hidden;
@@ -55,10 +55,6 @@
     }
 
     /* section | add entry */
-    #form-section {
-        border-radius: 0;
-        padding: 0;
-    }
 
     /* section | entry list */
     #entries-section {
