@@ -1,17 +1,8 @@
-#entries {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
-
+/* ol | .list */
 .entry {
-    display: grid;
-    grid-template-columns: max-content auto;
-    gap: .5rem;
-    border-top-left-radius: .5rem;
-    border-bottom-left-radius: .5rem;
-    /* background-color: var(--overlay-dark); */
-    padding: var(--indent-sm) 0 var(--indent-sm) var(--indent-sm);
+    grid-template-columns: auto 1fr;
+    /* grid-template-columns: auto 1fr auto; */
+
 }
 
 .page-icon {

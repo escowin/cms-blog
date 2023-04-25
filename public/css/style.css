@@ -38,13 +38,13 @@ body,
 main,
 footer,
 .nav-links,
-.section {
+.list {
     display: flex;
 }
 
 body,
 main,
-.section {
+.list {
     flex-direction: column;
 }
 
@@ -110,12 +110,27 @@ main {
     width: 95%;
 }
 
-.section {
+/* .section {
     gap: .25rem;
-    background-color: var(--overlay-dark);
     margin-left: var(--indent-sm);
     border-top-left-radius: 4rem;
     padding: var(--indent) 0 var(--indent-sm) var(--indent);
+} */
+
+.list {
+    background-color: var(--overlay-dark);
+    gap: 1rem;
+    margin-left: var(--indent-sm);
+    border-top-left-radius: 4rem;
+    padding: var(--indent) 0 var(--indent-sm) var(--indent);
+}
+
+.item {
+    display: grid;
+    gap: .5rem;
+    padding: var(--section-indent);
+    border-top-left-radius: 10rem;
+    border-bottom-left-radius: 10rem;
 }
 
 /* lists */
@@ -243,6 +258,11 @@ a:hover {
     .input {
         border-radius: 1rem;
     }
+
+    /* section | .list-section */
+    .list {
+        border-top-left-radius: 5rem;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -346,16 +366,14 @@ a:hover {
     }
 
     /* main | homepage & journal views */
-    /* <section class="section" id="form-section">
-        <h2 class="section-header">section header</h2>
-        <form class="form">...</form>
-        </section>
-        <section class="section" id="items-section">
-            <h2 class="section-header">section header</h2>
-            <ol class="list">...</ol>
-        </section>
-    */
-    .section {
+    /* section.form-section
+        - h2.section-header
+        - form.form
+        section.list-section
+        - h2.section-header
+        - ol.list */
+        
+    .list {
         margin: 0;
     }
     

@@ -1,0 +1,30 @@
+<li class="entry item" data-id="{{id}}">
+  <article>
+    <svg class="icon-wrapper page-icon">
+      <image class="icon" xlink:href="/icons/file-lines-regular.svg" />
+    </svg>
+  </article>
+
+  <article class="entry-content">
+    <p class="date">{{entry_date}}</p>
+    <p class="weight">{{entry_weight}} lbs</p>
+    <p class="notes">{{entry_text}}</p>
+    <p class="tags">
+      {{#each tags}}
+        <span class="tag">{{tag_name}}</span>
+      {{/each}}
+    </p>
+  </article>
+
+  <article class="item-options">
+    <svg class="icon-wrapper delete-journal-btn">
+      <image class="icon" xlink:href="/icons/delete-solid.svg" />
+    </svg>
+
+    <a class="btn" href="/entries/edit/{{id}}">
+      <svg class="icon-wrapper edit-entry-btn">
+        <image class="icon" xlink:href="/icons/pen-solid.svg" />
+      </svg>
+    </a>
+  </article>
+</li>

@@ -1,20 +1,6 @@
-/* main divs */
-.journals-section {
-    height: 100%;
-}
-
-#journals {
-    gap: 1rem;
-}
-
+/* ol | .list */
 .journal {
-    display: grid;
     grid-template-columns: auto 1fr auto;
-    /* background-color: var(--secondary); */
-    padding: var(--section-indent);
-    border-top-left-radius: 10rem;
-    border-bottom-left-radius: 10rem;
-    gap: .5rem;
 }
 
 .journal-link {
@@ -57,9 +43,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .section {
-        border-top-left-radius: 5rem;
-    }
+
 
     #journal-form-details {
         display: flex;
