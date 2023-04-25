@@ -3,7 +3,7 @@
     /* body divs */
     main {
         display: grid;
-        grid-template-columns: 20rem auto;
+        grid-template-columns: 22.5rem auto;
         grid-template-areas: 
         "bb aa"
         "bb cc";

@@ -10,7 +10,7 @@
     gap: .5rem;
     border-top-left-radius: .5rem;
     border-bottom-left-radius: .5rem;
-    background-color: var(--overlay-dark);
+    /* background-color: var(--overlay-dark); */
     padding: var(--indent-sm) 0 var(--indent-sm) var(--indent-sm);
 }
 
@@ -53,7 +53,6 @@
 }
 
 .entry-buttons {
-    /* grid-column: span 2; */
     display: flex;
     gap: 1rem;
     justify-content: flex-end;
@@ -80,9 +79,5 @@
         border-top-left-radius: 3rem;
         border-bottom-left-radius: 3rem;
         padding: var(--indent) 0 var(--indent) var(--indent);
-    }
-
-    #weight {
-        width: 5rem;
     }
 }

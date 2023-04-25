@@ -1,6 +1,6 @@
 <form id="entry-form" class="form">
-  <div class="form-details" id="entry-date">
-    <label for="date">date</label>
+  <article class="form-details" id="entry-date">
+    <label for="date">Date</label>
     <input
       class="input"
       name="date"
@@ -9,32 +9,36 @@
       value="{{entry_date}}"
       required
     />
-  </div>
+  </article>
 
-  <div class="form-details" id="entry-weight">
+  <article class="form-details" id="entry-weight">
     <label for="weight">weight</label>
-    <input
-      class="input"
-      name="weight"
-      type="number"
-      id="weight"
-      max="999.9"
-      step="0.1"
-      value="{{entry_weight}}"
-    />
-  </div>
+    <div>
+      <input
+        class="input"
+        name="weight"
+        type="number"
+        id="weight"
+        max="999.9"
+        step="0.1"
+        value="{{entry_weight}}"
+      />
+      <span>lbs</span>
+    </div>
 
-  <div id="entry-text">
+  </article>
+
+  <article id="entry-text">
     <label for="text">notes</label>
     <textarea
       class="input"
       name="entry-text"
       id="text"
     >{{entry_text}}</textarea>
-  </div>
+  </article>
 
   {{!-- {{#if is_edit_entry_page}} --}}
-  <div id="entry-tags">
+  <article id="entry-tags">
     <label for="tag-name">tags</label>
     <input
       class="input"
@@ -43,12 +47,12 @@
       type="text"
       placeholder="tag 1; tag 2; tag 3; etc..."
     />
-  </div>
+  </article>
   {{!-- {{/if}} --}}
 
-    <article class="button-wrapper">
-      <svg class="icon-wrapper page-icon submit-btn" id="add-entry-btn">
-        <image class="icon" xlink:href="/icons/add-solid.svg" />
-      </svg>
-    </article>
-  </form>
+  <article class="button-wrapper">
+    <svg class="icon-wrapper page-icon submit-btn" id="add-entry-btn">
+      <image class="icon" xlink:href="/icons/add-solid.svg" />
+    </svg>
+  </article>
+</form>

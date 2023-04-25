@@ -3,8 +3,6 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     gap: .25rem .5rem;
-    border-top-left-radius: 2.25rem;
-    border-bottom-left-radius: 2.25rem;
     background-color: var(--overlay-dark);
 }
 
@@ -62,21 +60,20 @@ label {
         gap: .25rem 1rem;
     }
 
-    /* .form-section,
-    .form-section * {
-        outline: 1px dashed white;
-    } */
-
+    /* section | form-section */
     .form {
         border-radius: 2rem;
         background-color: var(--overlay-dark);
         padding: var(--indent-sm) var(--indent);
     }
 
+    #journal-title {
+        border-radius: 1rem;
+    }
+    
     #journal-title,
     #journal-description {
         padding: var(--indent-sm) var(--indent);
-        border-radius: 1rem;
     }
 
     #title-wrapper {
@@ -140,9 +137,6 @@ label {
         "c d e"
         "f f f";
         flex-grow: 1;
-        border-radius: 0;
-        border-top-right-radius: 5rem;
-        gap: 0.5rem;
     }
 
     #description-wrapper {

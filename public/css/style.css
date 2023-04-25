@@ -239,6 +239,10 @@ a:hover {
     .form-section .form {
         padding: var(--indent);
     }
+
+    .input {
+        border-radius: 1rem;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -343,15 +347,14 @@ a:hover {
 
     /* main | homepage & journal views */
     /* <section class="section" id="form-section">
-            <h2 class="section-header">section header</h2>
-            <form class="form"> {{ form partial }} </form>
+        <h2 class="section-header">section header</h2>
+        <form class="form">...</form>
         </section>
         <section class="section" id="items-section">
             <h2 class="section-header">section header</h2>
-            <ol class="items-list"> {{ partial }} </ol>
+            <ol class="list">...</ol>
         </section>
     */
-
     .section {
         margin: 0;
     }
@@ -360,25 +363,25 @@ a:hover {
         padding-right: 0;
     }
 
-    /* form-section column */
+    /* section | .section #form-section */
     .form-section {
         display: flex;
         flex-direction: column;
     }
 
     .form-section .form {
+        border-radius: 0;
+        border-top-right-radius: 5rem;
         margin: 0;
+        gap: .5rem;
     }
 
     .form-section .form label {
         margin: 0;
     }
 
-
-    /* form */
-    /* to do
-        consistent label & .input flex in desktop
-        desktop width between columns 1 & 2
-        forms, padding & border radius
-    */
+    /* section | .section #items-section */
+    .item {
+        background-color: var(--secondary);
+    }
 }
