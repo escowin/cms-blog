@@ -1,6 +1,6 @@
 <li class="journal item" data-id="{{id}}">
-  <a class="journal-link" href="/journals/{{id}}">
-    <svg class="icon-wrapper journal-icon">
+  <a class="journal-link item-icon-container" href="/journals/{{id}}">
+    <svg class="icon-wrapper item-icon">
       <image class="icon" xlink:href="/icons/book-solid.svg" />
     </svg>
   </a>
@@ -11,7 +11,7 @@
     <p>{{entries.length}} {{format_plural "entry" entries.length}}</p>
   </article>
 
-  <article class="journal-options">
+  <article class="item-options">
     <svg class="icon-wrapper delete-journal-btn">
       <image class="icon" xlink:href="/icons/delete-solid.svg" />
     </svg>

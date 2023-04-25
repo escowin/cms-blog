@@ -8,11 +8,6 @@
 {{/if}}
 
 {{!-- partials populate each section --}}
-<section id="journal-header">
-  <h2 class="section-header">{{journal.title}}</h2>
-  {{> journal-info journal}}
-</section>
-
 <section class="form-section" id="form-section">
   <h2 class="section-header" id="form-header">Add entry</h2>
   {{#if loggedIn}}
@@ -21,10 +16,15 @@
 </section>
 
 <section class="list-section" id="entries-section">
-  <h2 class="section-header">Entries</h2>
+  <h2 class="section-header">Current entries</h2>
   <ol class="list" id="entries">
   {{#each journal.entries as |entry|}}
     {{> entry-info entry }}
   {{/each}}
   </ol>
+</section>
+
+<section id="journal-header">
+  <h2 class="section-header">{{journal.title}}</h2>
+  {{> journal-info journal}}
 </section>

@@ -5,31 +5,30 @@
         display: grid;
         grid-template-columns: 22.5rem auto;
         grid-template-areas: 
-        "bb aa"
-        "bb cc";
+        "aa bb"
+        "aa cc";
         height: 100vh;
         overflow-y: hidden;
     }
 
     /* main divs */
-    #journal-header {
-        grid-area: aa;
-        display: flex;
-        flex-direction: column;
-    }
-
     #form-section {
-        grid-area: bb;
+        grid-area: aa;
     }
 
     #entries-section {
+        grid-area: bb;
+    }
+
+    #journal-header {
         grid-area: cc;
+        display: flex;
+        flex-direction: column;
     }
 
     /* - section | journal-header */
     #journal-header .section-header {
         width: 100%;
-        margin-bottom: 0;
     }
 
     .journal {

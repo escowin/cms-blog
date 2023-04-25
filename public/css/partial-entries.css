@@ -1,25 +1,14 @@
 /* ol | .list */
-.entry {
-    grid-template-columns: auto 1fr;
-    /* grid-template-columns: auto 1fr auto; */
-
-}
-
-.page-icon {
-    margin-top: var(--indent-sm);
-}
-
 .entry-content {
     display: grid;
-    gap: .25rem .5rem;
-    grid-template-columns: 1fr repeat(2, auto);
-    padding-right: 1rem;
+    gap: 0 .5rem;
+    grid-template-columns: 1fr auto;
     align-items: center;
 }
 
 .entry .notes,
 .tags {
-    grid-column: span 3;
+    grid-column: span 2;
 }
 
 .date {
@@ -61,14 +50,5 @@
     #entries {
         height: 100%;
         overflow-y: scroll;
-        background-color: var(--overlay-dark);
-        padding: var(--indent) 0 0 var(--indent);
-        border-top-left-radius: 3rem;
-    }
-
-    .entry {
-        border-top-left-radius: 3rem;
-        border-bottom-left-radius: 3rem;
-        padding: var(--indent) 0 var(--indent) var(--indent);
     }
 }

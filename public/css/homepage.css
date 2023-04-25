@@ -1,29 +1,7 @@
 /* ol | .list */
-.journal {
-    grid-template-columns: auto 1fr auto;
-}
-
-.journal-link {
-    height: max-content;
-    align-self: center;
-    border: 1px solid var(--overlay-dark);
-    padding: 1rem;
-    border-radius: 50%;
-}
-
 .journal-description {
     display: flex;
     flex-direction: column;
-}
-
-.journal-options {
-    gap: 1rem;
-    margin: .25rem .5rem 0 0;
-}
-
-.journal-options .icon-wrapper {
-    width: 1.5rem;
-    height: 1.5rem;
 }
 
 .title {
@@ -44,7 +22,6 @@
 
 @media screen and (min-width: 768px) {
 
-
     #journal-form-details {
         display: flex;
         flex-direction: column;
@@ -54,23 +31,6 @@
     textarea {
         height: 5rem;
     }
-
-    .journal-options {
-        gap: 1.5rem;
-        margin: .25rem 1.5rem 0 0;
-    }
-
-    .journal-options .icon-wrapper {
-        --size: 2.5rem;
-        width: var(--size);
-        height: var(--size);
-    }
-
-    .journal-icon {
-        --size: 5rem;
-        width: var(--size);
-        height: var(--size);
-    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -79,29 +39,5 @@
         display: grid;
         grid-template-columns: 22.5rem auto;
     }
-    
-    /* - main divs */
-    .journals-section {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
 
-    /* journals-section column */
-    .journals-section .section-header {
-        width: 100%;
-    }
-
-    #journals {
-        font-size: 1.5rem;
-        flex-grow: 1;
-    }
-
-    .journal-icon {
-        --size: 3rem;
-    }
-
-    .journal-options .icon-wrapper {
-        --size: 2rem;
-    }
 }

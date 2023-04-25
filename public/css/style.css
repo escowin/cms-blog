@@ -110,13 +110,6 @@ main {
     width: 95%;
 }
 
-/* .section {
-    gap: .25rem;
-    margin-left: var(--indent-sm);
-    border-top-left-radius: 4rem;
-    padding: var(--indent) 0 var(--indent-sm) var(--indent);
-} */
-
 .list {
     background-color: var(--overlay-dark);
     gap: 1rem;
@@ -127,10 +120,31 @@ main {
 
 .item {
     display: grid;
+    grid-template-columns: auto 1fr auto;
     gap: .5rem;
     padding: var(--section-indent);
     border-top-left-radius: 10rem;
     border-bottom-left-radius: 10rem;
+}
+
+/* .item | columns */
+.item-icon-container {
+    height: max-content;
+    align-self: center;
+    border: 1px solid var(--overlay-dark);
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+.item-options {
+    gap: 1rem;
+    margin: .25rem .5rem 0 0;
+}
+
+.item-options .icon-wrapper {
+    --size: 1.5rem;
+    width: var(--size);
+    height: var(--size);
 }
 
 /* lists */
@@ -263,6 +277,12 @@ a:hover {
     .list {
         border-top-left-radius: 5rem;
     }
+
+    .item-icon {
+        --size: 5rem;
+        width: var(--size);
+        height: var(--size);
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -361,7 +381,7 @@ a:hover {
         padding: 0 var(--indent-sm);
     }
 
-    .icon-wrapper {
+    .nav-links .icon-wrapper {
         --size: 3rem;
     }
 
@@ -372,16 +392,12 @@ a:hover {
         section.list-section
         - h2.section-header
         - ol.list */
-        
-    .list {
-        margin: 0;
-    }
-    
+
     .section-header {
         padding-right: 0;
     }
 
-    /* section | .section #form-section */
+    /* section | form-section */
     .form-section {
         display: flex;
         flex-direction: column;
@@ -398,8 +414,35 @@ a:hover {
         margin: 0;
     }
 
-    /* section | .section #items-section */
+    /* section | list-section */
+    .list-section {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .list-section .section-header {
+        width: 100%;
+    }
+
+    .list {
+        margin: 0;
+        font-size: 1.5rem;
+        flex-grow: 1;
+    }
+    
     .item {
         background-color: var(--secondary);
+        padding: var(--indent) 0 var(--indent) var(--indent);
     }
+
+    .item-icon {
+        --size: 3rem;
+    }
+    
+    .item-options .icon-wrapper {
+        --size: 1.5rem;
+    }
+
+
 }
