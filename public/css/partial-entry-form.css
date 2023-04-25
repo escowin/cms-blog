@@ -1,8 +1,5 @@
 #entry-form {
-    display: grid;
     grid-template-columns: repeat(2, auto);
-    align-items: flex-end;
-    background-color: var(--overlay-dark);
 }
 
 /* form entry details */
@@ -10,38 +7,22 @@
     gap: .5rem;
 }
 
-label {
-    font-size: 95%;
-    width: 100%;
-}
-
 input {
-    padding: var(--indent-sm) var(--indent);
+    /* padding: var(--indent-sm) var(--indent); */
     width: 100%;
     border: none;
     font-variant: normal;
     border-radius: .25rem;
-    font-size: 1.5rem;
 }
 
 #entry-text,
-#entry-tags {
+#entry-tags,
+.button-wrapper {
     grid-column: span 2;
-    display: grid;
-    grid-template-columns: 2.25rem 1fr;
-    gap: .5rem;
-}
-
-#entry-date {
-    grid-template-columns: 2.25rem 1fr;
-}
-
-#entry-weight {
-    grid-template-columns: auto 1fr;
 }
 
 #weight {
-    width: 3rem;
+    width: 4rem;
 }
 
 textarea {

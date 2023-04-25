@@ -1,16 +1,16 @@
 <link rel="stylesheet" href="/css/partial-journal-form.css" />
 <form class="form" id="journal-form">
-  <article class="journal-text" id="title-wrapper">
+  <article class="journal-text input-wrapper" id="title-wrapper">
     <label for="journal-title">Title</label>
     <input class="input" type="text" id="journal-title" value="{{title}}" />
   </article>
 
-  <article class="journal-text" id="description-wrapper">
+  <article class="journal-text input-wrapper" id="description-wrapper">
     <label for="journal-description">description</label>
     <textarea class="input" id="journal-description">{{description}}</textarea>
   </article>
 
-  <article class="date" id="start-date-wrapper">
+  <article class="input-wrapper date" id="start-date-wrapper">
     <label for="journal-start">start date</label>
     <input
       class="date-details input"
@@ -20,12 +20,12 @@
     />
   </article>
 
-  <article class="date" id="end-date-wrapper">
+  <article class="input-wrapper date" id="end-date-wrapper">
     <label for="journal-end">end date</label>
     <p id="journal-end" class="date-details">{{end_date}}</p>
   </article>
 
-  <article class="date" id="duration-wrapper">
+  <article class="input-wrapper date" id="duration-wrapper">
     <label for="journal-duration">duration</label>
     <div>
       <select class="input" id="journal-duration" class="date-details">

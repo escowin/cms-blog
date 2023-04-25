@@ -21,6 +21,7 @@
     }
 
     #journal-header {
+        background-color: var(--overlay-dark);
         grid-area: cc;
         display: flex;
         flex-direction: column;
@@ -51,6 +52,7 @@
 
     .description {
         grid-area: 1 / 2 / -1 / -1;
+        font-size: 90%;
     }
 
     /* section | add entry */

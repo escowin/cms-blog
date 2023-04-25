@@ -1,5 +1,5 @@
 <form id="entry-form" class="form">
-  <article class="form-details" id="entry-date">
+  <article class="input-wrapper form-details" id="entry-date">
     <label for="date">Date</label>
     <input
       class="input"
@@ -11,7 +11,7 @@
     />
   </article>
 
-  <article class="form-details" id="entry-weight">
+  <article class="input-wrapper form-details" id="entry-weight">
     <label for="weight">weight</label>
     <div>
       <input
@@ -28,7 +28,7 @@
 
   </article>
 
-  <article id="entry-text">
+  <article class="input-wrapper" id="entry-text">
     <label for="text">notes</label>
     <textarea
       class="input"
@@ -38,7 +38,7 @@
   </article>
 
   {{!-- {{#if is_edit_entry_page}} --}}
-  <article id="entry-tags">
+  <article class="input-wrapper" id="entry-tags">
     <label for="tag-name">tags</label>
     <input
       class="input"
