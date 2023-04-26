@@ -6,8 +6,8 @@
   </article>
 
   <article class="journal-text input-wrapper" id="description-wrapper">
-    <label for="journal-description">description</label>
-    <textarea class="input" id="journal-description">{{description}}</textarea>
+    <label for="journal-description">description <span id="char-count">0</span>/75</label>
+    <textarea class="input" id="journal-description" maxlength="75">{{description}}</textarea>
   </article>
 
   <article class="input-wrapper date" id="start-date-wrapper">
@@ -28,7 +28,7 @@
   <article class="input-wrapper date" id="duration-wrapper">
     <label for="journal-duration">duration</label>
     <div>
-      <select class="input" id="journal-duration" class="date-details">
+      <select id="journal-duration" class="date-details">
         <option class="input">{{duration}}</option>
       </select> 
       <span class="time">weeks</span>

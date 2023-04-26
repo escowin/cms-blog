@@ -4,7 +4,7 @@ const journalDescriptionEl = document.getElementById("journal-description");
 const journalDurationEl = document.getElementById("journal-duration");
 const journalStartEl = document.getElementById("journal-start");
 const journalEndEl = document.getElementById("journal-end");
-
+const charCountEl = document.getElementById("char-count");
 const durationMin = 1;
 const durationMax = 20;
 
@@ -92,5 +92,9 @@ async function newJournalFormHandler(e) {
 
 // calls & event listeners
 durationRange();
+journalDescriptionEl.addEventListener("keyup", () => {
+  const charLength = journalDescriptionEl.value.length;
+  charCountEl.innerText = charLength;
+});
 journalDurationEl.addEventListener("change", updateEndDate);
 addJournalBtn.addEventListener("click", newJournalFormHandler);

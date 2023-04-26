@@ -20,8 +20,7 @@
     margin: 0;
 }
 
-
-/* divs */
+/* mobile display */
 body,
 main,
 footer,
@@ -107,16 +106,17 @@ main {
     width: 95%;
 }
 
-/* - main | section#form-section */
-.form-section .section-header {
-    margin-bottom: 0;
-}
-
 .form {
     display: grid;
-    align-items: center;
     background-color: var(--overlay-dark);
-    gap: .25rem .5rem;
+    gap: .5rem;
+}
+/* - main | section#form-section */
+.form-section .form {
+    margin-left: var(--indent-sm);
+    padding: var(--indent) var(--indent-sm) var(--indent) calc(var(--indent) + var(--indent-sm));
+    border-top-left-radius: 4rem;
+    border-bottom-left-radius: 4rem;
 }
 
 .form .input-wrapper {
@@ -156,6 +156,8 @@ main {
 }
 
 .item-options {
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
     margin: .25rem .5rem 0 0;
 }
@@ -194,6 +196,12 @@ textarea {
 }
 
 .input {
+    font-size: 1.5rem;
+    padding: var(--indent-sm) var(--indent);
+}
+
+.input, input[type="date"],
+#weight, select {
     background-color: var(--overlay-dark);
     color: var(--accent-dark);
     transition: 1s;
@@ -201,7 +209,16 @@ textarea {
     border-radius: 1rem;
 }
 
-.input:focus {
+input[type="date"],
+#weight,
+select {
+    padding: .25rem .5rem;
+    font-size: 75%;
+}
+
+.input:focus,
+input[type="date"]:focus,
+#weight:focus, select:focus {
     background-color: var(--secondary);
     outline: none;
 }
@@ -258,10 +275,6 @@ a:hover {
 .nav-links a:hover {
     background-color: var(--secondary);
     box-shadow: 0 0 1rem 1rem var(--secondary);
-}
-
-.form-section .form {
-    padding: var(--indent-sm) 0 var(--indent-sm) var(--indent-sm);
 }
 
 @media screen and (min-width: 768px) {

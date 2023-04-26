@@ -3,18 +3,6 @@
 }
 
 /* form entry details */
-.form-details {
-    gap: .5rem;
-}
-
-input {
-    /* padding: var(--indent-sm) var(--indent); */
-    width: 100%;
-    border: none;
-    font-variant: normal;
-    border-radius: .25rem;
-}
-
 #entry-text,
 #entry-tags,
 .button-wrapper {
@@ -25,19 +13,8 @@ input {
     width: 4rem;
 }
 
-textarea {
-    /* height: 5rem; */
-    padding: calc(var(--indent)/2) var(--indent);
-}
-
 input::placeholder {
     color: rgba(0, 0, 0, .5);
-}
-
-#entry-form button {
-    grid-column: span 2;
-    background-color: var(--primary);
-    width: 100%;
 }
 
 @media screen and (min-width: 1024px) {
