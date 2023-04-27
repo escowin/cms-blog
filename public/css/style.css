@@ -7,7 +7,6 @@
     --overlay-dark: hsla(199, 17%, 25%, 0.246);
     --text-header: 'Raleway', sans-serif;
     --text-body: 'Alegreya Sans', sans-serif;
-    --rounded-corner: 1.25rem;
     --corners: 25rem;
     --indent: 1rem;
     --indent-sm: calc(var(--indent)/2);
@@ -49,11 +48,8 @@ footer {
     text-align: center;
     background-color: var(--secondary);
     padding-left: var(--indent-sm);
-}
-
-footer p {
-    background-color: var(--overlay-dark);
-    flex-grow: 1;
+    justify-content: center;
+    gap: var(--indent-sm);
 }
 
 /* header styles */
@@ -111,6 +107,7 @@ main {
     background-color: var(--overlay-dark);
     gap: .5rem;
 }
+
 /* - main | section#form-section */
 .form-section .form {
     margin-left: var(--indent-sm);
@@ -200,8 +197,10 @@ textarea {
     padding: var(--indent-sm) var(--indent);
 }
 
-.input, input[type="date"],
-#weight, select {
+.input,
+input[type="date"],
+#weight,
+select {
     background-color: var(--overlay-dark);
     color: var(--accent-dark);
     transition: 1s;
@@ -218,7 +217,8 @@ select {
 
 .input:focus,
 input[type="date"]:focus,
-#weight:focus, select:focus {
+#weight:focus,
+select:focus {
     background-color: var(--secondary);
     outline: none;
 }
@@ -282,6 +282,7 @@ a:hover {
         font-size: 2rem;
     }
 
+    /* header divs */
     header {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -293,19 +294,33 @@ a:hover {
     }
 
     .nav-links {
-        justify-content: space-between;
+        justify-content: space-around;
     }
 
-    /* main | form section */
+    /* main | homepage & journal views */
+    /* section | form-section */
+    .form-section {
+        display: flex;
+        flex-direction: column;
+    }
+
     .form-section .form {
         padding: var(--indent);
+        border-radius: 0;
+        border-top-right-radius: 5rem;
+        margin: 0;
+        gap: .5rem;
+    }
+
+    .form-section .form label {
+        margin: 0;
     }
 
     .input {
         border-radius: 1rem;
     }
 
-    /* section | .list-section */
+    /* - list section */
     .list {
         border-top-left-radius: 5rem;
     }
@@ -314,6 +329,11 @@ a:hover {
         --size: 5rem;
         width: var(--size);
         height: var(--size);
+    }
+
+    /* footer */
+    footer {
+        display: none;
     }
 }
 
@@ -338,20 +358,6 @@ a:hover {
     }
 
     /* divs */
-    body,
-    footer {
-        padding: 0;
-    }
-
-    footer p {
-        background-color: transparent;
-        flex-grow: 0;
-    }
-
-    .nav-links {
-        justify-content: space-around;
-    }
-
     body {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -372,8 +378,9 @@ a:hover {
     }
 
     footer {
+        display: flex;
         grid-area: c;
-        flex-direction: column-reverse;
+        flex-direction: column;
         height: max-content;
         color: var(--accent-dark);
         font-size: 1rem;
@@ -383,8 +390,6 @@ a:hover {
 
     main {
         grid-area: b;
-        flex-direction: row;
-        padding: 0;
     }
 
     /* - header divs */
@@ -406,6 +411,10 @@ a:hover {
         border-radius: 50%;
     }
 
+    .nav-links .icon-wrapper {
+        --size: 3rem;
+    }
+
     /* footer divs */
     footer a {
         width: fit-content;
@@ -413,9 +422,6 @@ a:hover {
         padding: 0 var(--indent-sm);
     }
 
-    .nav-links .icon-wrapper {
-        --size: 3rem;
-    }
 
     /* main | homepage & journal views */
     .section-header {

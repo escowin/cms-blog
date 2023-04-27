@@ -1,19 +1,22 @@
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
 
     /* body divs */
     main {
         display: grid;
         grid-template-columns: 22.5rem auto;
+        grid-template-rows: auto 1fr;
         grid-template-areas: 
-        "aa bb"
-        "aa cc";
+        "cc bb"
+        "aa bb";
         height: 100vh;
         overflow-y: hidden;
+        align-items: flex-start;
     }
 
     /* main divs */
     #form-section {
         grid-area: aa;
+        height: 100%;
     }
 
     #entries-section {
@@ -21,7 +24,7 @@
     }
 
     #journal-header {
-        background-color: var(--overlay-dark);
+        background-color: transparent;
         grid-area: cc;
         display: flex;
         flex-direction: column;

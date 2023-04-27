@@ -1,11 +1,16 @@
+main {
+    padding: var(--indent);
+    gap: 1rem;
+}
+
 .form {
-    border-top-left-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
+    border-radius: 4rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     align-items: center;
     font-size: 1.75rem;
+    padding: var(--indent) var(--indent-sm);
+    gap: var(--indent);
 }
 
 .form h2 {
@@ -18,7 +23,6 @@
 .credentials {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
     justify-content: center;
     width: 100%;
     color: var(--text-light);
@@ -41,7 +45,7 @@ input {
     background-color: var(--secondary);
     width: 80%;
     font-size: 2rem;
-    margin: 1rem 0 2rem 0;
+    /* margin: 1rem 0 2rem 0; */
     border-radius: var(--corners);
 }
 
