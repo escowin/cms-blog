@@ -96,6 +96,9 @@ durationRange();
 journalDescriptionEl.addEventListener("keyup", () => {
   const charLength = journalDescriptionEl.value.length;
   charCountEl.innerText = charLength;
+  if (charLength === 75) {
+    charCountEl.className = "char-limit"
+  }
 });
 journalDurationEl.addEventListener("change", updateEndDate);
 addJournalBtn.addEventListener("click", newJournalFormHandler);

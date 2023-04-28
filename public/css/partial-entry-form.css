@@ -48,7 +48,8 @@ input::placeholder {
     }
 
     #entry-text {
-        height: 25vh;
+        height: 100%;
+        /* height: 25vh; */
     }
 
     #tag-name {

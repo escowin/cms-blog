@@ -260,8 +260,9 @@ a {
     transition: color 1s;
 }
 
-a:hover {
-    color: var(--link);
+a:hover,
+.char-limit {
+    color: var(--secondary);
 }
 
 .end-value {
@@ -322,7 +323,6 @@ a:hover {
         border-radius: 0;
         border-top-right-radius: 5rem;
         margin: 0;
-        gap: .5rem;
     }
 
     .form-section .form label {
@@ -458,7 +458,6 @@ a:hover {
         border-radius: 0;
         border-top-right-radius: 5rem;
         margin: 0;
-        gap: .5rem;
     }
 
     .form-section .form label {
@@ -493,4 +492,10 @@ a:hover {
     .item-options .icon-wrapper {
         --size: 1.5rem;
     }
+
+    input[type="date"], #weight, select {
+        width: max-content;
+        font-size: 50%;
+    }
+    
 }

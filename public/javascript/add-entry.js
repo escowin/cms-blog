@@ -1,5 +1,11 @@
+// variables
 const addEntryBtn = document.getElementById("add-entry-btn");
+const entryNotesEl = document.getElementById("text")
+const charCountEl = document.getElementById("char-count");
 
+
+// logic | async
+// - posting new entries & tags into the database tables from the frontend
 async function entryFormHandler(e) {
   try {
     e.preventDefault();
@@ -8,7 +14,7 @@ async function entryFormHandler(e) {
     // data | entry & tag values from the input form. tag string is split into an array;
     const entryDate = document.getElementById("date").value;
     const entryWeight = document.getElementById("weight").value.trim();
-    const entryText = document.getElementById("text").value.trim();
+    const entryText = entryNotes.value.trim();
     const journalId = window.location.toString().split("/").pop().split("?")[0];
     const tagsInput = document
       .getElementById("tag-name")
@@ -46,6 +52,7 @@ async function entryFormHandler(e) {
   }
 }
 
+// - posting new tags 
 const generateTagIds = async (formTags) => {
   let idValues = [];
   const existingTags = await getExistingTags();
@@ -90,7 +97,7 @@ const generateTagIds = async (formTags) => {
   return idValues;
 };
 
-// returns an array of all tags
+// - fetches all tags from db
 const getExistingTags = async () => {
   const response = await fetch("/api/tags");
   const tags = await response.json();
@@ -98,5 +105,14 @@ const getExistingTags = async () => {
 };
 
 // calls
+entryNotesEl.addEventListener("keyup", () => {
+  const charLength = entryNotesEl.value.length;
+  charCountEl.innerText = charLength;
+  if (charLength === 300) {
+    charCountEl.className = "char-limit"
+  }
+});
 addEntryBtn.addEventListener("click", entryFormHandler);
 
+/* let's see what happens if I try to go beyond 300 characters. This looks fine.
+But what if I format as so? I can keep typing for a while before the scroll begins, so aesthetically this is a good looking form. Removing dead space is a big plus and now that the scroll has begun, this looks pretty good. */

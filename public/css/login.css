@@ -55,9 +55,11 @@ input {
 
 @media screen and (min-width: 768px) {
     main {
-        padding: var(--indent-sm);
-        align-items: center;
+        grid-template-columns: 1fr 1fr;
         justify-content: center;
+        --spacing: calc(var(--indent) * 2);
+        padding: var(--spacing);
+        gap: var(--spacing);
     }
 
     .form {

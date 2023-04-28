@@ -17,38 +17,18 @@
 }
 
 @media screen and (min-width: 1024px) {
+
     #journal-form {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(4, max-content);
-        grid-template-areas:
-            "a a a"
-            "b b b"
-            "c d e"
-            "f f f";
-        flex-grow: 1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    #description-wrapper {
-        height: 43vh;
+    #title-wrapper, #description-wrapper, .button-wrapper {
+        grid-column: span 2;
     }
 
-    #journal-duration {
-        height: 100%;
-    }
-
-    #duration-wrapper div {
-        align-items: flex-start;
-        gap: .5rem;
-        justify-self: flex-end;
-    }
-
-    .date label {
-        font-size: 1.5rem;
-        text-align: start;
-    }
-
-    .time {
-        font-size: 1.25rem;
-        width: fit-content;
+    .button-wrapper {
+        align-items: center;
+        height: max-content;
     }
 }

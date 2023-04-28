@@ -53,4 +53,8 @@
         grid-template-columns: 22.5rem auto;
     }
 
+    #journal-end {
+        min-height: 1.85rem;
+        font-size: 60%;
+    }
 }
