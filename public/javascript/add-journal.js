@@ -33,6 +33,7 @@ function updateEndDate() {
   if (start_date && duration) {
     const end_date = calculateEndDate(start_date, duration);
     const journalEndEl = document.getElementById("journal-end");
+    journalEndEl.className = "date-details end-value"
     journalEndEl.textContent = end_date;
   }
 }

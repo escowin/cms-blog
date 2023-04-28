@@ -190,6 +190,7 @@ ol {
 /* form label & input fields */
 textarea {
     resize: none;
+    /* flex-grow: 1; */
 }
 
 .input {
@@ -263,6 +264,10 @@ a:hover {
     color: var(--link);
 }
 
+.end-value {
+    background-color: var(--overlay-dark);
+}
+
 /* svg icons */
 .icon-wrapper {
     transition: 1s;
@@ -298,10 +303,18 @@ a:hover {
     }
 
     /* main | homepage & journal views */
+    main {
+        display: grid;
+        grid-template-columns: 22.5rem auto;
+        height: 100vh;
+        align-items: flex-start;
+    }
+
     /* section | form-section */
     .form-section {
         display: flex;
         flex-direction: column;
+        height: 100%;
     }
 
     .form-section .form {
@@ -321,8 +334,15 @@ a:hover {
     }
 
     /* - list section */
+    .list-section {
+        height: 100%;
+    }
+
     .list {
         border-top-left-radius: 5rem;
+        height: inherit;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     .item-icon {
