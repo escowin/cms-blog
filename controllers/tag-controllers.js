@@ -1,4 +1,4 @@
-const { Tag, Entry, EntryTag } = require("../../models");
+const { Tag, Entry, EntryTag } = require("../models");
 
 // crud methods
 const tagController = {

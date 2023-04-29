@@ -6,7 +6,7 @@ const {
   createEntry,
   updateEntry,
   deleteEntry,
-} = require("../../controllers/api/entry-controllers");
+} = require("../../controllers/entry-controllers");
 
 // api endpoints
 router.route("/").get(getAllEntries).post(createEntry);

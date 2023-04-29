@@ -1,4 +1,4 @@
-const { Journal, User, Entry } = require("../../models");
+const { Journal, User, Entry } = require("../models");
 
 // crud methods
 const journalController = {

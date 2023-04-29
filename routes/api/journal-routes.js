@@ -6,7 +6,7 @@ const {
   createJournal,
   updateJournal,
   deleteJournal,
-} = require("../../controllers/api/journal-controllers");
+} = require("../../controllers/journal-controllers");
 
 // api endpoints
 router.route("/").get(getAllJournals).post(createJournal);

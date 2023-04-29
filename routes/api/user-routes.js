@@ -8,7 +8,7 @@ const {
   deleteUser,
   login,
   logout,
-} = require("../../controllers/api/user-controllers");
+} = require("../../controllers/user-controllers");
 
 // api endpoints
 router.route("/").get(getAllUsers).post(createUser);
