@@ -10,7 +10,6 @@ const {
 
 // api endpoints
 router.route("/").get(getAllJournals).post(createJournal);
-
 router
   .route("/:id")
   .get(getJournalById)
