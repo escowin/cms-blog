@@ -1,13 +1,9 @@
-{{! custom stylesheet }}
-<link rel="stylesheet" href="/css/journal.css" />
-<link rel="stylesheet" href="/css/partial-entry-form.css" />
-<link rel="stylesheet" href="/css/partial-entry-info.css" />
-
+{{!-- javascript --}}
 {{#if loggedIn}}
 <script defer src="/javascript/add-entry.js"></script>
 {{/if}}
 
-{{!-- partials populate each section --}}
+{{!-- html with nested partials --}}
 <section class="form-section" id="form-section">
   <h2 class="section-header" id="form-header">Add entry</h2>
   {{#if loggedIn}}

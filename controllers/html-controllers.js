@@ -1,6 +1,66 @@
 const { Tag, Journal, Entry, EntryTag } = require("../models");
 
 const htmlController = {
+  editEntryView(req, res) {
+    Entry.findOne({
+      where: { id: req.params.id },
+      attributes: ["id", "entry_text", "entry_date", "entry_weight"],
+      include: [
+        {
+          model: Tag,
+          through: EntryTag,
+          attributes: ["id", "tag_name"],
+        },
+      ],
+    })
+      .then((dbEntryData) => {
+        if (!dbEntryData) {
+          res.status(404).json({ message: "entry not found" });
+          return;
+        }
+        const entry = dbEntryData.get({ plain: true });
+        // renders edit-entry view when logged in
+        res.render("edit-entry", {
+          entry,
+          loggedIn: true,
+          customstyle: '<link rel="stylesheet" href="/css/edit-view.css">',
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
+  editJournalView(req, res) {
+    Journal.findOne({
+      where: { id: req.params.id },
+      attributes: [
+        "id",
+        "title",
+        "description",
+        "start_date",
+        "end_date",
+        "duration",
+      ],
+    })
+      .then((dbJournalData) => {
+        if (!dbJournalData) {
+          console.log(err);
+          res.status(404).json({ message: `journal #${id} not found` });
+          return;
+        }
+        const journal = dbJournalData.get({ plain: true });
+        res.render("edit-journal", {
+          journal,
+          loggedIn: true,
+          customstyle: '<link rel="stylesheet" href="/css/edit-view.css">',
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
   homepageView(req, res) {
     Journal.findAll({
       attributes: [
@@ -42,16 +102,6 @@ const htmlController = {
         res.status(500).json(err);
       });
   },
-  loginView(req, res) {
-    if (req.session.loggedIn) {
-      res.redirect("/");
-      return;
-    }
-
-    res.render("login", {
-      customstyle: '<link rel="stylesheet" href="/css/login.css">',
-    });
-  },
   journalView(req, res) {
     Journal.findOne({
       where: { id: req.params.id },
@@ -92,7 +142,11 @@ const htmlController = {
         res.render("journal", {
           journal,
           loggedIn: req.session.loggedIn,
-          customstyle: '<link rel="stylesheet" href="/css/journal.css">',
+          customstyle: `
+            <link rel="stylesheet" href="/css/journal.css">
+            <link rel="stylesheet" href="/css/partial-entry-form.css" />
+            <link rel="stylesheet" href="/css/partial-entry-info.css" />
+          `,
         });
       })
       .catch((err) => {
@@ -100,63 +154,14 @@ const htmlController = {
         res.status(500).json(err);
       });
   },
-  editJournalView(req, res) {
-    Journal.findOne({
-      where: { id: req.params.id },
-      attributes: [
-        "id",
-        "title",
-        "description",
-        "start_date",
-        "end_date",
-        "duration",
-      ],
-    })
-      .then((dbJournalData) => {
-        if (!dbJournalData) {
-          console.log(err);
-          res.status(404).json({ message: `journal #${id} not found` });
-          return;
-        }
-        const journal = dbJournalData.get({ plain: true });
-        res.render("edit-journal", {
-          journal,
-          loggedIn: true,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  },
-  editEntryView(req, res) {
-    Entry.findOne({
-      where: { id: req.params.id },
-      attributes: ["id", "entry_text", "entry_date", "entry_weight"],
-      include: [
-        {
-          model: Tag,
-          through: EntryTag,
-          attributes: ["id", "tag_name"],
-        },
-      ],
-    })
-      .then((dbEntryData) => {
-        if (!dbEntryData) {
-          res.status(404).json({ message: "entry not found" });
-          return;
-        }
-        const entry = dbEntryData.get({ plain: true });
-        // renders edit-entry view when logged in
-        res.render("edit-entry", {
-          entry,
-          loggedIn: true,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+  loginView(req, res) {
+    if (req.session.loggedIn) {
+      res.redirect("/");
+      return;
+    }
+    res.render("login", {
+      customstyle: '<link rel="stylesheet" href="/css/login.css">',
+    });
   },
   profileView(req, res) {
     Journal.findAll({

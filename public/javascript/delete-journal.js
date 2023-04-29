@@ -5,6 +5,12 @@ async function deleteJournalHandler(e) {
   const journalEl = button.closest(".journal");
   const journalId = journalEl.dataset.id;
 
+  // confirmation placeholder
+  const confirmed = confirm("confirm delete request");
+  if (!confirmed) {
+    return;
+  }
+
   try {
     const response = await fetch(`/api/journals/${journalId}`, {
       method: "DELETE",

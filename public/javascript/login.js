@@ -14,7 +14,7 @@ async function loginFormHandler(e) {
 
     // succesful logins redirect session users to dashboard
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.reload('/');
     } else {
       alert(response.statusText);
     }
