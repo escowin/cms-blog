@@ -1,4 +1,4 @@
-const { Tag, Journal, Entry, EntryTag } = require("../models");
+const { User, Tag, Journal, Entry, EntryTag } = require("../models");
 
 const htmlController = {
   editEntryView(req, res) {
@@ -26,10 +26,7 @@ const htmlController = {
           viewScript: '<script defer src="/javascript/edit-entry.js"></script>',
         });
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   editJournalView(req, res) {
     Journal.findOne({
@@ -54,13 +51,11 @@ const htmlController = {
           journal,
           loggedIn: true,
           viewStyle: '<link rel="stylesheet" href="/css/edit-view.css">',
-          viewScript: '<script defer src="/javascript/edit-journal.js"></script>',
+          viewScript:
+            '<script defer src="/javascript/edit-journal.js"></script>',
         });
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   homepageView(req, res) {
     Journal.findAll({
@@ -101,13 +96,10 @@ const htmlController = {
             `,
           viewScript: `
             <script defer src="/javascript/add-journal.js"></script>
-            <script defer src="/javascript/delete-journal.js"></script>`
+            <script defer src="/javascript/delete-journal.js"></script>`,
         });
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   journalView(req, res) {
     Journal.findOne({
@@ -157,55 +149,57 @@ const htmlController = {
           viewScript: '<script defer src="/javascript/add-entry.js"></script>',
         });
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   profileView(req, res) {
-    Journal.findAll({
-      where: { user_id: req.session.user_id },
-      attributes: [
-        "id",
-        "title",
-        "description",
-        "start_date",
-        "end_date",
-        "duration",
-      ],
-      order: [["created_at", "DESC"]],
-      include: [
-        {
-          model: Entry,
+    User.findOne({
+      where: { id: req.session.user_id },
+      attributes: { exclude: ["password"] },
+    })
+      .then((dbUserData) => {
+        // serializes user data before passing to template
+        const user = dbUserData.get({ plain: true });
+
+        Journal.findAll({
+          where: { user_id: req.session.user_id },
+
           attributes: [
             "id",
-            "entry_text",
-            "journal_id",
-            "user_id",
-            "created_at",
+            "title",
+            "description",
+            "start_date",
+            "end_date",
+            "duration",
           ],
-        },
-        // {
-        //   model: User,
-        //   attributes: ["username"],
-        // },
-      ],
-    })
-      .then((dbJournalData) => {
-        // serializes data before passing to template
-        const journals = dbJournalData.map((journal) =>
-          journal.get({ plain: true })
-        );
-        res.render("profile", {
-          journals,
-          loggedIn: true,
-          viewStyle: '<link rel="stylesheet" href="/css/profile.css">',
-        });
+          order: [["created_at", "DESC"]],
+          include: [
+            {
+              model: Entry,
+              attributes: [
+                "id",
+                "entry_text",
+                "journal_id",
+                "user_id",
+                "created_at",
+              ],
+            },
+          ],
+        })
+          .then((dbJournalData) => {
+            // serializes data before passing to template
+            const journals = dbJournalData.map((journal) =>
+              journal.get({ plain: true })
+            );
+            res.render("profile", {
+              user,
+              journals,
+              loggedIn: true,
+              viewStyle: '<link rel="stylesheet" href="/css/profile.css">',
+            });
+          })
+          .catch((err) => res.status(500).json(err));
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
 };
 
