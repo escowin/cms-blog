@@ -8,7 +8,10 @@ const {
   deleteTag,
 } = require("../../controllers/tag-controllers");
 
-// api endpoints
+// authguard middleware | routes below are accesible only to logged in users
+router.use(withAuth);
+
+// authguarded api endpoints
 router.route("/").get(getAllTags).post(createTag);
 router.route("/:id").get(getTagById).put(updateTag).delete(deleteTag);
 

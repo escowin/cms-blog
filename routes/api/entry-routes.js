@@ -8,7 +8,10 @@ const {
   deleteEntry,
 } = require("../../controllers/entry-controllers");
 
-// api endpoints
+// authguard middleware | routes below are accesible only to logged in users
+router.use(withAuth);
+
+// authguarded api endpoints
 router.route("/").get(getAllEntries).post(createEntry);
 router.route("/:id").get(getEntryById).put(updateEntry).delete(deleteEntry);
 

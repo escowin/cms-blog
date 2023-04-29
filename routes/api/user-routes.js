@@ -10,10 +10,14 @@ const {
   logout,
 } = require("../../controllers/user-controllers");
 
-// api endpoints
-router.route("/").get(getAllUsers).post(createUser);
-router.route("/:id").get(getUserById, updateUser, deleteUser);
+// public & authguarded api endpoints
+router.route("/").get(withAuth, getAllUsers).post(createUser);
+router
+  .route("/:id")
+  .get(withAuth, getUserById)
+  .put(withAuth, updateUser)
+  .delete(withAuth, deleteUser);
 router.route("/login").post(login);
-router.route("/logout").post(logout);
+router.route("/logout").post(withAuth, logout);
 
 module.exports = router;

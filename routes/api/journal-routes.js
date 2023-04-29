@@ -8,12 +8,11 @@ const {
   deleteJournal,
 } = require("../../controllers/journal-controllers");
 
-// api endpoints
+// authguard middleware | routes below are accesible only to logged in users
+router.use(withAuth);
+
+// authguarded api endpoints
 router.route("/").get(getAllJournals).post(createJournal);
-router
-  .route("/:id")
-  .get(getJournalById)
-  .put(updateJournal)
-  .delete(deleteJournal);
+router.route("/:id").get(getJournalById).put(updateJournal).delete(deleteJournal);
 
 module.exports = router;
