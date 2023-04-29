@@ -93,7 +93,7 @@ router.get("/journals/:id", (req, res) => {
       res.render("single-journal", {
         journal,
         loggedIn: req.session.loggedIn,
-        customstyle: '<link rel="stylesheet" href="/css/single-journal.css">',
+        customstyle: '<link rel="stylesheet" href="/css/journal.css">',
       });
     })
     .catch((err) => {

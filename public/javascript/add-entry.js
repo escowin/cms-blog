@@ -14,12 +14,11 @@ async function entryFormHandler(e) {
     // data | entry & tag values from the input form. tag string is split into an array;
     const entryDate = document.getElementById("date").value;
     const entryWeight = document.getElementById("weight").value.trim();
-    const entryText = entryNotes.value.trim();
+    const entryText = entryNotesEl.value.trim();
     const journalId = window.location.toString().split("/").pop().split("?")[0];
     const tagsInput = document
       .getElementById("tag-name")
-      .value.trim()
-      .toLowerCase();
+      .value.trim();
 
     if (tagsInput.trim() !== "") {
       const formTagStrings = tagsInput.split(";").map((tag) => tag.trim());

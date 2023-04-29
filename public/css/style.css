@@ -339,6 +339,7 @@ a:hover,
         height: inherit;
         overflow-y: scroll;
         overflow-x: hidden;
+        width: 100%;
     }
 
     .item-icon {

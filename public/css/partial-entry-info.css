@@ -11,7 +11,7 @@
     grid-column: span 2;
 }
 
-.date {
+.date, .weight {
     font-weight: bold;
 }
 
@@ -44,4 +44,10 @@
     font-family: var(--text-header);
     font-size: 1rem;
     font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+    .date, .weight {
+        font-size: 1.5rem;
+    }
 }
