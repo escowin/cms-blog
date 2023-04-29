@@ -162,15 +162,6 @@ const htmlController = {
         res.status(500).json(err);
       });
   },
-  loginView(req, res) {
-    if (req.session.loggedIn) {
-      res.redirect("/");
-      return;
-    }
-    res.render("login", {
-      viewStyle: '<link rel="stylesheet" href="/css/login.css">',
-    });
-  },
   profileView(req, res) {
     Journal.findAll({
       where: { user_id: req.session.user_id },

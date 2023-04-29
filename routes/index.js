@@ -6,7 +6,7 @@ router.use("/api", apiRoutes);
 router.use("/", htmlRoutes);
 
 router.use((req, res) => {
-  res.status(404).end();
+  res.status(404).redirect("/");
 });
 
 module.exports = router;
