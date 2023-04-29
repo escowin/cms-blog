@@ -236,12 +236,8 @@ select:focus {
     width: 100%;
 }
 
-.button-wrapper:hover {
-    background-color: var(--link);
-    box-shadow: 0 0 1rem var(--link);
-}
-
-.form button:hover {
+.button-wrapper:hover,
+.form-btn:hover {
     background-color: var(--accent-light);
     box-shadow: 0 0 1rem var(--accent-light);
 }

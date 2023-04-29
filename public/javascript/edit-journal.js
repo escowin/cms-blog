@@ -8,6 +8,7 @@ const journalDescriptionEl = document.getElementById("journal-description");
 const journalDurationEl = document.getElementById("journal-duration");
 const journalStartEl = document.getElementById("journal-start");
 const journalEndEl = document.getElementById("journal-end");
+const charCountEl = document.getElementById("char-count");
 
 const durationMin = 1;
 const durationMax = 20;
@@ -103,6 +104,13 @@ async function deleteJournalHandler(e) {
 
 // calls
 durationRange();
+journalDescriptionEl.addEventListener("keyup", () => {
+  const charLength = journalDescriptionEl.value.length;
+  charCountEl.innerText = charLength;
+  if (charLength === 75) {
+    charCountEl.className = "char-limit"
+  }
+});
 journalDurationEl.addEventListener("change", updateEndDate);
 updateJournalBtn.addEventListener("click", editJournalFormHandler);
 document

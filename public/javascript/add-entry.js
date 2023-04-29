@@ -113,6 +113,3 @@ entryNotesEl.addEventListener("keyup", () => {
   }
 });
 addEntryBtn.addEventListener("click", entryFormHandler);
-
-/* let's see what happens if I try to go beyond 300 characters. This looks fine.
-But what if I format as so? I can keep typing for a while before the scroll begins, so aesthetically this is a good looking form. Removing dead space is a big plus and now that the scroll has begun, this looks pretty good. */

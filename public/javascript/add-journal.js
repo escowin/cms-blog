@@ -5,6 +5,7 @@ const journalDurationEl = document.getElementById("journal-duration");
 const journalStartEl = document.getElementById("journal-start");
 const journalEndEl = document.getElementById("journal-end");
 const charCountEl = document.getElementById("char-count");
+
 const durationMin = 1;
 const durationMax = 20;
 

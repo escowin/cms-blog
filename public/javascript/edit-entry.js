@@ -1,3 +1,8 @@
+// variables
+const addEntryBtn = document.getElementById("add-entry-btn");
+const entryNotesEl = document.getElementById("text")
+const charCountEl = document.getElementById("char-count");
+
 async function getJournalId() {
   try {
     const entryId = window.location.toString().split("/").pop().split("?")[0];
@@ -83,6 +88,13 @@ function getCurrentTags() {
 getCurrentTags();
 
 // calls
+entryNotesEl.addEventListener("keyup", () => {
+  const charLength = entryNotesEl.value.length;
+  charCountEl.innerText = charLength;
+  if (charLength === 300) {
+    charCountEl.className = "char-limit"
+  }
+});
 document
   .getElementById("entry-form")
   .addEventListener("submit", async (e) => editEntryFormHandler(e));
