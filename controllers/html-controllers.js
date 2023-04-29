@@ -19,11 +19,11 @@ const htmlController = {
           return;
         }
         const entry = dbEntryData.get({ plain: true });
-        // renders edit-entry view when logged in
         res.render("edit-entry", {
           entry,
           loggedIn: true,
-          customstyle: '<link rel="stylesheet" href="/css/edit-view.css">',
+          viewStyle: '<link rel="stylesheet" href="/css/edit-view.css">',
+          viewScript: '<script defer src="/javascript/edit-entry.js"></script>',
         });
       })
       .catch((err) => {
@@ -53,7 +53,8 @@ const htmlController = {
         res.render("edit-journal", {
           journal,
           loggedIn: true,
-          customstyle: '<link rel="stylesheet" href="/css/edit-view.css">',
+          viewStyle: '<link rel="stylesheet" href="/css/edit-view.css">',
+          viewScript: '<script defer src="/javascript/edit-journal.js"></script>',
         });
       })
       .catch((err) => {
@@ -94,7 +95,13 @@ const htmlController = {
         res.render("homepage", {
           journals,
           loggedIn: req.session.loggedIn,
-          customstyle: '<link rel="stylesheet" href="/css/homepage.css">',
+          viewStyle: `
+            <link rel="stylesheet" href="/css/homepage.css">
+            <link rel="stylesheet" href="/css/partial-journal-form.css">
+            `,
+          viewScript: `
+            <script defer src="/javascript/add-journal.js"></script>
+            <script defer src="/javascript/delete-journal.js"></script>`
         });
       })
       .catch((err) => {
@@ -142,11 +149,12 @@ const htmlController = {
         res.render("journal", {
           journal,
           loggedIn: req.session.loggedIn,
-          customstyle: `
+          viewStyle: `
             <link rel="stylesheet" href="/css/journal.css">
             <link rel="stylesheet" href="/css/partial-entry-form.css" />
             <link rel="stylesheet" href="/css/partial-entry-info.css" />
           `,
+          viewScript: '<script defer src="/javascript/add-entry.js"></script>',
         });
       })
       .catch((err) => {
@@ -160,7 +168,7 @@ const htmlController = {
       return;
     }
     res.render("login", {
-      customstyle: '<link rel="stylesheet" href="/css/login.css">',
+      viewStyle: '<link rel="stylesheet" href="/css/login.css">',
     });
   },
   profileView(req, res) {
@@ -200,7 +208,7 @@ const htmlController = {
         res.render("profile", {
           journals,
           loggedIn: true,
-          customstyle: '<link rel="stylesheet" href="/css/profile.css">',
+          viewStyle: '<link rel="stylesheet" href="/css/profile.css">',
         });
       })
       .catch((err) => {

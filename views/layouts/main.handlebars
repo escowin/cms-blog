@@ -6,11 +6,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100&family=Raleway:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css" />
     {{!-- view-specific stylesheets --}}
-    {{{customstyle}}}
-    <script defer src="/javascript/copyright.js"></script>
     {{#if loggedIn}}
-      <script defer src="/javascript/logout.js"></script>
+      {{{viewStyle}}}
+      {{{viewScript}}}
+      <script defer src="/javascript/logout.js"></script>      
+    {{else}}
+      <link rel="stylesheet" href="/css/login.css" />
+      <script defer src="/javascript/login.js"></script>
     {{/if}}
+    <script defer src="/javascript/copyright.js"></script>
   </head>
 
   <body>
