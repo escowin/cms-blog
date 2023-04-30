@@ -1,9 +1,9 @@
 {{!-- html --}}
-<section class="section">
+<section id="profile-section">
   <h2 class="section-header">profile</h2>
-  <p>{{user.username}}</p>
-  <p>journals: <a href="/">{{journals.length}}</a></p>      
-  <p>entries: <a href="#">{{user.}}</p>
-  <p>tags: tags.length value</p>
-  <p>meal prep</p>
+  <article id="profile-details">
+    <h3>{{user.username}}</h3>
+    <p>journals</p> <a href="/">{{user.journals.length}}</a>
+    <p>entries</p> <a href="#">{{user.entries.length}}</a>
+  </article>
 </section>

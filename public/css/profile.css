@@ -1,19 +1,20 @@
-.journals {
-    margin: var(--indent) 0;
+#profile-section {
+    height: inherit;
+}
+
+#profile-details {
+    flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(3, min-content) ;
+    gap: 0 1rem;
+    padding-left: calc(var(--indent) * 2);
 }
 
-.journal {
-    background-color: var(--secondary);
-    padding: 0 var(--indent)
+h3 {
+    grid-column: span 2;
 }
 
-.details {
-    padding-left: var(--indent);
-}
-
-footer p {
-    background-color: transparent;
+#profile-details a {
+    font-weight: bold;
 }

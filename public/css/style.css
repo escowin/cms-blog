@@ -109,7 +109,8 @@ main {
 }
 
 /* - main | section#form-section */
-.form-section .form {
+.form-section .form,
+#profile-details {
     margin-left: var(--indent-sm);
     padding: var(--indent) var(--indent-sm) var(--indent) calc(var(--indent) + var(--indent-sm));
     border-top-left-radius: 4rem;
@@ -125,7 +126,8 @@ main {
     padding-left: var(--indent);
 }
 
-.list {
+.list,
+#profile-details {
     background-color: var(--overlay-dark);
     gap: 1rem;
     margin-left: var(--indent-sm);
@@ -314,7 +316,8 @@ a:hover,
         height: 100%;
     }
 
-    .form-section .form {
+    .form-section .form,
+    #profile-details {
         padding: var(--indent);
         border-radius: 0;
         border-top-right-radius: 5rem;

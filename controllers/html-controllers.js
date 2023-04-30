@@ -67,16 +67,15 @@ const htmlController = {
         "end_date",
         "duration",
       ],
-      order: [["created_at", "DESC"]],
+      order: [["end_date", "DESC"]],
       include: [
         {
           model: Entry,
           attributes: [
             "id",
+            "entry_date",
             "entry_text",
             "journal_id",
-            "user_id",
-            "created_at",
           ],
           order: [["entry_date", "DESC"]],
         },
@@ -155,49 +154,39 @@ const htmlController = {
     User.findOne({
       where: { id: req.session.user_id },
       attributes: { exclude: ["password"] },
+      include: [
+        {
+          model: Journal,
+          attributes: ["id", "title", "end_date"],
+          include: [
+            {
+              model: Entry,
+              attributes: [ "id", "entry_text"]
+            }
+          ],
+          order: [["end_date", "DESC"]],
+        },
+        {
+          model: Entry,
+          attributes: [
+            "id",
+            "entry_text",
+            "entry_date",
+            "journal_id",
+            "user_id",
+          ],
+          order: [["entry_date", "DESC"]],
+        },
+      ],
     })
       .then((dbUserData) => {
         // serializes user data before passing to template
         const user = dbUserData.get({ plain: true });
-
-        Journal.findAll({
-          where: { user_id: req.session.user_id },
-
-          attributes: [
-            "id",
-            "title",
-            "description",
-            "start_date",
-            "end_date",
-            "duration",
-          ],
-          order: [["created_at", "DESC"]],
-          include: [
-            {
-              model: Entry,
-              attributes: [
-                "id",
-                "entry_text",
-                "journal_id",
-                "user_id",
-                "created_at",
-              ],
-            },
-          ],
-        })
-          .then((dbJournalData) => {
-            // serializes data before passing to template
-            const journals = dbJournalData.map((journal) =>
-              journal.get({ plain: true })
-            );
-            res.render("profile", {
-              user,
-              journals,
-              loggedIn: true,
-              viewStyle: '<link rel="stylesheet" href="/css/profile.css">',
-            });
-          })
-          .catch((err) => res.status(500).json(err));
+        res.render("profile", {
+          user,
+          loggedIn: true,
+          viewStyle: '<link rel="stylesheet" href="/css/profile.css">',
+        });
       })
       .catch((err) => res.status(500).json(err));
   },
