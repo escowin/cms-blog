@@ -22,15 +22,18 @@ const journalController = {
         },
         {
           model: Entry,
-          attributes: ["id", "entry_date", "entry_weight", "entry_text", "created_at"],
+          attributes: [
+            "id",
+            "entry_date",
+            "entry_weight",
+            "entry_text",
+            "created_at",
+          ],
         },
       ],
     })
       .then((dbJournalData) => res.json(dbJournalData))
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   getJournalById(req, res) {
     Journal.findOne({
@@ -47,11 +50,17 @@ const journalController = {
       include: [
         {
           model: Entry,
-          attributes: ["id", "entry_date", "entry_weight", "entry_text", "created_at"],
-          order: [["entry_date", "DESC"]]
+          attributes: [
+            "id",
+            "entry_date",
+            "entry_weight",
+            "entry_text",
+            "created_at",
+          ],
+          order: [["entry_date", "DESC"]],
         },
       ],
-      order: [[Entry, "entry_date", "DESC"]]
+      order: [[Entry, "entry_date", "DESC"]],
     })
       .then((dbJournalData) => {
         if (!dbJournalData) {
@@ -60,10 +69,7 @@ const journalController = {
         }
         res.json(dbJournalData);
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   // create
   createJournal(req, res) {
@@ -102,10 +108,7 @@ const journalController = {
         }
         res.json(dbJournalData);
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   // delete
   deleteJournal(req, res) {
@@ -119,11 +122,8 @@ const journalController = {
         }
         res.json(dbJournalData);
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  }
-}
+      .catch((err) => res.status(500).json(err));
+  },
+};
 
 module.exports = journalController;

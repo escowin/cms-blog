@@ -19,13 +19,13 @@
         name="weight"
         type="number"
         id="weight"
-        max="999.9"
+        max="500"
         step="0.1"
         value="{{entry_weight}}"
+        required
       />
       <span>lbs</span>
     </div>
-
   </article>
 
   <article class="input-wrapper" id="entry-text">
@@ -38,18 +38,17 @@
     >{{entry_text}}</textarea>
   </article>
 
-  {{!-- {{#if is_edit_entry_page}} --}}
   <article class="input-wrapper" id="entry-tags">
-    <label for="tag-name">tags</label>
+    <label for="tag-name">tags <span style="font-size: 1rem;">(seperated by commas)</span></label>
     <input
       class="input"
       name="tag-name"
       id="tag-name"
       type="text"
-      placeholder="tag 1; tag 2; tag 3; etc..."
+      placeholder="rowing, lifting, etc..."
+      value="{{#each tags}}{{tag_name}}, {{/each}}"
     />
   </article>
-  {{!-- {{/if}} --}}
 
   <article class="button-wrapper">
     <svg class="icon-wrapper page-icon submit-btn" id="add-entry-btn">

@@ -1,18 +1,12 @@
 // variables
 const saveEntryBtn = document.getElementById("add-entry-btn");
-const entryNotesEl = document.getElementById("text")
+const entryNotesEl = document.getElementById("text");
+const entryWeightEl = document.getElementById("weight");
 const charCountEl = document.getElementById("char-count");
-
-async function getJournalId() {
-  try {
-    const entryId = window.location.toString().split("/").pop().split("?")[0];
-    const response = await fetch(`/api/entries/${entryId}`);
-    const entryData = await response.json();
-    return entryData.journal_id;
-  } catch (error) {
-    console.error(error);
-  }
-}
+const journalId = document.querySelector('.edit-view').dataset.journalId;
+const id = window.location.toString().split("/")[
+  window.location.toString().split("/").length - 1
+];
 
 async function editEntryFormHandler(e) {
   try {
@@ -20,15 +14,12 @@ async function editEntryFormHandler(e) {
     let tagIds = [];
   
     const entryDate = document.getElementById("date").value;
-    const entryWeight = document.getElementById("weight").value.trim();
-    const entryText = document.getElementById("text").value.trim();
-    const id = window.location.toString().split("/")[
-      window.location.toString().split("/").length - 1
-    ];
+    const entryWeight = entryWeightEl.value.trim();
+    const entryText = entryNotesEl.value.trim();
     const tagsInput = document.getElementById("tag-name").value.trim();
   
     if (tagsInput.trim() !== "") {
-      const formTagStrings = tagsInput.split(";").map((tag) => tag.trim());
+      const formTagStrings = tagsInput.split(",").map((tag) => tag.trim());
       const generatedTagIds = await generateTagIds(formTagStrings);
       tagIds.push(...generatedTagIds);
     }
@@ -47,7 +38,6 @@ async function editEntryFormHandler(e) {
     });
   
     if (response.ok) {
-      const journalId = await getJournalId();
       document.location.replace(`../../journals/${journalId}`);
 
     } else {
@@ -61,10 +51,6 @@ async function editEntryFormHandler(e) {
 
 async function deleteEntryHandler(e) {
   e.preventDefault();
-
-
-  const journalId = await getJournalId();
-
   const response = await fetch(`/api/entries/${id}`, {
     method: "DELETE",
   });
@@ -130,6 +116,17 @@ const getExistingTags = async () => {
 };
 
 // calls
+entryWeightEl.addEventListener("input", () => {
+  // limits user input to 3 digits & one decimal
+  const regex = /^\d{0,3}(\.\d{0,1})?$/;
+  const inputValid = regex.test(entryWeightEl.value);
+  if (!inputValid) {
+    // removes last input character
+    entryWeightEl.value = entryWeightEl.value.slice(0, -1);
+  } else if (parseFloat(entryWeightEl.value) > 500) {
+    entryWeightEl.value = "500";
+  }
+});
 entryNotesEl.addEventListener("keyup", () => {
   const charLength = entryNotesEl.value.length;
   charCountEl.innerText = charLength;

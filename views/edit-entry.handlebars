@@ -1,7 +1,6 @@
 {{!-- html with nested partial --}}
-<section class="section form-section edit-view">
+<section class="section form-section edit-view" data-journal-id="{{entry.journal_id}}">
     <h2 class="section-header">Edit entry</h2>
-
     {{> entry-form entry }}
     <button class="btn form-btn" id="delete-btn">delete</button>
     <button class="btn form-btn" id="back-btn">back</button>

@@ -15,16 +15,20 @@ Entry.init(
     entry_date: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [10, 10],
+        is: /^\d{4}-\d{2}-\d{2}$/i,
+      }
     },
     entry_weight: {
-      type: DataTypes.STRING,
+      type: DataTypes.DECIMAL(4,1),
       allowNull: false,
     },
     entry_text: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [1],
+        len: [1, 500],
       },
     },
     user_id: {
