@@ -26,26 +26,47 @@ const entryController = {
       res.status(400).json(err);
     }
   },
-  getEntryById(req, res) {
-    if (req.session) {
-      Entry.findOne({
-        where: {
-          id: req.params.id,
-        },
+  async getEntryById(req, res) {
+    if (!req.session) {
+      return;
+    }
+
+    try {
+      const dbEntryData = await Entry.findOne({
+        where: { id: req.params.id },
         include: [
           {
             model: Tag,
             through: EntryTag,
             attributes: ["id", "tag_name"],
-          },
-        ],
-      })
-        .then((dbEntryData) => res.json(dbEntryData))
-        .catch((err) => {
-          console.log(err);
-          res.status(400).json(err);
-        });
+          }
+        ]
+      });
+
+      res.json(dbEntryData);
+    } catch (err) {
+      console.log(err);
+      res.status(400).json(err);
     }
+    // if (req.session) {
+    //   Entry.findOne({
+    //     where: {
+    //       id: req.params.id,
+    //     },
+    //     include: [
+    //       {
+    //         model: Tag,
+    //         through: EntryTag,
+    //         attributes: ["id", "tag_name"],
+    //       },
+    //     ],
+    //   })
+    //     .then((dbEntryData) => res.json(dbEntryData))
+    //     .catch((err) => {
+    //       console.log(err);
+    //       res.status(400).json(err);
+    //     });
+    // }
   },
   createEntry(req, res) {
     if (req.session) {
