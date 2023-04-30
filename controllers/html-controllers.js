@@ -230,7 +230,8 @@ const htmlController = {
         loggedIn: req.session.loggedIn,
         viewStyle: '<link rel="stylesheet" href="/css/entries.css">',
       });
-    });
+    })
+    .catch((err) => res.status(500).json(err));
   },
 };
 

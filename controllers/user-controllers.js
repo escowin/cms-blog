@@ -9,29 +9,12 @@ const userController = {
       attributes: { exclude: ["password"] },
     })
       .then((dbUserData) => res.json(dbUserData))
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   getUserById(req, res) {
     User.findOne({
       attributes: { exclude: ["password"] },
       where: { id: req.params.id },
-      // include: [
-      //   {
-      //     model: Post,
-      //     attributes: ['id', 'title', 'content', 'created_at']
-      //   },
-      //   {
-      //     model: Comment,
-      //     attributes: ['id', 'comment_text', 'created_at'],
-      //     include: {
-      //       model: Post,
-      //       attributes: ['title']
-      //     }
-      //   },
-      // ]
     })
       .then((dbUserData) => {
         if (!dbUserData) {
@@ -40,23 +23,16 @@ const userController = {
         }
         res.json(dbUserData);
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   // create
   createUser(req, res) {
     User.create({
       username: req.body.username,
-      // email: req.body.email,
       password: req.body.password,
     })
       .then((dbUserData) => res.json(dbUserData))
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   // update
   updateUser(req, res) {
@@ -73,10 +49,7 @@ const userController = {
         }
         res.json(dbUserData);
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
   // delete
   deleteUser(req, res) {
@@ -90,12 +63,8 @@ const userController = {
           res.status(404).json({ message: "user does not exist" });
           return;
         }
-        // res.json(dbUserData);
       })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+      .catch((err) => res.status(500).json(err));
   },
 
   // logging in & out | create & destroy sessions

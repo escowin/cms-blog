@@ -4,13 +4,6 @@ const { Tag, Entry, EntryTag } = require("../models");
 const tagController = {
   getAllTags(req, res) {
     Tag.findAll({
-      // include: [
-      //   {
-      //     model: Entry,
-      //     through: EntryTag,
-      //     attributes: ["id"],
-      //   },
-      // ],
       attributes: ["id", "tag_name"],
       order: [["tag_name", "ASC"]]
     })
