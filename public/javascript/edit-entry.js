@@ -3,17 +3,10 @@ const saveEntryBtn = document.getElementById("add-entry-btn");
 const entryNotesEl = document.getElementById("text");
 const entryWeightEl = document.getElementById("weight");
 const charCountEl = document.getElementById("char-count");
-
-async function getJournalId() {
-  try {
-    const entryId = window.location.toString().split("/").pop().split("?")[0];
-    const response = await fetch(`/api/entries/${entryId}`);
-    const entryData = await response.json();
-    return entryData.journal_id;
-  } catch (error) {
-    console.error(error);
-  }
-}
+const journalId = document.querySelector('.edit-view').dataset.journalId;
+const id = window.location.toString().split("/")[
+  window.location.toString().split("/").length - 1
+];
 
 async function editEntryFormHandler(e) {
   try {
@@ -23,9 +16,6 @@ async function editEntryFormHandler(e) {
     const entryDate = document.getElementById("date").value;
     const entryWeight = entryWeightEl.value.trim();
     const entryText = entryNotesEl.value.trim();
-    const id = window.location.toString().split("/")[
-      window.location.toString().split("/").length - 1
-    ];
     const tagsInput = document.getElementById("tag-name").value.trim();
   
     if (tagsInput.trim() !== "") {
@@ -48,7 +38,6 @@ async function editEntryFormHandler(e) {
     });
   
     if (response.ok) {
-      const journalId = await getJournalId();
       document.location.replace(`../../journals/${journalId}`);
 
     } else {
@@ -62,10 +51,6 @@ async function editEntryFormHandler(e) {
 
 async function deleteEntryHandler(e) {
   e.preventDefault();
-
-
-  const journalId = await getJournalId();
-
   const response = await fetch(`/api/entries/${id}`, {
     method: "DELETE",
   });

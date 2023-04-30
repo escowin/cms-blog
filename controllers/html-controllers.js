@@ -4,7 +4,7 @@ const htmlController = {
   editEntryView(req, res) {
     Entry.findOne({
       where: { id: req.params.id },
-      attributes: ["id", "entry_text", "entry_date", "entry_weight"],
+      attributes: ["id", "entry_text", "entry_date", "entry_weight", "journal_id"],
       include: [
         {
           model: Tag,
