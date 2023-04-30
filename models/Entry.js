@@ -17,7 +17,7 @@ Entry.init(
       allowNull: false,
     },
     entry_weight: {
-      type: DataTypes.STRING,
+      type: DataTypes.DECIMAL(4,1),
       allowNull: false,
     },
     entry_text: {

@@ -2,17 +2,14 @@ const { Entry, EntryTag, Tag } = require("../models");
 
 // crud methods
 const entryController = {
-  getAllEntries(req, res) {
-    if (req.session) {
-      Entry.findAll({
-        attributes: [
-          "id",
-          "entry_date",
-          "entry_weight",
-          "entry_text",
-          "user_id",
-          "journal_id",
-        ],
+  async getAllEntries(req, res) {
+    if (!req.session) {
+      return;
+    }
+
+    try {
+      const dbEntryData = await Entry.findAll({
+        attributes: [ "id", "entry_date", "entry_weight", "user_id", "journal_id" ],
         include: [
           {
             model: Tag,
@@ -21,12 +18,12 @@ const entryController = {
           },
         ],
         order: [["entry_date", "DESC"]],
-      })
-        .then((dbEntryData) => res.json(dbEntryData))
-        .catch((err) => {
-          console.log(err);
-          res.status(400).json(err);
-        });
+      });
+
+      res.json(dbEntryData);
+    } catch (err) {
+      console.log(err);
+      res.status(400).json(err);
     }
   },
   getEntryById(req, res) {
