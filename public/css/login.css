@@ -1,6 +1,6 @@
 main {
     padding: var(--indent);
-    gap: 1rem;
+    gap: var(--indent);
 }
 
 .form {
@@ -30,14 +30,14 @@ main {
 }
 
 label {
-    padding-left: 1rem;
+    padding-left: var(--indent);
 }
 
 input {
     font-size: 2rem;
     border-top-left-radius: var(--corners);
     border-bottom-left-radius: var(--corners);
-    padding: .25rem 1rem;
+    padding: calc(var(--indent-sm)/2) var(--indent);
     width: 100%;
 }
 
@@ -45,7 +45,6 @@ input {
     background-color: var(--secondary);
     width: 80%;
     font-size: 2rem;
-    /* margin: 1rem 0 2rem 0; */
     border-radius: var(--corners);
 }
 
@@ -75,7 +74,7 @@ input {
 
 @media screen and (min-width: 1024px) {
     main {
-        gap: 2rem;
+        gap: calc(var(--indent)*2);
     }
 
     .form h2 {

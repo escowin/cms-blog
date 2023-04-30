@@ -17,7 +17,7 @@
     flex-direction: column;
     font-size: 85%;
     align-items: flex-end;
-    padding-right: .5rem;
+    padding-right: var(--indent-sm);
 }
 
 #journal-end {
@@ -33,7 +33,7 @@
     #journal-form-details {
         display: flex;
         flex-direction: column;
-        gap: .25rem;
+        gap: calc(var(--indent-sm)/2);
     }
 
     textarea {

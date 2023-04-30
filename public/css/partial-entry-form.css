@@ -30,7 +30,7 @@ input::placeholder {
     }
 
     .form-details {
-        gap: 0 .5rem;
+        gap: 0 var(--indent-sm);
         display: flex;
         flex-direction: column;
     }
@@ -49,7 +49,6 @@ input::placeholder {
 
     #entry-text {
         height: 100%;
-        /* height: 25vh; */
     }
 
     #tag-name {
