@@ -71,18 +71,12 @@ const htmlController = {
       include: [
         {
           model: Entry,
-          attributes: [
-            "id",
-            "entry_date",
-            "entry_text",
-            "journal_id",
-          ],
+          attributes: ["id", "entry_date", "entry_text", "journal_id"],
           order: [["entry_date", "DESC"]],
         },
       ],
     })
       .then((dbJournalData) => {
-        // to display every post without issue
         const journals = dbJournalData.map((journal) =>
           journal.get({ plain: true })
         );
@@ -135,8 +129,6 @@ const htmlController = {
 
         // serializes data
         const journal = dbJournalData.get({ plain: true });
-
-        // passes data to template, loggedIn allows for conditional rendering within the template
         res.render("journal", {
           journal,
           loggedIn: req.session.loggedIn,
@@ -161,8 +153,8 @@ const htmlController = {
           include: [
             {
               model: Entry,
-              attributes: [ "id", "entry_text"]
-            }
+              attributes: ["id", "entry_text"],
+            },
           ],
           order: [["end_date", "DESC"]],
         },
@@ -189,6 +181,27 @@ const htmlController = {
         });
       })
       .catch((err) => res.status(500).json(err));
+  },
+  tagsView(req, res) {
+    Tag.findAll({
+      attributes: ["id", "tag_name"],
+      order: [["tag_name", "ASC"]],
+    })
+      .then((dbTagData) => {
+        const tags = dbTagData.map((tag) => tag.get({ plain: true }));
+        res.render("tags", {
+          tags,
+          loggedIn: true,
+          viewStyle: '<link rel="stylesheet" href="/css/tags.css">'
+        });
+      })
+      .catch((err) => res.status(500).json(err));
+  },
+  entriesView(req, res) {
+    User.findOne({
+      where: { id: req.session.user_id },
+      attributes: { exclude: ["password"] },
+    });
   },
 };
 

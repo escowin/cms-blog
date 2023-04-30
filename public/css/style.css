@@ -334,7 +334,7 @@ a:hover,
 
     /* - list section */
     .list-section {
-        height: 100%;
+        height: inherit;
     }
 
     .list {

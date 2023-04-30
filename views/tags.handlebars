@@ -1,0 +1,15 @@
+{{!-- <section class="form-section" id="form-section">
+    <h2 class="section-header" id="form-header">Add tag</h2>
+    {{#if loggedIn}}
+    <p>tag form goes here</p>
+    {{/if}}
+</section> --}}
+
+<section class="list-section" id="tags-section">
+  <h2 class="section-header">tags</h2>
+  <ul class="list" id="tags">
+    {{#each tags}}
+      <li class="item tag" data-tag-id="{{id}}">{{tag_name}}</li>
+    {{/each}}
+  </ul>
+</section>

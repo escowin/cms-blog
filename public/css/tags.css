@@ -1,0 +1,33 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-section {
+    width: 100%;
+}
+
+.list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    flex-grow: 0;
+    height: fit-content;
+    padding: var(--indent) var(--indent) var(--indent) 0;
+}
+
+.item {
+    width: max-content;
+    height: max-content;
+    display: block;
+    padding: var(--indent-sm) var(--indent);
+
+}
+
+.list, .item {
+    border-radius: 0 5rem 5rem 0;
+}
