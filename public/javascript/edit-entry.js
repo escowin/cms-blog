@@ -1,6 +1,7 @@
 // variables
 const saveEntryBtn = document.getElementById("add-entry-btn");
-const entryNotesEl = document.getElementById("text")
+const entryNotesEl = document.getElementById("text");
+const entryWeightEl = document.getElementById("weight");
 const charCountEl = document.getElementById("char-count");
 
 async function getJournalId() {
@@ -20,15 +21,15 @@ async function editEntryFormHandler(e) {
     let tagIds = [];
   
     const entryDate = document.getElementById("date").value;
-    const entryWeight = document.getElementById("weight").value.trim();
-    const entryText = document.getElementById("text").value.trim();
+    const entryWeight = entryWeightEl.value.trim();
+    const entryText = entryNotesEl.value.trim();
     const id = window.location.toString().split("/")[
       window.location.toString().split("/").length - 1
     ];
     const tagsInput = document.getElementById("tag-name").value.trim();
   
     if (tagsInput.trim() !== "") {
-      const formTagStrings = tagsInput.split(";").map((tag) => tag.trim());
+      const formTagStrings = tagsInput.split(",").map((tag) => tag.trim());
       const generatedTagIds = await generateTagIds(formTagStrings);
       tagIds.push(...generatedTagIds);
     }
@@ -130,6 +131,17 @@ const getExistingTags = async () => {
 };
 
 // calls
+entryWeightEl.addEventListener("input", () => {
+  // limits user input to 3 digits & one decimal
+  const regex = /^\d{0,3}(\.\d{0,1})?$/;
+  const inputValid = regex.test(entryWeightEl.value);
+  if (!inputValid) {
+    // removes last input character
+    entryWeightEl.value = entryWeightEl.value.slice(0, -1);
+  } else if (parseFloat(entryWeightEl.value) > 500) {
+    entryWeightEl.value = "500";
+  }
+});
 entryNotesEl.addEventListener("keyup", () => {
   const charLength = entryNotesEl.value.length;
   charCountEl.innerText = charLength;

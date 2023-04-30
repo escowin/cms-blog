@@ -1,8 +1,8 @@
 // variables
 const addEntryBtn = document.getElementById("add-entry-btn");
-const entryNotesEl = document.getElementById("text")
+const entryNotesEl = document.getElementById("text");
+const entryWeightEl = document.getElementById("weight");
 const charCountEl = document.getElementById("char-count");
-
 
 // logic | async
 // - posting new entries & tags into the database tables from the frontend
@@ -13,15 +13,13 @@ async function entryFormHandler(e) {
 
     // data | entry & tag values from the input form. tag string is split into an array;
     const entryDate = document.getElementById("date").value;
-    const entryWeight = document.getElementById("weight").value.trim();
+    const entryWeight = entryWeightEl.value.trim();
     const entryText = entryNotesEl.value.trim();
     const journalId = window.location.toString().split("/").pop().split("?")[0];
-    const tagsInput = document
-      .getElementById("tag-name")
-      .value.trim();
+    const tagsInput = document.getElementById("tag-name").value.trim();
 
     if (tagsInput.trim() !== "") {
-      const formTagStrings = tagsInput.split(";").map((tag) => tag.trim());
+      const formTagStrings = tagsInput.split(",").map((tag) => tag.trim());
       const generatedTagIds = await generateTagIds(formTagStrings);
       tagIds.push(...generatedTagIds);
     }
@@ -51,7 +49,7 @@ async function entryFormHandler(e) {
   }
 }
 
-// - posting new tags 
+// - posting new tags
 const generateTagIds = async (formTags) => {
   let idValues = [];
   const existingTags = await getExistingTags();
@@ -104,11 +102,22 @@ const getExistingTags = async () => {
 };
 
 // calls
+entryWeightEl.addEventListener("input", () => {
+  // limits user input to 3 digits & one decimal
+  const regex = /^\d{0,3}(\.\d{0,1})?$/;
+  const inputValid = regex.test(entryWeightEl.value);
+  if (!inputValid) {
+    // removes last input character
+    entryWeightEl.value = entryWeightEl.value.slice(0, -1);
+  } else if (parseFloat(entryWeightEl.value) > 500) {
+    entryWeightEl.value = "500";
+  }
+});
 entryNotesEl.addEventListener("keyup", () => {
   const charLength = entryNotesEl.value.length;
   charCountEl.innerText = charLength;
   if (charLength === 300) {
-    charCountEl.className = "char-limit"
+    charCountEl.className = "char-limit";
   }
 });
 addEntryBtn.addEventListener("click", entryFormHandler);
