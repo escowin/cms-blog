@@ -11,7 +11,7 @@ const {
 } = require("../../controllers/user-controllers");
 
 // public & authguarded api endpoints
-router.route("/").get(getAllUsers).post(createUser);
+router.route("/").get(withAuth, getAllUsers).post(createUser);
 router
   .route("/:id")
   .get(withAuth, getUserById)

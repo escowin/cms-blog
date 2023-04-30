@@ -58,40 +58,44 @@ const htmlController = {
       .catch((err) => res.status(500).json(err));
   },
   homepageView(req, res) {
-    // only journals belonging to the user are retrieved
-    User.findOne({
-      where: { id: req.session.user_id },
-      attributes: ["id", "username"],
-      include: [
-        {
-          model: Journal,
-          attributes: [
-            "id",
-            "title",
-            "description",
-            "start_date",
-            "end_date",
-            "duration",
-          ],
-          order: [["end_date", "DESC"]],
-          include: Entry,
-        },
-      ],
-    })
-      .then((dbUserData) => {
-        const user = dbUserData.get({ plain: true });
-        res.render("homepage", {
-          user,
-          loggedIn: req.session.loggedIn,
-          viewStyle: `
-          <link rel="stylesheet" href="/css/homepage.css">
-          <link rel="stylesheet" href="/css/partial-journal-form.css">`,
-          viewScript: `
-          <script defer src="/javascript/add-journal.js"></script>
-          <script defer src="/javascript/delete-journal.js"></script>`,
-        });
+    if (req.session.user_id) {
+      // only journals belonging to the user are retrieved
+      User.findOne({
+        where: { id: req.session.user_id },
+        attributes: ["id", "username"],
+        include: [
+          {
+            model: Journal,
+            attributes: [
+              "id",
+              "title",
+              "description",
+              "start_date",
+              "end_date",
+              "duration",
+            ],
+            order: [["end_date", "DESC"]],
+            include: Entry,
+          },
+        ],
       })
-      .catch((err) => res.status(500).json(err));
+        .then((dbUserData) => {
+          const user = dbUserData.get({ plain: true });
+          res.render("homepage", {
+            user,
+            loggedIn: req.session.loggedIn,
+            viewStyle: `
+            <link rel="stylesheet" href="/css/homepage.css">
+            <link rel="stylesheet" href="/css/partial-journal-form.css">`,
+            viewScript: `
+            <script defer src="/javascript/add-journal.js"></script>
+            <script defer src="/javascript/delete-journal.js"></script>`,
+          });
+        })
+        .catch((err) => res.status(500).json(err));
+    } else {
+      res.render("homepage");
+    }
   },
   journalView(req, res) {
     Journal.findOne({
@@ -207,7 +211,7 @@ const htmlController = {
           include: [
             {
               model: Journal,
-              attributes: ["id", "title"]
+              attributes: ["id", "title"],
             },
             {
               model: Tag,
@@ -216,18 +220,17 @@ const htmlController = {
             },
           ],
           order: [["entry_date", "DESC"]],
-        }
+        },
       ],
       order: [[Entry, "entry_date", "DESC"]],
-    })
-    .then(dbUserData => {
+    }).then((dbUserData) => {
       const user = dbUserData.get({ plain: true });
       res.render("entries", {
         user,
         loggedIn: req.session.loggedIn,
         viewStyle: '<link rel="stylesheet" href="/css/entries.css">',
       });
-    })
+    });
   },
 };
 
