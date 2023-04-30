@@ -1,0 +1,8 @@
+<section class="list-section" id="entries-section">
+  <h2 class="section-header">Entries</h2>
+  <ul class="list" id="entries">
+    {{#each user.entries as |entry|}}
+      {{> entry-info entry }}
+    {{/each}}
+  </ul>
+</section>

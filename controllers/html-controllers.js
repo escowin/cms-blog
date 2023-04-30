@@ -200,7 +200,34 @@ const htmlController = {
     User.findOne({
       where: { id: req.session.user_id },
       attributes: { exclude: ["password"] },
-    });
+      include: [
+        {
+          model: Entry,
+          attributes: ["id", "entry_date", "entry_weight", "entry_text"],
+          include: [
+            {
+              model: Journal,
+              attributes: ["id", "title"]
+            },
+            {
+              model: Tag,
+              through: EntryTag,
+              attributes: ["id", "tag_name"],
+            },
+          ],
+          order: [["entry_date", "DESC"]],
+        }
+      ],
+      order: [[Entry, "entry_date", "DESC"]],
+    })
+    .then(dbUserData => {
+      const user = dbUserData.get({ plain: true });
+      res.render("entries", {
+        user,
+        loggedIn: req.session.loggedIn,
+        viewStyle: '<link rel="stylesheet" href="/css/entries.css">',
+      });
+    })
   },
 };
 
