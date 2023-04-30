@@ -58,38 +58,37 @@ const htmlController = {
       .catch((err) => res.status(500).json(err));
   },
   homepageView(req, res) {
-    Journal.findAll({
-      attributes: [
-        "id",
-        "title",
-        "description",
-        "start_date",
-        "end_date",
-        "duration",
-      ],
-      order: [["end_date", "DESC"]],
+    // only journals belonging to the user are retrieved
+    User.findOne({
+      where: { id: req.session.user_id },
+      attributes: ["id", "username"],
       include: [
         {
-          model: Entry,
-          attributes: ["id", "entry_date", "entry_text", "journal_id"],
-          order: [["entry_date", "DESC"]],
+          model: Journal,
+          attributes: [
+            "id",
+            "title",
+            "description",
+            "start_date",
+            "end_date",
+            "duration",
+          ],
+          order: [["end_date", "DESC"]],
+          include: Entry,
         },
       ],
     })
-      .then((dbJournalData) => {
-        const journals = dbJournalData.map((journal) =>
-          journal.get({ plain: true })
-        );
+      .then((dbUserData) => {
+        const user = dbUserData.get({ plain: true });
         res.render("homepage", {
-          journals,
+          user,
           loggedIn: req.session.loggedIn,
           viewStyle: `
-            <link rel="stylesheet" href="/css/homepage.css">
-            <link rel="stylesheet" href="/css/partial-journal-form.css">
-            `,
+          <link rel="stylesheet" href="/css/homepage.css">
+          <link rel="stylesheet" href="/css/partial-journal-form.css">`,
           viewScript: `
-            <script defer src="/javascript/add-journal.js"></script>
-            <script defer src="/javascript/delete-journal.js"></script>`,
+          <script defer src="/javascript/add-journal.js"></script>
+          <script defer src="/javascript/delete-journal.js"></script>`,
         });
       })
       .catch((err) => res.status(500).json(err));
@@ -192,7 +191,7 @@ const htmlController = {
         res.render("tags", {
           tags,
           loggedIn: true,
-          viewStyle: '<link rel="stylesheet" href="/css/tags.css">'
+          viewStyle: '<link rel="stylesheet" href="/css/tags.css">',
         });
       })
       .catch((err) => res.status(500).json(err));
