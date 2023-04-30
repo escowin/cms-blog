@@ -15,19 +15,33 @@ Journal.init(
     title: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1, 75],
+      },
     },
     start_date: {
       type: DataTypes.STRING,
       allowNull: false,
-      max: 10
+      validate: {
+        len: [10, 10],
+        is: /^\d{4}-\d{2}-\d{2}$/i,
+      }
     },
     end_date: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [10, 10],
+        is: /^\d{4}-\d{2}-\d{2}$/i,
+      }
     },
     duration: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        max: 52,
+        min: 1,
+      },
     },
     description: {
       type: DataTypes.TEXT,
