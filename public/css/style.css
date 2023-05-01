@@ -296,6 +296,12 @@ select {
     box-shadow: 0 0 1rem 1rem var(--overlay-dark);
 }
 
+.active {
+    transition: 1s;
+    background-color: var(--secondary);
+    box-shadow: 0 0 1rem 1rem var(--secondary);
+}
+
 @media screen and (min-width: 768px) {
     body {
         font-size: 2rem;
