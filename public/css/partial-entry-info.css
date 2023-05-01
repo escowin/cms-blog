@@ -1,7 +1,7 @@
 /* ol | .list */
 .entry-content {
     display: grid;
-    gap: 0 var(--indent-sm);
+    gap: 0 var(--space-sm);
     grid-template-columns: 1fr auto;
     align-items: center;
 }
@@ -24,7 +24,7 @@
     background-color: var(--overlay-dark);
     color: var(--accent-light);
     font-size: 75%;
-    padding: var(--indent-sm) .75rem;
+    padding: var(--space-sm) .75rem;
     border-radius: var(--corners);
 }
 
@@ -34,13 +34,13 @@
 
 .entry-buttons {
     display: flex;
-    gap: var(--indent);
+    gap: var(--space);
     justify-content: flex-end;
 }
 
 .entry-buttons .btn {
     background-color: transparent;
-    padding: 0 var(--indent-sm);
+    padding: 0 var(--space-sm);
     font-family: var(--text-header);
     font-size: 1rem;
     font-weight: bold;

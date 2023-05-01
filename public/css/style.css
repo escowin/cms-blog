@@ -8,8 +8,9 @@
     --text-header: 'Raleway', sans-serif;
     --text-body: 'Alegreya Sans', sans-serif;
     --corners: 25rem;
-    --indent: 1rem;
-    --indent-sm: calc(var(--indent)/2);
+    --space: 1rem;
+    --space-sm: calc(var(--space)/2);
+    --space-xs: calc(var(--space)/4);
 }
 
 * {
@@ -18,7 +19,6 @@
     margin: 0;
 }
 
-/* mobile display */
 body,
 main,
 footer,
@@ -46,7 +46,7 @@ footer {
     color: var(--overlay-dark);
     text-align: center;
     background-color: var(--secondary);
-    padding-left: var(--indent-sm);
+    padding-left: var(--space-sm);
     justify-content: center;
 }
 
@@ -56,7 +56,7 @@ header {
     grid-template-columns: auto 1fr;
     background-color: var(--primary);
     box-shadow: 0 0 1rem var(--primary);
-    padding: .5rem 0;
+    padding: var(--space-sm) 0;
     align-items: center;
     position: sticky;
     top: 0;
@@ -65,8 +65,8 @@ header {
 }
 
 h1 {
-    padding-right: var(--indent);
-    border-right: 1px solid var(--accent-dark);
+    padding-right: var(--space);
+    border-right: 1px solid var(--secondary);
 }
 
 .nav-links {
@@ -88,7 +88,7 @@ h1 {
 main {
     flex-grow: 1;
     font-family: var(--text-body);
-    gap: 0 var(--indent);
+    gap: 0 var(--space);
     background-color: var(--secondary);
     overflow-y: scroll;
 }
@@ -97,9 +97,11 @@ main::-webkit-scrollbar {
     display: none;
 }
 
+/* logged in views */
+
 .section-header {
-    margin-bottom: var(--indent);
-    padding: 0 calc(var(--indent-sm)/2) 0 var(--indent);
+    margin-bottom: var(--space);
+    padding: 0 var(--space-xs) 0 var(--space);
     border-bottom: 2px solid var(--overlay-dark);
     width: 95%;
 }
@@ -112,10 +114,9 @@ main::-webkit-scrollbar {
 /* - main | section#form-section */
 .form-section .form,
 #profile-details {
-    margin-left: var(--indent-sm);
-    padding: var(--indent) var(--indent-sm) var(--indent) calc(var(--indent) + var(--indent-sm));
-    border-top-left-radius: 4rem;
-    border-bottom-left-radius: 4rem;
+    margin-left: var(--space-sm);
+    padding: var(--space) var(--space-sm) var(--space) calc(var(--space) + var(--space-sm));
+    border-radius: 4rem 0 0 4rem;
 }
 
 .form .input-wrapper {
@@ -124,23 +125,30 @@ main::-webkit-scrollbar {
 }
 
 .form label {
-    padding-left: var(--indent);
+    padding-left: var(--space);
+}
+
+/* section | list-section */
+.list-section, .list {
+    flex-grow: 1;
+}
+
+.list {
+    border-radius: 4rem 0 0 0;
 }
 
 .list,
 #profile-details {
     background-color: var(--overlay-dark);
-    margin-left: var(--indent-sm);
-    border-top-left-radius: 4rem;
-    padding: var(--indent) 0 var(--indent-sm) var(--indent);
+    margin-left: var(--space-sm);
+    padding: var(--space) 0 var(--space-sm) var(--space);
 }
 
 .item {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    padding: var(--indent-sm) 0 var(--indent-sm) var(--indent-sm);
-    border-top-left-radius: 10rem;
-    border-bottom-left-radius: 10rem;
+    padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
+    border-radius: 10rem 0 0 10rem;
     background-color: var(--secondary);
 }
 
@@ -149,14 +157,14 @@ main::-webkit-scrollbar {
     height: max-content;
     align-self: center;
     border: 1px solid var(--overlay-dark);
-    padding: var(--indent);
+    padding: var(--space);
     border-radius: 50%;
 }
 
 .item-options {
     display: flex;
     flex-direction: column;
-    margin: .25rem .5rem 0 0;
+    margin: var(--space-xs) var(--space-sm) 0 0;
 }
 
 .item-options .icon-wrapper {
@@ -177,8 +185,7 @@ main::-webkit-scrollbar {
 }
 
 .form-btn {
-    border-top-left-radius: var(--corners);
-    border-bottom-left-radius: var(--corners);
+    border-radius: var(--corners) 0 0 var(--corners);
 }
 
 .delete-journal-btn {
@@ -192,7 +199,7 @@ textarea {
 
 .input {
     font-size: 1.5rem;
-    padding: var(--indent-sm) var(--indent);
+    padding: var(--space-sm) var(--space);
 }
 
 .input,
@@ -208,7 +215,7 @@ select {
 input[type="date"],
 #weight,
 select {
-    padding: .25rem .5rem;
+    padding: var(--space-xs) var(--space-sm);
     font-size: 75%;
 }
 
@@ -226,7 +233,7 @@ select:focus {
     display: flex;
     border: dashed 2px var(--secondary);
     border-radius: var(--corners);
-    padding: .25rem;
+    padding: var(--space-xs);
     cursor: pointer;
     width: 100%;
 }
@@ -262,24 +269,17 @@ a:hover,
 
 /* gap styles */
 footer, .form, .item {
-    gap: var(--indent-sm)
+    gap: var(--space-sm)
 }
 
 .list, .item-options {
-    gap: var(--indent)
+    gap: var(--space)
 }
 
 /* transitions*/
 a,
 .btn,
-.button-wrapper,
-.icon-wrapper,
-.nav-links a,
-.list a,
-.item-options .icon-wrapper,
 .input,
-input[type="date"],
-#weight,
 select {
     transition: 1s;
 }
@@ -305,7 +305,7 @@ select {
     header {
         display: grid;
         grid-template-columns: auto 1fr;
-        gap: calc(var(--indent) * 2);
+        gap: calc(var(--space) * 2);
         font-size: 1.5rem;
         box-shadow: 0 0 1rem var(--primary);
         border-bottom: none;
@@ -333,9 +333,8 @@ select {
 
     .form-section .form,
     #profile-details {
-        padding: var(--indent);
-        border-radius: 0;
-        border-top-right-radius: 5rem;
+        padding: var(--space);
+        border-radius: 0 5rem 0 0;
         margin: 0;
     }
 
@@ -353,7 +352,7 @@ select {
     }
 
     .list {
-        border-top-left-radius: 5rem;
+        border-radius: 5rem 0 0 0;
         height: inherit;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -407,7 +406,7 @@ select {
         grid-area: a;
         display: flex;
         flex-direction: column;
-        gap: var(--indent);
+        gap: var(--space);
         padding: 0;
         box-shadow: none;
     }
@@ -429,8 +428,8 @@ select {
 
     /* - header divs */
     h1 {
-        margin-left: var(--indent-sm);
-        padding: 0 var(--indent-sm);
+        margin-left: var(--space-sm);
+        padding: 0 var(--space-sm);
         border-right: none;
         border-bottom: 2px solid var(--secondary);
     }
@@ -454,7 +453,7 @@ select {
     footer a {
         width: fit-content;
         border-top: 1px double var(--primary);
-        padding: 0 var(--indent-sm);
+        padding: 0 var(--space-sm);
     }
 
 
@@ -470,8 +469,7 @@ select {
     }
 
     .form-section .form {
-        border-radius: 0;
-        border-top-right-radius: 5rem;
+        border-radius: 0 5rem 0 0;
         margin: 0;
     }
 
@@ -497,7 +495,7 @@ select {
     }
 
     .item {
-        padding: var(--indent) 0 var(--indent) var(--indent);
+        padding: var(--space) 0 var(--space) var(--space);
     }
 
     .item-icon {

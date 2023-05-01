@@ -13,14 +13,14 @@ main {
     margin: 0;
     flex-grow: 0;
     height: fit-content;
-    padding: var(--indent) var(--indent) var(--indent) 0;
+    padding: var(--space) var(--space) var(--space) 0;
 }
 
 .item {
     width: max-content;
     height: max-content;
     display: block;
-    padding: var(--indent-sm) var(--indent);
+    padding: var(--space-sm) var(--space);
 
 }
 

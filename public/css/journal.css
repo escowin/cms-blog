@@ -33,9 +33,9 @@
         display: grid;
         grid-template-columns: auto 1fr;
         grid-template-rows: repeat(4, 1fr);
-        gap: 0 var(--indent);
+        gap: 0 var(--space);
         align-items: flex-start;
-        padding-left: var(--indent);
+        padding-left: var(--space);
     }
 
     .journal-details {
@@ -44,7 +44,7 @@
     }
 
     .wrapper {
-        padding-bottom: var(--indent);
+        padding-bottom: var(--space);
     }
 
     .description {

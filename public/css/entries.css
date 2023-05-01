@@ -4,6 +4,6 @@
     }
 
     .item {
-        padding: var(--indent-sm);
+        padding: var(--space-sm);
     }
 }

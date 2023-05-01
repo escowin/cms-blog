@@ -1,11 +1,11 @@
 .edit-view {
-    gap: var(--indent);
+    gap: var(--space);
 }
 
 .form-btn {
-    margin: 0 0 0 var(--indent);
+    margin: 0 0 0 var(--space);
     background-color: var(--overlay-dark);
-    padding: calc(var(--indent-sm)/2);
+    padding: var(--space-xs);
     font-size: 2rem;
 }
 
@@ -25,7 +25,7 @@
     .form-btn {
         margin: 0;
         border-radius: 0;
-        padding: calc(var(--indent-sm)/2);
+        padding: var(--space-xs);
         font-size: 2rem;
     }
 
@@ -60,7 +60,7 @@
 
 @media screen and (min-width: 1024px) {
     main {
-        padding-right: var(--indent);
+        padding-right: var(--space);
     }
 
     #text {
@@ -72,8 +72,7 @@
     }
 
     .form-btn {
-        border-top-right-radius: var(--corners);
-        border-bottom-right-radius: var(--corners);
+        border-radius: 0 var(--corners) var(--corners) 0;
     }
 
 }

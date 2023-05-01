@@ -17,12 +17,12 @@
     flex-direction: column;
     font-size: 85%;
     align-items: flex-end;
-    padding-right: var(--indent-sm);
+    padding-right: var(--space-sm);
 }
 
 #journal-end {
     height: 1.75rem;
-    padding: calc(var(--indent-sm)/2) var(--indent);
+    padding: var(--space-xs) var(--space);
     border-radius: 1rem;
     font-size: 95%;
     font-weight: bold;
@@ -33,7 +33,7 @@
     #journal-form-details {
         display: flex;
         flex-direction: column;
-        gap: calc(var(--indent-sm)/2);
+        gap: var(--space-xs);
     }
 
     textarea {

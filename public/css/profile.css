@@ -7,8 +7,8 @@
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: repeat(3, min-content) ;
-    gap: 0 var(--indent);
-    padding-left: calc(var(--indent) * 2);
+    gap: 0 var(--space);
+    padding-left: calc(var(--space) * 2);
 }
 
 h3 {

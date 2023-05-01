@@ -1,46 +1,34 @@
+/* body */
 main {
-    padding: var(--indent);
-    gap: var(--indent);
+    padding: var(--space);
+    gap: var(--space); /* overrides style.css:89 */
 }
 
+/* main */
+/* .logged-out-form */
 .form {
     border-radius: 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 1.75rem;
-    padding: var(--indent) var(--indent-sm);
-    gap: var(--indent);
+    padding: var(--space) var(--space-sm);
+    gap: var(--space);
 }
 
 .form h2 {
-    color: var(--text-light);
     text-align: center;
     border-bottom: 2px solid var(--secondary);
-    padding: 0 calc(var(--indent)*2);
+    padding: 0 calc(var(--space)*2);
 }
 
 .credentials {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    color: var(--text-light);
     font-size: 2rem;
 }
 
-label {
-    padding-left: var(--indent);
-}
-
-input {
-    font-size: 2rem;
-    border-top-left-radius: var(--corners);
-    border-bottom-left-radius: var(--corners);
-    padding: calc(var(--indent-sm)/2) var(--indent);
-    width: 100%;
-}
-
+/* button styles */
 .login-btn {
     background-color: var(--secondary);
     width: 80%;
@@ -56,15 +44,14 @@ input {
     main {
         grid-template-columns: 1fr 1fr;
         justify-content: center;
-        --spacing: calc(var(--indent) * 2);
+        --spacing: calc(var(--space) * 2);
         padding: var(--spacing);
         gap: var(--spacing);
     }
 
     .form {
         border-radius: 2rem;
-        background-color: var(--overlay-dark);
-        padding: var(--indent-sm) var(--indent);
+        padding: var(--space-sm) var(--space);
     }
 
     input {
@@ -74,7 +61,7 @@ input {
 
 @media screen and (min-width: 1024px) {
     main {
-        gap: calc(var(--indent)*2);
+        gap: calc(var(--space)*2);
     }
 
     .form h2 {

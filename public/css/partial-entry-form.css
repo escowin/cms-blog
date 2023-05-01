@@ -30,7 +30,7 @@ input::placeholder {
     }
 
     .form-details {
-        gap: 0 var(--indent-sm);
+        gap: 0 var(--space-sm);
         display: flex;
         flex-direction: column;
     }
@@ -52,7 +52,7 @@ input::placeholder {
     }
 
     #tag-name {
-        padding: var(--indent-sm);
+        padding: var(--space-sm);
     }
 
     textarea {
