@@ -1,8 +1,3 @@
-main {
-    display: flex;
-    flex-direction: column;
-}
-
 .list-section {
     width: 100%;
 }
@@ -10,20 +5,26 @@ main {
 .list {
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0;
     flex-grow: 0;
-    height: fit-content;
-    padding: var(--space) var(--space) var(--space) 0;
+    border-radius: 4rem 0 0 4rem;
+    justify-content: flex-end;
 }
 
 .item {
-    width: max-content;
-    height: max-content;
-    display: block;
     padding: var(--space-sm) var(--space);
-
+    display: flex;
+    align-items: center;
+    height: max-content;
 }
 
-.list, .item {
-    border-radius: 0 5rem 5rem 0;
+@media screen and (min-width: 768px) {
+    .form-section .form {
+        border-radius: 0 5rem 4rem 0;
+        padding-bottom: calc(var(--space) * 2);
+    }
+
+    .list {
+        height: auto;
+        font-weight: bold;
+    }
 }

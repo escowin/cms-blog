@@ -56,7 +56,7 @@ header {
     grid-template-columns: auto 1fr;
     background-color: var(--primary);
     box-shadow: 0 0 1rem var(--primary);
-    padding: var(--space-sm) 0;
+    padding: var(--space-sm);
     align-items: center;
     position: sticky;
     top: 0;
@@ -65,8 +65,9 @@ header {
 }
 
 h1 {
-    padding-right: var(--space);
+    padding: 0 var(--space-sm);
     border-right: 1px solid var(--secondary);
+    border-left: 1px solid var(--secondary);
 }
 
 .nav-links {
@@ -113,7 +114,7 @@ main::-webkit-scrollbar {
 
 /* - main | section#form-section */
 .form-section .form,
-#profile-details {
+#profile {
     margin-left: var(--space-sm);
     padding: var(--space) var(--space-sm) var(--space) calc(var(--space) + var(--space-sm));
     border-radius: 4rem 0 0 4rem;
@@ -129,7 +130,9 @@ main::-webkit-scrollbar {
 }
 
 /* section | list-section */
-.list-section, .list {
+.list-section,
+.profile-section,
+.list {
     flex-grow: 1;
 }
 
@@ -137,8 +140,7 @@ main::-webkit-scrollbar {
     border-radius: 4rem 0 0 0;
 }
 
-.list,
-#profile-details {
+.list {
     background-color: var(--overlay-dark);
     margin-left: var(--space-sm);
     padding: var(--space) 0 var(--space-sm) var(--space);
@@ -354,7 +356,7 @@ select {
 
     /* - list section */
     .list-section {
-        height: inherit;
+        height: 100%;
     }
 
     .list {
@@ -417,6 +419,14 @@ select {
         box-shadow: none;
     }
 
+    /* - header divs */
+    h1 {
+        padding: 0 var(--space-sm);
+        border-right: none;
+        border-left: none;
+        border-bottom: 2px solid var(--secondary);
+    }
+    
     footer {
         display: flex;
         grid-area: c;
@@ -430,14 +440,6 @@ select {
 
     main {
         grid-area: b;
-    }
-
-    /* - header divs */
-    h1 {
-        margin-left: var(--space-sm);
-        padding: 0 var(--space-sm);
-        border-right: none;
-        border-bottom: 2px solid var(--secondary);
     }
 
     .nav-links {

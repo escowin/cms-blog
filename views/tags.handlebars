@@ -1,8 +1,30 @@
+<section class="form-section">
+  <h2 class="section-header">Add tag</h2>
+  <form class="form" id="tag-form">
+    <article class="input-wrapper">
+      <label for="tag-name">tag</label>
+      <input class="input" id="tag-name" />
+    </article>
+
+    <article class="button-wrapper btn">
+      <svg class="icon-wrapper page-icon submit-btn" id="add-entry-btn">
+        <image class="icon" xlink:href="/icons/add-solid.svg" />
+      </svg>
+    </article>
+  </form>
+</section>
+
 <section class="list-section" id="tags-section">
-  <h2 class="section-header">tags</h2>
+  <h2 class="section-header">Current tags</h2>
   <ul class="list" id="tags">
     {{#each tags}}
-      <li class="item tag" data-tag-id="{{id}}">{{tag_name}}</li>
+      <li class="item tag" data-tag-id="{{id}}">
+        <a href="/tags/edit/{{id}}">{{tag_name}}</a>
+
+        <svg class="icon-wrapper delete-btn">
+          <image class="icon" xlink:href="/icons/delete-solid.svg" />
+        </svg>
+      </li>
     {{/each}}
   </ul>
 </section>

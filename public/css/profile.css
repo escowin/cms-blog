@@ -1,20 +1,31 @@
-#profile-section {
-    height: inherit;
+#profile-wrapper {
+    background-color: var(--overlay-dark);
+    margin-left: var(--space-sm);
+    padding: var(--space) 0 var(--space) var(--space);
+    border-radius: 4rem 0 0 4rem;
 }
 
-#profile-details {
-    flex-grow: 1;
-    display: grid;
+#profile {
     grid-template-columns: auto 1fr;
-    grid-template-rows: repeat(3, min-content) ;
     gap: 0 var(--space);
-    padding-left: calc(var(--space) * 2);
+    padding: var(--space) calc(var(--space) * 2);
 }
 
 h3 {
     grid-column: span 2;
 }
 
-#profile-details a {
+#details {
     font-weight: bold;
+}
+
+@media screen {
+    main {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #profile-section {
+        flex-grow: 1;
+    }
 }

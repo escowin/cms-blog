@@ -17,6 +17,7 @@
 
 .tags {
     display: flex;
+    flex-wrap: wrap;
     gap: .75rem;
 }
 
@@ -24,7 +25,7 @@
     background-color: var(--overlay-dark);
     color: var(--accent-light);
     font-size: 75%;
-    padding: var(--space-sm) .75rem;
+    padding: 0 .75rem;
     border-radius: var(--corners);
 }
 
