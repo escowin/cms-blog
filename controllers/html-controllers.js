@@ -196,6 +196,7 @@ const htmlController = {
           tags,
           loggedIn: true,
           viewStyle: '<link rel="stylesheet" href="/css/tags.css">',
+          viewScript: '<script defer src="/javascript/add-tag.js"></script>'
         });
       })
       .catch((err) => res.status(500).json(err));
