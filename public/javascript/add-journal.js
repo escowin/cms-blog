@@ -34,7 +34,7 @@ function updateEndDate() {
   if (start_date && duration) {
     const end_date = calculateEndDate(start_date, duration);
     const journalEndEl = document.getElementById("journal-end");
-    journalEndEl.className = "date-details end-value"
+    journalEndEl.className = "date-details end-value";
     journalEndEl.textContent = end_date;
   }
 }
@@ -59,9 +59,11 @@ async function newJournalFormHandler(e) {
   const end_date = calculateEndDate(start_date, duration);
 
   if (isNaN(duration) || duration < durationMin || duration > durationMax) {
-    console.log(`duration must be a number between ${durationMin} - ${durationMax}`)
+    console.log(
+      `duration must be a number between ${durationMin} - ${durationMax}`
+    );
   }
-  
+
   if (title && description && duration && start_date && end_date) {
     // implemented try / catch for further granular error handling
     try {
@@ -98,7 +100,9 @@ journalDescriptionEl.addEventListener("keyup", () => {
   const charLength = journalDescriptionEl.value.length;
   charCountEl.innerText = charLength;
   if (charLength === 75) {
-    charCountEl.className = "char-limit"
+    charCountEl.className = "char-limit";
+  } else {
+    charCountEl.className = "";
   }
 });
 journalDurationEl.addEventListener("change", updateEndDate);

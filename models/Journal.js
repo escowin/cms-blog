@@ -16,7 +16,7 @@ Journal.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 75],
+        len: [1, 50],
       },
     },
     start_date: {
@@ -46,6 +46,9 @@ Journal.init(
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
+      validate: {
+        len: [1, 75],
+      },
     },
     user_id: {
       type: DataTypes.INTEGER,

@@ -1,6 +1,6 @@
 // variables
 const addEntryBtn = document.getElementById("add-entry-btn");
-const entryNotesEl = document.getElementById("text");
+const entryNotesInputEl = document.getElementById("text");
 const entryWeightEl = document.getElementById("weight");
 const charCountEl = document.getElementById("char-count");
 
@@ -14,7 +14,7 @@ async function entryFormHandler(e) {
     // data | entry & tag values from the input form. tag string is split into an array;
     const entryDate = document.getElementById("date").value;
     const entryWeight = entryWeightEl.value.trim();
-    const entryText = entryNotesEl.value.trim();
+    const entryText = entryNotesInputEl.value.trim();
     const journalId = window.location.toString().split("/").pop().split("?")[0];
     const tagsInput = document.getElementById("tag-name").value.trim();
 
@@ -112,11 +112,13 @@ entryWeightEl.addEventListener("input", () => {
     entryWeightEl.value = "500";
   }
 });
-entryNotesEl.addEventListener("keyup", () => {
-  const charLength = entryNotesEl.value.length;
+entryNotesInputEl.addEventListener("keyup", () => {
+  const charLength = entryNotesInputEl.value.length;
   charCountEl.innerText = charLength;
   if (charLength === 300) {
     charCountEl.className = "char-limit";
+  } else {
+    charCountEl.className = "";
   }
 });
 addEntryBtn.addEventListener("click", entryFormHandler);
