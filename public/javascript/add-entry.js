@@ -44,7 +44,6 @@ async function entryFormHandler(e) {
       alert(response.statusText);
     }
   } catch (err) {
-    console.log("failed at the `try... catch`");
     console.log(err);
   }
 }
