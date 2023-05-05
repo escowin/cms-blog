@@ -1,12 +1,25 @@
 // variables
-const id = document.querySelector(".edit-view").dataset.entryId;
-const journalId = document.querySelector(".edit-view").dataset.journalId;
-const entryNotesEl = document.getElementById("text");
-const entryWeightEl = document.getElementById("weight");
-const charCountEl = document.getElementById("char-count");
-const saveEntryBtn = document.getElementById("add-entry-btn");
+const saveBtn = document.getElementById("save-btn");
 const deleteBtn = document.getElementById("delete-btn");
 const backBtn = document.getElementById("back-btn");
+
+const id = document.querySelector(".edit-view").dataset.entryId;
+const journalId = document.querySelector(".edit-view").dataset.journalId;
+const entryNotesInputEl = document.getElementById("text");
+const entryWeightEl = document.getElementById("weight");
+
+// functions
+function weightRegex() {
+  // limits user input to 3 digits & one decimal
+  const regex = /^\d{0,3}(\.\d{0,1})?$/;
+  const inputValid = regex.test(entryWeightEl.value);
+  if (!inputValid) {
+    // removes last input character
+    entryWeightEl.value = entryWeightEl.value.slice(0, -1);
+  } else if (parseFloat(entryWeightEl.value) > 500) {
+    entryWeightEl.value = "500";
+  }
+}
 
 async function editEntryFormHandler(e) {
   try {
@@ -114,31 +127,9 @@ const getExistingTags = async () => {
   return tags;
 };
 
-function chracterLimit() {
-  const charLength = entryNotesEl.value.length;
-  charCountEl.innerText = charLength;
-  if (charLength === 300) {
-    charCountEl.className = "char-limit";
-  } else {
-    charCountEl.className = "";
-  }
-}
-
-function weightRegex() {
-  // limits user input to 3 digits & one decimal
-  const regex = /^\d{0,3}(\.\d{0,1})?$/;
-  const inputValid = regex.test(entryWeightEl.value);
-  if (!inputValid) {
-    // removes last input character
-    entryWeightEl.value = entryWeightEl.value.slice(0, -1);
-  } else if (parseFloat(entryWeightEl.value) > 500) {
-    entryWeightEl.value = "500";
-  }
-}
-
 // calls
 entryWeightEl.addEventListener("input", weightRegex);
-entryNotesEl.addEventListener("keyup", chracterLimit);
-saveEntryBtn.addEventListener("click", editEntryFormHandler);
+entryNotesInputEl.addEventListener("keyup", async (e) => characterLimit(entryNotesInputEl, 300));
+saveBtn.addEventListener("click", editEntryFormHandler);
 deleteBtn.addEventListener("click", async (e) => deleteEntryHandler(e));
 backBtn.addEventListener("click", () => window.history.back());

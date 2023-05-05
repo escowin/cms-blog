@@ -1,10 +1,21 @@
 // variables
-const addEntryBtn = document.getElementById("add-entry-btn");
+const saveBtn = document.getElementById("save-btn");
 const entryNotesInputEl = document.getElementById("text");
-const entryWeightEl = document.getElementById("weight");
-const charCountEl = document.getElementById("char-count");
+const entryWeightInputEl = document.getElementById("weight");
 
-// logic | async
+// functions
+function weightRegex() {
+  // limits user input to 3 digits & one decimal
+  const regex = /^\d{0,3}(\.\d{0,1})?$/;
+  const inputValid = regex.test(entryWeightInputEl.value);
+  if (!inputValid) {
+    // removes last input character
+    entryWeightInputEl.value = entryWeightInputEl.value.slice(0, -1);
+  } else if (parseFloat(entryWeightInputEl.value) > 500) {
+    entryWeightInputEl.value = "500";
+  }
+}
+
 // - posting new entries & tags into the database tables from the frontend
 async function entryFormHandler(e) {
   try {
@@ -13,7 +24,7 @@ async function entryFormHandler(e) {
 
     // data | entry & tag values from the input form. tag string is split into an array;
     const entryDate = document.getElementById("date").value;
-    const entryWeight = entryWeightEl.value.trim();
+    const entryWeight = entryWeightInputEl.value.trim();
     const entryText = entryNotesInputEl.value.trim();
     const journalId = window.location.toString().split("/").pop().split("?")[0];
     const tagsInput = document.getElementById("tag-name").value.trim();
@@ -100,29 +111,7 @@ const getExistingTags = async () => {
   return tags;
 };
 
-function weightRegex() {
-  // limits user input to 3 digits & one decimal
-  const regex = /^\d{0,3}(\.\d{0,1})?$/;
-  const inputValid = regex.test(entryWeightEl.value);
-  if (!inputValid) {
-    // removes last input character
-    entryWeightEl.value = entryWeightEl.value.slice(0, -1);
-  } else if (parseFloat(entryWeightEl.value) > 500) {
-    entryWeightEl.value = "500";
-  }
-}
-
-function characterLimit() {
-  const charLength = entryNotesInputEl.value.length;
-  charCountEl.innerText = charLength;
-  if (charLength === 300) {
-    charCountEl.className = "char-limit";
-  } else {
-    charCountEl.className = "";
-  }
-}
-
 // calls
-entryWeightEl.addEventListener("input", weightRegex);
-entryNotesInputEl.addEventListener("keyup", characterLimit);
-addEntryBtn.addEventListener("click", entryFormHandler);
+entryWeightInputEl.addEventListener("input", weightRegex);
+entryNotesInputEl.addEventListener("keyup", async (e) => characterLimit(entryNotesInputEl, 300));
+saveBtn.addEventListener("click", entryFormHandler);

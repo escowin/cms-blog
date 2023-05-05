@@ -1,3 +1,4 @@
+// common functions
 function currentYear() {
   let year = new Date().getFullYear();
   console.log(`
@@ -26,5 +27,19 @@ function activeLink() {
   });
 }
 
+// - char count | takes in the user-input value, and the input field's char limit 
+function characterLimit(inputEl, charMax) {
+  const charCountEl = document.getElementById("char-count");
+  const charLength = inputEl.value.length;
+  charCountEl.innerText = charLength;
+
+  if (charLength === charMax) {
+    charCountEl.className = "char-limit";
+  } else {
+    charCountEl.className = "";
+  }
+}
+
+// calls
 currentYear();
 activeLink();

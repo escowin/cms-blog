@@ -1,14 +1,13 @@
 // variables
-const id = document.querySelector('.edit-view').dataset.journalId;
-const journalTitleEl = document.getElementById("journal-title");
-const journalDescriptionEl = document.getElementById("journal-description");
-const journalDurationEl = document.getElementById("journal-duration");
-const journalStartEl = document.getElementById("journal-start");
-const journalEndEl = document.getElementById("journal-end");
-const charCountEl = document.getElementById("char-count");
-const updateJournalBtn = document.getElementById("add-journal-btn");
+const saveBtn = document.getElementById("save-btn");
 const deleteBtn = document.getElementById("delete-btn");
 const backBtn = document.getElementById("back-btn");
+const id = document.querySelector('.edit-view').dataset.journalId;
+const journalTitleInputEl = document.getElementById("journal-title");
+const journalDescriptionInputEl = document.getElementById("journal-description");
+const journalDurationInputEl = document.getElementById("journal-duration");
+const journalStartInputEl = document.getElementById("journal-start");
+const journalEndEl = document.getElementById("journal-end");
 
 const durationMin = 1;
 const durationMax = 20;
@@ -21,13 +20,13 @@ function durationRange() {
     const option = document.createElement("option");
     option.value = i;
     option.text = i;
-    journalDurationEl.appendChild(option);
+    journalDurationInputEl.appendChild(option);
   }
 }
 
 function updateEndDate() {
-  const start_date = journalStartEl.value.trim();
-  const duration = journalDurationEl.value.trim();
+  const start_date = journalStartInputEl.value.trim();
+  const duration = journalDurationInputEl.value.trim();
 
   if (start_date && duration) {
     const end_date = calculateEndDate(start_date, duration);
@@ -47,10 +46,10 @@ function calculateEndDate(start_date, duration) {
 async function editJournalFormHandler(e) {
   e.preventDefault();
 
-  const title = journalTitleEl.value.trim();
-  const description = journalDescriptionEl.value.trim();
-  const duration = journalDurationEl.value.trim();
-  const start_date = journalStartEl.value.trim();
+  const title = journalTitleInputEl.value.trim();
+  const description = journalDescriptionInputEl.value.trim();
+  const duration = journalDurationInputEl.value.trim();
+  const start_date = journalStartInputEl.value.trim();
   const end_date = calculateEndDate(start_date, duration);
 
   if (isNaN(duration) || duration < durationMin || duration > durationMax) {
@@ -101,20 +100,10 @@ async function deleteJournalHandler(e) {
     }
 }
 
-function chracterLimit() {
-  const charLength = journalDescriptionEl.value.length;
-  charCountEl.innerText = charLength;
-  if (charLength === 75) {
-    charCountEl.className = "char-limit";
-  } else {
-    charCountEl.className = "";
-  }
-}
-
 // calls
 durationRange();
-journalDescriptionEl.addEventListener("keyup", chracterLimit);
-journalDurationEl.addEventListener("change", updateEndDate);
-updateJournalBtn.addEventListener("click", editJournalFormHandler);
+journalDescriptionInputEl.addEventListener("keyup", async (e) => characterLimit(journalDescriptionInputEl, 75));
+journalDurationInputEl.addEventListener("change", updateEndDate);
+saveBtn.addEventListener("click", editJournalFormHandler);
 deleteBtn.addEventListener("click", async (e) => deleteJournalHandler(e));
 backBtn.addEventListener("click", () => window.history.back());

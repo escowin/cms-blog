@@ -1,14 +1,15 @@
-const addJournalBtn = document.getElementById("add-journal-btn");
-const journalTitleEl = document.getElementById("journal-title");
-const journalDescriptionEl = document.getElementById("journal-description");
-const journalDurationEl = document.getElementById("journal-duration");
-const journalStartEl = document.getElementById("journal-start");
+// variables
+const saveBtn = document.getElementById("save-btn");
+const journalTitleInputEl = document.getElementById("journal-title");
+const journalDescriptionInputEl = document.getElementById("journal-description");
+const journalDurationInputEl = document.getElementById("journal-duration");
+const journalStartInputEl = document.getElementById("journal-start");
 const journalEndEl = document.getElementById("journal-end");
-const charCountEl = document.getElementById("char-count");
 
 const durationMin = 1;
 const durationMax = 20;
 
+// functions
 function durationRange() {
   // add an empty default option
   const defaultOption = document.createElement("option");
@@ -16,20 +17,20 @@ function durationRange() {
   defaultOption.text = "";
   defaultOption.disabled = true;
   defaultOption.selected = true;
-  journalDurationEl.appendChild(defaultOption);
+  journalDurationInputEl.appendChild(defaultOption);
 
   // adds the duration range as selectable options for the user
   for (let i = durationMin; i <= durationMax; i++) {
     const option = document.createElement("option");
     option.value = i;
     option.text = i;
-    journalDurationEl.appendChild(option);
+    journalDurationInputEl.appendChild(option);
   }
 }
 
 function updateEndDate() {
-  const start_date = journalStartEl.value.trim();
-  const duration = journalDurationEl.value.trim();
+  const start_date = journalStartInputEl.value.trim();
+  const duration = journalDurationInputEl.value.trim();
 
   if (start_date && duration) {
     const end_date = calculateEndDate(start_date, duration);
@@ -47,15 +48,14 @@ function calculateEndDate(start_date, duration) {
   return endDate;
 }
 
-// logic
 async function newJournalFormHandler(e) {
   // placed here for best practices. the svg icon acting as a button does not have default behavior.
   e.preventDefault();
 
-  const title = journalTitleEl.value.trim();
-  const description = journalDescriptionEl.value.trim();
-  const duration = journalDurationEl.value.trim();
-  const start_date = journalStartEl.value.trim();
+  const title = journalTitleInputEl.value.trim();
+  const description = journalDescriptionInputEl.value.trim();
+  const duration = journalDurationInputEl.value.trim();
+  const start_date = journalStartInputEl.value.trim();
   const end_date = calculateEndDate(start_date, duration);
 
   if (isNaN(duration) || duration < durationMin || duration > durationMax) {
@@ -94,18 +94,8 @@ async function newJournalFormHandler(e) {
   }
 }
 
-function characterLimit() {
-  const charLength = journalDescriptionEl.value.length;
-  charCountEl.innerText = charLength;
-  if (charLength === 75) {
-    charCountEl.className = "char-limit";
-  } else {
-    charCountEl.className = "";
-  }
-}
-
-// calls & event listeners
+// calls
 durationRange();
-journalDescriptionEl.addEventListener("keyup", characterLimit);
-journalDurationEl.addEventListener("change", updateEndDate);
-addJournalBtn.addEventListener("click", newJournalFormHandler);
+journalDescriptionInputEl.addEventListener("keyup", async (e) => characterLimit(journalDescriptionInputEl, 75));
+journalDurationInputEl.addEventListener("change", updateEndDate);
+saveBtn.addEventListener("click", newJournalFormHandler);

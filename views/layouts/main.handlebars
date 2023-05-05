@@ -6,6 +6,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100&family=Raleway:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css" />
     {{!-- view-specific styles & scripts --}}
+    <script defer src="/javascript/script.js"></script>
+
     {{#if loggedIn}}
       {{{viewStyle}}}
       {{{viewScript}}}
@@ -14,7 +16,7 @@
       <link rel="stylesheet" href="/css/login.css" />
       <script defer src="/javascript/login.js"></script>
     {{/if}}
-    <script defer src="/javascript/script.js"></script>
+    {{!-- <script defer src="/javascript/script.js"></script> --}}
   </head>
 
   <body>
