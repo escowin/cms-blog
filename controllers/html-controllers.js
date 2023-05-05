@@ -4,7 +4,13 @@ const htmlController = {
   editEntryView(req, res) {
     Entry.findOne({
       where: { id: req.params.id },
-      attributes: ["id", "entry_text", "entry_date", "entry_weight", "journal_id"],
+      attributes: [
+        "id",
+        "entry_text",
+        "entry_date",
+        "entry_weight",
+        "journal_id",
+      ],
       include: [
         {
           model: Tag,
@@ -53,6 +59,27 @@ const htmlController = {
           viewStyle: '<link rel="stylesheet" href="/css/edit-view.css">',
           viewScript:
             '<script defer src="/javascript/edit-journal.js"></script>',
+        });
+      })
+      .catch((err) => res.status(500).json(err));
+  },
+  editTagView(req, res) {
+    Tag.findOne({
+      where: { id: req.params.id },
+      attributes: ["id", "tag_name"],
+    })
+      .then((dbTagData) => {
+        if (!dbTagData) {
+          res.status(404).json({ message: "tag does not exist" });
+          return;
+        }
+        const tag = dbTagData.get({ plain: true });
+        res.render("edit-tag", {
+          tag,
+          loggedIn: true,
+          viewStyle: '<link rel="stylesheet" href="/css/edit-view.css">',
+          viewScript:
+            '<script defer src="/javascript/edit-tag.js"></script>',
         });
       })
       .catch((err) => res.status(500).json(err));
@@ -196,7 +223,7 @@ const htmlController = {
           tags,
           loggedIn: true,
           viewStyle: '<link rel="stylesheet" href="/css/tags.css">',
-          viewScript: '<script defer src="/javascript/add-tag.js"></script>'
+          viewScript: '<script defer src="/javascript/add-tag.js"></script>',
         });
       })
       .catch((err) => res.status(500).json(err));
@@ -224,15 +251,16 @@ const htmlController = {
         },
       ],
       order: [[Entry, "entry_date", "DESC"]],
-    }).then((dbUserData) => {
-      const user = dbUserData.get({ plain: true });
-      res.render("entries", {
-        user,
-        loggedIn: req.session.loggedIn,
-        viewStyle: '<link rel="stylesheet" href="/css/entries.css">',
-      });
     })
-    .catch((err) => res.status(500).json(err));
+      .then((dbUserData) => {
+        const user = dbUserData.get({ plain: true });
+        res.render("entries", {
+          user,
+          loggedIn: req.session.loggedIn,
+          viewStyle: '<link rel="stylesheet" href="/css/entries.css">',
+        });
+      })
+      .catch((err) => res.status(500).json(err));
   },
 };
 

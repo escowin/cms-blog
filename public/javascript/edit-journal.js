@@ -81,7 +81,6 @@ async function editJournalFormHandler(e) {
       }
     } catch (err) {
       console.log(err);
-      console.log("fetch put request error");
     }
   } else {
     console.log("all form fields must be complete");

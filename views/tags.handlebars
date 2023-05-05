@@ -1,17 +1,6 @@
 <section class="form-section">
   <h2 class="section-header">Add tag</h2>
-  <form class="form" id="tag-form">
-    <article class="input-wrapper">
-      <label for="tag-name">tag <span id="char-count">0</span>/20</label>
-      <input class="input" id="tag-name" maxlength="20" />
-    </article>
-
-    <article class="button-wrapper btn">
-      <svg class="icon-wrapper page-icon submit-btn" id="add-btn">
-        <image class="icon" xlink:href="/icons/add-solid.svg" />
-      </svg>
-    </article>
-  </form>
+  {{> tag-form tag}}
 </section>
 
 <section class="list-section" id="tags-section">
