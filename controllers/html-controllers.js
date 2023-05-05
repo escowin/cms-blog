@@ -115,7 +115,7 @@ const htmlController = {
             <link rel="stylesheet" href="/css/partial-journal-form.css">`,
             viewScript: `
             <script defer src="/javascript/add-journal.js"></script>
-            <script defer src="/javascript/delete-journal.js"></script>`,
+            <script defer src="/javascript/delete-item.js"></script>`,
           });
         })
         .catch((err) => res.status(500).json(err));
@@ -166,7 +166,9 @@ const htmlController = {
             <link rel="stylesheet" href="/css/partial-entry-form.css" />
             <link rel="stylesheet" href="/css/partial-entry-info.css" />
           `,
-          viewScript: '<script defer src="/javascript/add-entry.js"></script>',
+          viewScript: `
+           <script defer src="/javascript/add-entry.js"></script>
+           <script defer src="/javascript/add-item.js"></script>`,
         });
       })
       .catch((err) => res.status(500).json(err));
@@ -224,7 +226,7 @@ const htmlController = {
           viewStyle: '<link rel="stylesheet" href="/css/tags.css">',
           viewScript: `
            <script defer src="/javascript/add-tag.js"></script>
-           <script defer src="/javascript/delete-tag.js"></script>`,
+           <script defer src="/javascript/delete-item.js"></script>`,
         });
       })
       .catch((err) => res.status(500).json(err));
@@ -258,7 +260,9 @@ const htmlController = {
         res.render("entries", {
           user,
           loggedIn: req.session.loggedIn,
-          viewStyle: '<link rel="stylesheet" href="/css/entries.css">',
+          viewStyle: `
+           <link rel="stylesheet" href="/css/entries.css">
+           <script defer src="/javascript/delete-item.js"></script>`,
         });
       })
       .catch((err) => res.status(500).json(err));
