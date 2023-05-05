@@ -1,14 +1,14 @@
 // variables
-const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
-const updateJournalBtn = document.getElementById("add-journal-btn");
+const id = document.querySelector('.edit-view').dataset.journalId;
 const journalTitleEl = document.getElementById("journal-title");
 const journalDescriptionEl = document.getElementById("journal-description");
 const journalDurationEl = document.getElementById("journal-duration");
 const journalStartEl = document.getElementById("journal-start");
 const journalEndEl = document.getElementById("journal-end");
 const charCountEl = document.getElementById("char-count");
+const updateJournalBtn = document.getElementById("add-journal-btn");
+const deleteBtn = document.getElementById("delete-btn");
+const backBtn = document.getElementById("back-btn");
 
 const durationMin = 1;
 const durationMax = 20;
@@ -101,20 +101,20 @@ async function deleteJournalHandler(e) {
     }
 }
 
-// calls
-durationRange();
-journalDescriptionEl.addEventListener("keyup", () => {
+function chracterLimit() {
   const charLength = journalDescriptionEl.value.length;
   charCountEl.innerText = charLength;
   if (charLength === 75) {
-    charCountEl.className = "char-limit"
+    charCountEl.className = "char-limit";
+  } else {
+    charCountEl.className = "";
   }
-});
+}
+
+// calls
+durationRange();
+journalDescriptionEl.addEventListener("keyup", chracterLimit);
 journalDurationEl.addEventListener("change", updateEndDate);
 updateJournalBtn.addEventListener("click", editJournalFormHandler);
-document
-  .getElementById("delete-btn")
-  .addEventListener("click", async (e) => deleteJournalHandler(e));
-document
-  .getElementById("back-btn")
-  .addEventListener("click", () => window.history.back());
+deleteBtn.addEventListener("click", async (e) => deleteJournalHandler(e));
+backBtn.addEventListener("click", () => window.history.back());

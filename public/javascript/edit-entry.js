@@ -1,29 +1,29 @@
 // variables
-const saveEntryBtn = document.getElementById("add-entry-btn");
+const id = document.querySelector(".edit-view").dataset.entryId;
+const journalId = document.querySelector(".edit-view").dataset.journalId;
 const entryNotesEl = document.getElementById("text");
 const entryWeightEl = document.getElementById("weight");
 const charCountEl = document.getElementById("char-count");
-const journalId = document.querySelector('.edit-view').dataset.journalId;
-const id = window.location.toString().split("/")[
-  window.location.toString().split("/").length - 1
-];
+const saveEntryBtn = document.getElementById("add-entry-btn");
+const deleteBtn = document.getElementById("delete-btn");
+const backBtn = document.getElementById("back-btn");
 
 async function editEntryFormHandler(e) {
   try {
     e.preventDefault();
     let tagIds = [];
-  
+
     const entryDate = document.getElementById("date").value;
     const entryWeight = entryWeightEl.value.trim();
     const entryText = entryNotesEl.value.trim();
     const tagsInput = document.getElementById("tag-name").value.trim();
-  
+
     if (tagsInput.trim() !== "") {
       const formTagStrings = tagsInput.split(",").map((tag) => tag.trim());
       const generatedTagIds = await generateTagIds(formTagStrings);
       tagIds.push(...generatedTagIds);
     }
-  
+
     const response = await fetch(`/api/entries/${id}`, {
       method: "PUT",
       body: JSON.stringify({
@@ -36,10 +36,9 @@ async function editEntryFormHandler(e) {
         "Content-Type": "application/json",
       },
     });
-  
+
     if (response.ok) {
       document.location.replace(`../../journals/${journalId}`);
-
     } else {
       alert(response.statusText);
     }
@@ -63,7 +62,7 @@ async function deleteEntryHandler(e) {
   }
 }
 
-// - posting new tags 
+// - posting new tags
 const generateTagIds = async (formTags) => {
   let idValues = [];
   const existingTags = await getExistingTags();
@@ -115,8 +114,17 @@ const getExistingTags = async () => {
   return tags;
 };
 
-// calls
-entryWeightEl.addEventListener("input", () => {
+function chracterLimit() {
+  const charLength = entryNotesEl.value.length;
+  charCountEl.innerText = charLength;
+  if (charLength === 300) {
+    charCountEl.className = "char-limit";
+  } else {
+    charCountEl.className = "";
+  }
+}
+
+function weightRegex() {
   // limits user input to 3 digits & one decimal
   const regex = /^\d{0,3}(\.\d{0,1})?$/;
   const inputValid = regex.test(entryWeightEl.value);
@@ -126,18 +134,11 @@ entryWeightEl.addEventListener("input", () => {
   } else if (parseFloat(entryWeightEl.value) > 500) {
     entryWeightEl.value = "500";
   }
-});
-entryNotesEl.addEventListener("keyup", () => {
-  const charLength = entryNotesEl.value.length;
-  charCountEl.innerText = charLength;
-  if (charLength === 300) {
-    charCountEl.className = "char-limit"
-  }
-});
+}
+
+// calls
+entryWeightEl.addEventListener("input", weightRegex);
+entryNotesEl.addEventListener("keyup", chracterLimit);
 saveEntryBtn.addEventListener("click", editEntryFormHandler);
-document
-  .getElementById("delete-btn")
-  .addEventListener("click", async (e) => deleteEntryHandler(e));
-document
-  .getElementById("back-btn")
-  .addEventListener("click", () => window.history.back());
+deleteBtn.addEventListener("click", async (e) => deleteEntryHandler(e));
+backBtn.addEventListener("click", () => window.history.back());

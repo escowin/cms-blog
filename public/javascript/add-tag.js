@@ -25,8 +25,7 @@ async function tagFormHandler(e) {
   }
 }
 
-// calls
-tagNameInputEl.addEventListener("keyup", () => {
+function characterLimit() {
   const charLength = tagNameInputEl.value.length;
   charCountEl.innerText = charLength;
   if (charLength === 20) {
@@ -34,5 +33,8 @@ tagNameInputEl.addEventListener("keyup", () => {
   } else {
     charCountEl.className = "";
   }
-});
+}
+
+// calls
+tagNameInputEl.addEventListener("keyup", characterLimit);
 addButtonEl.addEventListener("click", tagFormHandler);

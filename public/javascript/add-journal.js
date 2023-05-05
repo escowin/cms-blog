@@ -94,9 +94,7 @@ async function newJournalFormHandler(e) {
   }
 }
 
-// calls & event listeners
-durationRange();
-journalDescriptionEl.addEventListener("keyup", () => {
+function characterLimit() {
   const charLength = journalDescriptionEl.value.length;
   charCountEl.innerText = charLength;
   if (charLength === 75) {
@@ -104,6 +102,10 @@ journalDescriptionEl.addEventListener("keyup", () => {
   } else {
     charCountEl.className = "";
   }
-});
+}
+
+// calls & event listeners
+durationRange();
+journalDescriptionEl.addEventListener("keyup", characterLimit);
 journalDurationEl.addEventListener("change", updateEndDate);
 addJournalBtn.addEventListener("click", newJournalFormHandler);

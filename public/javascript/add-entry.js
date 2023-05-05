@@ -100,8 +100,7 @@ const getExistingTags = async () => {
   return tags;
 };
 
-// calls
-entryWeightEl.addEventListener("input", () => {
+function weightRegex() {
   // limits user input to 3 digits & one decimal
   const regex = /^\d{0,3}(\.\d{0,1})?$/;
   const inputValid = regex.test(entryWeightEl.value);
@@ -111,8 +110,9 @@ entryWeightEl.addEventListener("input", () => {
   } else if (parseFloat(entryWeightEl.value) > 500) {
     entryWeightEl.value = "500";
   }
-});
-entryNotesInputEl.addEventListener("keyup", () => {
+}
+
+function characterLimit() {
   const charLength = entryNotesInputEl.value.length;
   charCountEl.innerText = charLength;
   if (charLength === 300) {
@@ -120,5 +120,9 @@ entryNotesInputEl.addEventListener("keyup", () => {
   } else {
     charCountEl.className = "";
   }
-});
+}
+
+// calls
+entryWeightEl.addEventListener("input", weightRegex);
+entryNotesInputEl.addEventListener("keyup", characterLimit);
 addEntryBtn.addEventListener("click", entryFormHandler);
