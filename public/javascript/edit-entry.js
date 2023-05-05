@@ -6,18 +6,18 @@ const backBtn = document.getElementById("back-btn");
 const id = document.querySelector(".edit-view").dataset.entryId;
 const journalId = document.querySelector(".edit-view").dataset.journalId;
 const entryNotesInputEl = document.getElementById("text");
-const entryWeightEl = document.getElementById("weight");
+const entryWeightInputEl = document.getElementById("weight");
 
 // functions
 function weightRegex() {
   // limits user input to 3 digits & one decimal
   const regex = /^\d{0,3}(\.\d{0,1})?$/;
-  const inputValid = regex.test(entryWeightEl.value);
+  const inputValid = regex.test(entryWeightInputEl.value);
   if (!inputValid) {
     // removes last input character
-    entryWeightEl.value = entryWeightEl.value.slice(0, -1);
-  } else if (parseFloat(entryWeightEl.value) > 500) {
-    entryWeightEl.value = "500";
+    entryWeightInputEl.value = entryWeightInputEl.value.slice(0, -1);
+  } else if (parseFloat(entryWeightInputEl.value) > 500) {
+    entryWeightInputEl.value = "500";
   }
 }
 
@@ -27,7 +27,7 @@ async function editEntryFormHandler(e) {
     let tagIds = [];
 
     const entryDate = document.getElementById("date").value;
-    const entryWeight = entryWeightEl.value.trim();
+    const entryWeight = entryWeightInputEl.value.trim();
     const entryText = entryNotesEl.value.trim();
     const tagsInput = document.getElementById("tag-name").value.trim();
 
@@ -128,7 +128,7 @@ const getExistingTags = async () => {
 };
 
 // calls
-entryWeightEl.addEventListener("input", weightRegex);
+entryWeightInputEl.addEventListener("input", weightRegex);
 entryNotesInputEl.addEventListener("keyup", async (e) => characterLimit(entryNotesInputEl, 300));
 saveBtn.addEventListener("click", editEntryFormHandler);
 deleteBtn.addEventListener("click", async (e) => deleteEntryHandler(e));

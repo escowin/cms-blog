@@ -78,8 +78,7 @@ const htmlController = {
           tag,
           loggedIn: true,
           viewStyle: '<link rel="stylesheet" href="/css/edit-view.css">',
-          viewScript:
-            '<script defer src="/javascript/edit-tag.js"></script>',
+          viewScript: '<script defer src="/javascript/edit-tag.js"></script>',
         });
       })
       .catch((err) => res.status(500).json(err));
@@ -223,7 +222,9 @@ const htmlController = {
           tags,
           loggedIn: true,
           viewStyle: '<link rel="stylesheet" href="/css/tags.css">',
-          viewScript: '<script defer src="/javascript/add-tag.js"></script>',
+          viewScript: `
+           <script defer src="/javascript/add-tag.js"></script>
+           <script defer src="/javascript/delete-tag.js"></script>`,
         });
       })
       .catch((err) => res.status(500).json(err));
