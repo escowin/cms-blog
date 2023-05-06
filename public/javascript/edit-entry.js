@@ -2,24 +2,10 @@
 const saveBtn = document.getElementById("save-btn");
 const deleteBtn = document.getElementById("delete-btn");
 const backBtn = document.getElementById("back-btn");
-
 const id = document.querySelector(".edit-view").dataset.entryId;
 const journalId = document.querySelector(".edit-view").dataset.journalId;
 const entryNotesInputEl = document.getElementById("text");
 const entryWeightInputEl = document.getElementById("weight");
-
-// functions
-function weightRegex() {
-  // limits user input to 3 digits & one decimal
-  const regex = /^\d{0,3}(\.\d{0,1})?$/;
-  const inputValid = regex.test(entryWeightInputEl.value);
-  if (!inputValid) {
-    // removes last input character
-    entryWeightInputEl.value = entryWeightInputEl.value.slice(0, -1);
-  } else if (parseFloat(entryWeightInputEl.value) > 500) {
-    entryWeightInputEl.value = "500";
-  }
-}
 
 async function editEntryFormHandler(e) {
   try {
@@ -128,7 +114,7 @@ const getExistingTags = async () => {
 };
 
 // calls
-entryWeightInputEl.addEventListener("input", weightRegex);
+entryWeightInputEl.addEventListener("input", async (e) => weightRegex(entryWeightInputEl));
 entryNotesInputEl.addEventListener("keyup", async (e) => characterLimit(entryNotesInputEl, 300));
 saveBtn.addEventListener("click", editEntryFormHandler);
 deleteBtn.addEventListener("click", async (e) => deleteEntryHandler(e));

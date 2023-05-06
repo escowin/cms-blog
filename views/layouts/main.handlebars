@@ -3,11 +3,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fitness logbook</title>
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100&family=Raleway:wght@200&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100&family=Raleway:wght@200&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/css/style.css" />
-    {{!-- view-specific styles & scripts --}}
     <script defer src="/javascript/script.js"></script>
-
+    {{! view-specific styles & scripts }}
     {{#if loggedIn}}
       {{{viewStyle}}}
       {{{viewScript}}}
@@ -16,40 +18,39 @@
       <link rel="stylesheet" href="/css/login.css" />
       <script defer src="/javascript/login.js"></script>
     {{/if}}
-    {{!-- <script defer src="/javascript/script.js"></script> --}}
   </head>
 
   <body>
     <header>
       <h1>Fitlog</h1>
       {{#if loggedIn}}
-      <nav class="nav-links">
-        <a href="/">
-          <svg class="icon-wrapper">
-            <image class="icon" xlink:href="/icons/book-solid.svg"/>
-          </svg>
-        </a>  
-        <a href="/entries">
-          <svg class="icon-wrapper">
-            <image class="icon" xlink:href="/icons/entry-solid.svg"/>
-          </svg>
-        </a>
-        <a href="/tags">
-          <svg class="icon-wrapper">
-            <image class="icon" xlink:href="/icons/tags-solid.svg"/>
-          </svg>
-        </a>
-        <a href="/profile">
-          <svg class="icon-wrapper">
-            <image class="icon" xlink:href="/icons/profile-solid.svg"/>
-          </svg>
-        </a>  
-        <a href="/" id="logout">
-          <svg class="icon-wrapper">
-            <image class="icon" xlink:href="/icons/logout-solid.svg"/>
-          </svg>
-        </a>  
-      </nav>
+        <nav class="nav-links">
+          <a href="/">
+            <svg class="icon-wrapper">
+              <image class="icon" xlink:href="/icons/book-solid.svg" />
+            </svg>
+          </a>
+          <a href="/entries">
+            <svg class="icon-wrapper">
+              <image class="icon" xlink:href="/icons/entry-solid.svg" />
+            </svg>
+          </a>
+          <a href="/tags">
+            <svg class="icon-wrapper">
+              <image class="icon" xlink:href="/icons/tags-solid.svg" />
+            </svg>
+          </a>
+          <a href="/profile">
+            <svg class="icon-wrapper">
+              <image class="icon" xlink:href="/icons/profile-solid.svg" />
+            </svg>
+          </a>
+          <a href="/" id="logout">
+            <svg class="icon-wrapper">
+              <image class="icon" xlink:href="/icons/logout-solid.svg" />
+            </svg>
+          </a>
+        </nav>
       {{/if}}
     </header>
 
@@ -64,7 +65,7 @@
     <footer>
       <p>
         &copy;<span id="year"></span>
-      </p> 
+      </p>
       <a href="https://github.com/escowin/fitness-logbook" target="_blank">
         edwin m escobar
       </a>

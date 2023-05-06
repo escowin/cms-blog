@@ -4,18 +4,6 @@ const entryNotesInputEl = document.getElementById("text");
 const entryWeightInputEl = document.getElementById("weight");
 
 // functions
-function weightRegex() {
-  // limits user input to 3 digits & one decimal
-  const regex = /^\d{0,3}(\.\d{0,1})?$/;
-  const inputValid = regex.test(entryWeightInputEl.value);
-  if (!inputValid) {
-    // removes last input character
-    entryWeightInputEl.value = entryWeightInputEl.value.slice(0, -1);
-  } else if (parseFloat(entryWeightInputEl.value) > 500) {
-    entryWeightInputEl.value = "500";
-  }
-}
-
 // - posting new entries & tags into the database tables from the frontend
 async function entryFormHandler(e) {
   try {
@@ -112,6 +100,6 @@ const getExistingTags = async () => {
 };
 
 // calls
-entryWeightInputEl.addEventListener("input", weightRegex);
+entryWeightInputEl.addEventListener("input", async (e) => weightRegex(entryWeightInputEl));
 entryNotesInputEl.addEventListener("keyup", async (e) => characterLimit(entryNotesInputEl, 300));
 saveBtn.addEventListener("click", entryFormHandler);

@@ -57,8 +57,7 @@ const htmlController = {
           journal,
           loggedIn: true,
           viewStyle: '<link rel="stylesheet" href="/css/edit-view.css">',
-          viewScript:
-            '<script defer src="/javascript/edit-journal.js"></script>',
+          viewScript: '<script defer src="/javascript/edit-journal.js"></script>',
         });
       })
       .catch((err) => res.status(500).json(err));
@@ -162,13 +161,12 @@ const htmlController = {
           journal,
           loggedIn: req.session.loggedIn,
           viewStyle: `
-            <link rel="stylesheet" href="/css/journal.css">
-            <link rel="stylesheet" href="/css/partial-entry-form.css" />
-            <link rel="stylesheet" href="/css/partial-entry-info.css" />
-          `,
+          <link rel="stylesheet" href="/css/journal.css">
+          <link rel="stylesheet" href="/css/partial-entry-form.css">
+          <link rel="stylesheet" href="/css/partial-entry-info.css">`,
           viewScript: `
-           <script defer src="/javascript/add-entry.js"></script>
-           <script defer src="/javascript/add-item.js"></script>`,
+          <script defer src="/javascript/add-entry.js"></script>
+          <script defer src="/javascript/delete-item.js"></script>`,
         });
       })
       .catch((err) => res.status(500).json(err));
@@ -225,8 +223,8 @@ const htmlController = {
           loggedIn: true,
           viewStyle: '<link rel="stylesheet" href="/css/tags.css">',
           viewScript: `
-           <script defer src="/javascript/add-tag.js"></script>
-           <script defer src="/javascript/delete-item.js"></script>`,
+          <script defer src="/javascript/add-tag.js"></script>
+          <script defer src="/javascript/delete-item.js"></script>`,
         });
       })
       .catch((err) => res.status(500).json(err));
@@ -260,9 +258,8 @@ const htmlController = {
         res.render("entries", {
           user,
           loggedIn: req.session.loggedIn,
-          viewStyle: `
-           <link rel="stylesheet" href="/css/entries.css">
-           <script defer src="/javascript/delete-item.js"></script>`,
+          viewStyle: '<link rel="stylesheet" href="/css/entries.css">',
+          viewScript: '<script defer src="/javascript/delete-item.js"></script>'
         });
       })
       .catch((err) => res.status(500).json(err));
