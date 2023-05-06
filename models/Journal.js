@@ -20,20 +20,18 @@ Journal.init(
       },
     },
     start_date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
-        len: [10, 10],
-        is: /^\d{4}-\d{2}-\d{2}$/i,
-      }
+        isDate: true,
+      },
     },
     end_date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
-        len: [10, 10],
-        is: /^\d{4}-\d{2}-\d{2}$/i,
-      }
+        isDate: true,
+      },
     },
     duration: {
       type: DataTypes.INTEGER,

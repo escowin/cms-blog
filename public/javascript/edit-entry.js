@@ -7,6 +7,7 @@ const journalId = document.querySelector(".edit-view").dataset.journalId;
 const entryNotesInputEl = document.getElementById("text");
 const entryWeightInputEl = document.getElementById("weight");
 
+// functions
 async function editEntryFormHandler(e) {
   try {
     e.preventDefault();

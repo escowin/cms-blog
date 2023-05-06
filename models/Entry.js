@@ -5,7 +5,6 @@ class Entry extends Model {}
 
 Entry.init(
   {
-    // defined fields
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -13,11 +12,10 @@ Entry.init(
       autoIncrement: true,
     },
     entry_date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
-        len: [10, 10],
-        is: /^\d{4}-\d{2}-\d{2}$/i,
+        isDate: true,
       }
     },
     entry_weight: {

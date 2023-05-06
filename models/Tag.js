@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const { tag_name_regex } = require("../utils/helpers");
 
 class Tag extends Model {}
 
@@ -16,6 +17,7 @@ Tag.init(
       allowNull: false,
       validate: {
         len: [1, 20],
+        regex: (value) => tag_name_regex(value)
       },
     },
   },

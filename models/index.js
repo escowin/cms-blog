@@ -5,13 +5,8 @@ const Entry = require("./Entry");
 const Tag = require("./Tag");
 const EntryTag = require("./EntryTag");
 
-// models:
-// - user, journal, entry.
-// relationships:
-// - 1:M | User:Journal, User:Entry, Journal:Entry,
-
 // relationships
-// - 1:M | User:Post
+// - 1:M | User:Journal
 User.hasMany(Journal, {
   foreignKey: "user_id",
 });
@@ -20,7 +15,7 @@ Journal.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-// - 1:M | User:Comment
+// - 1:M | User:Entry
 User.hasMany(Entry, {
   foreignKey: "user_id",
 });
@@ -29,7 +24,7 @@ Entry.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-// - 1:M | Post:Comment
+// - 1:M | Journal:Entry
 Journal.hasMany(Entry, {
   foreignKey: "journal_id",
 });
@@ -39,7 +34,6 @@ Entry.belongsTo(Journal, {
 });
 
 // M:M | Entry:Tag
-// - to do : EntryTag through table
 Entry.belongsToMany(Tag, {
   through: EntryTag,
   foreignKey: "entry_id",
