@@ -46,15 +46,15 @@
 ## Usage
   Open http://localhost:3001/ in browser. Login or sign up (first time user). Once logged in, users use menu links to navigate. Users can view, add, update, and delete journals, entries, and tags. Users are also able to log out of session. 
 
-![mobile](./assets/images/small/fitness-logbook.jpg)
-![tablet](./assets/images/medium/fitness-logbook.jpg)
-![desktop](./assets/images/large/fitness-logbook.jpg)
+  ![mobile](./assets/images/small/fitness-logbook.jpg)
+  ![tablet](./assets/images/medium/fitness-logbook.jpg)
+  ![desktop](./assets/images/large/fitness-logbook.jpg)
 
 ## Credits
   [bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme), [connect-session-sequelize](https://github.com/mweibel/connect-session-sequelize), [dotenv](https://github.com/motdotla/dotenv#readme), [express](http://expressjs.com/), [express-handlebars](https://github.com/express-handlebars/express-handlebars), [express-session](https://www.npmjs.com/package/express-session), [jest](https://jestjs.io/), [mysql2](https://github.com/sidorares/node-mysql2#readme), [sequelize](https://sequelize.org/)
 
 ## License
-none
+  none
 
 ## Test
   Run the following command to run tests:

@@ -4,6 +4,13 @@ main {
     gap: var(--space); /* overrides style.css:89 */
 }
 
+/* header */
+.h1-logout {
+    grid-column: span 2;
+    text-align: center;
+    border: none
+}
+
 /* main */
 /* .logged-out-form */
 .form {
@@ -60,6 +67,10 @@ main {
 }
 
 @media screen and (min-width: 1024px) {
+    .display-sm {
+        display: none;
+    }
+    
     main {
         gap: calc(var(--space)*2);
     }

@@ -22,8 +22,8 @@
 
   <body>
     <header>
-      <h1>Fitlog</h1>
       {{#if loggedIn}}
+        <h1>Fitlog</h1>
         <nav class="nav-links">
           <a href="/">
             <svg class="icon-wrapper">
@@ -51,6 +51,10 @@
             </svg>
           </a>
         </nav>
+      {{else}}
+        <h1 class="h1-logout">
+          Fit<span class="display-sm">ness-</span>log<span class="display-sm">book</span>
+        </h1>
       {{/if}}
     </header>
 
