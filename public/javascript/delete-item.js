@@ -1,15 +1,12 @@
 const deleteButtons = document.querySelectorAll(".delete-btn");
 const currentItemUrl = window.location.href.split('/');
-let items = currentItemUrl.slice(-1)[0];
-if (items === "") {
-  items = "journals"
-}
+const listEl = document.querySelector("#entries")
+const items = listEl.id
 
 async function deleteItemHandler(e) {
   const button = e.target;
   const itemEl = button.closest(".item");
   const itemId = itemEl.dataset.id;
-  console.log(itemId)
 
   // confirmation placeholder
   const confirmed = confirm("confirm delete request");

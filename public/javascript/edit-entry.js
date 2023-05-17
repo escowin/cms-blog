@@ -15,7 +15,7 @@ async function editEntryFormHandler(e) {
 
     const entryDate = document.getElementById("date").value;
     const entryWeight = entryWeightInputEl.value.trim();
-    const entryText = entryNotesEl.value.trim();
+    const entryText = entryNotesInputEl.value.trim();
     const tagsInput = document.getElementById("tag-name").value.trim();
 
     if (tagsInput.trim() !== "") {
