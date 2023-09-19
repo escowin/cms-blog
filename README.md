@@ -1,6 +1,7 @@
 
 # fitness-logbook
-  [Repository](https://github.com/escowin/fitness-logbook)
+  [Repository](https://github.com/escowin/fitness-logbook) |
+  [LiveURL](https://fitness-logbook.onrender.com/)
   
 ## Description
   This is a full-stack Node.js application that logs fitness-related observations and follows the Model-View-Controller (MVC) architecture. As an individual who is into rowing and is currently experiencing the first regatta season, I needed a platform to record my observations as I experiment with various exercise routines and diet plans. I decided to create a bespoke app that would not only make my life easier but would also help me display my technical expertise.
